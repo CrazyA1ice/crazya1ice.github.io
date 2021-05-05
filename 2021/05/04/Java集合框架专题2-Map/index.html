@@ -8,33 +8,33 @@
   <meta name="renderer" content="webkit">
 
   
-  <title>Markdown First | Java Together</title>
+  <title>Java集合框架专题2-Map | Java Together</title>
 
   <link rel="shortcut icon" href="/images/favicon.png">
   <link rel="alternate" href="/atom.xml" title="Java Together" type="application/atom+xml">
-  <meta name="description" content="1~6级标题1级         Ctrl+12级              Ctrl+23级                  Ctrl+34级                        Ctrl+45级                                Ctrl+56级                                Ctrl+6增大标题级别">
+  <meta name="description" content="1. Map接口特点&amp;常用方法 Map与Collection并列，用于存储有映射关系的元素k-v； Map中的key和value可以是任何引用类型的数据，会封装到HashMap$Node对象中； Map中的key不允许重复，put相同的key等价于替换； Map中value可以重复； Map中key和value都可以为null，但是key只有一个为null，value可以有多个； 常用St">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Markdown First">
-<meta property="og:url" content="https://crazya1ice.github.io/2021/05/02/Markdown-First/index.html">
+<meta property="og:title" content="Java集合框架专题2-Map">
+<meta property="og:url" content="https://crazya1ice.github.io/2021/05/04/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E4%B8%93%E9%A2%982-Map/index.html">
 <meta property="og:site_name" content="Java Together">
-<meta property="og:description" content="1~6级标题1级         Ctrl+12级              Ctrl+23级                  Ctrl+34级                        Ctrl+45级                                Ctrl+56级                                Ctrl+6增大标题级别">
+<meta property="og:description" content="1. Map接口特点&amp;常用方法 Map与Collection并列，用于存储有映射关系的元素k-v； Map中的key和value可以是任何引用类型的数据，会封装到HashMap$Node对象中； Map中的key不允许重复，put相同的key等价于替换； Map中value可以重复； Map中key和value都可以为null，但是key只有一个为null，value可以有多个； 常用St">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F201807%2F31%2F20180731224044_YYwmw.thumb.700_0.gif&amp;refer=http%3A%2F%2Fc-ssl.duitang.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1622518014&amp;t=24bfc901cf3243b67c2bf6393ce86977">
-<meta property="article:published_time" content="2021-05-02T04:21:35.000Z">
-<meta property="article:modified_time" content="2021-05-02T05:44:06.743Z">
+<meta property="article:published_time" content="2021-05-04T04:57:53.000Z">
+<meta property="article:modified_time" content="2021-05-05T10:47:35.780Z">
 <meta property="article:author" content="木可成舟">
-<meta property="article:tag" content="Markdown">
-<meta property="article:tag" content="misc">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="集合">
+<meta property="article:tag" content="框架">
+<meta property="article:tag" content="Map">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F201807%2F31%2F20180731224044_YYwmw.thumb.700_0.gif&amp;refer=http%3A%2F%2Fc-ssl.duitang.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1622518014&amp;t=24bfc901cf3243b67c2bf6393ce86977">
 
-  <meta name="keywords" content=",Markdown,misc">
+  <meta name="keywords" content=",Java,集合,框架,Map">
   <meta name="format-detection" content="telephone=no,email=no">
   <meta name="theme-color" content="#9C27B0">
 
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="application-name" content="Java Together">
-  <meta name="msapplication-starturl" content="https://crazya1ice.github.io/2021/05/02/Markdown-First/">
+  <meta name="msapplication-starturl" content="https://crazya1ice.github.io/2021/05/04/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E4%B8%93%E9%A2%982-Map/">
   <meta name="msapplication-navbutton-color" content="#9C27B0">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Java Together">
@@ -42,7 +42,7 @@
   <link rel="apple-touch-icon" href="/images/favicon.png">
 
   
-    <link rel="canonical" href="https://crazya1ice.github.io/2021/05/02/Markdown-First/">
+    <link rel="canonical" href="https://crazya1ice.github.io/2021/05/04/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E4%B8%93%E9%A2%982-Map/">
   
 
   
@@ -181,11 +181,11 @@
   <style>#main article .mdui-card-content .center-block{display:block!important;margin-right:auto!important;margin-left:auto!important}</style>
   <article class="mdui-card mdui-m-b-5">
     <header class="mdui-card-media">
-      <img src="/images/random/material-12.png" style="max-height: 240px;">
+      <img src="/images/random/material-4.png" style="max-height: 240px;">
       <div class="mdui-card-media-covered">
         <div class="mdui-card-primary">
-          <div class="mdui-card-primary-title">Markdown First</div>
-          <div class="mdui-card-primary-subtitle"><i class="iconfont">&#xe697;</i> 2021-05-02 / <i class="iconfont">&#xe601;</i> 木可成舟</div>
+          <div class="mdui-card-primary-title">Java集合框架专题2-Map</div>
+          <div class="mdui-card-primary-subtitle"><i class="iconfont">&#xe697;</i> 2021-05-04 / <i class="iconfont">&#xe601;</i> 木可成舟</div>
         </div>
       </div>
       <div class="mdui-card-menu">
@@ -197,7 +197,7 @@
             
             <li class="mdui-menu-item" disabled>
               
-                <img src="http://qr.liantu.com/api.php?w=246&m=10&text=https://crazya1ice.github.io/2021/05/02/Markdown-First/">
+                <img src="http://qr.liantu.com/api.php?w=246&m=10&text=https://crazya1ice.github.io/2021/05/04/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E4%B8%93%E9%A2%982-Map/">
               
             </li>
           </ul>
@@ -206,187 +206,141 @@
           <button class="mdui-btn mdui-btn-icon mdui-text-color-white" mdui-menu="{target: '#share_menu', align: 'right'}"><i class="mdui-icon material-icons">share</i></button>
           <ul class="mdui-menu" id="share_menu">
             <li class="mdui-menu-item">
-              <a href="http://service.weibo.com/share/share.php?appkey=&title=Markdown First&url=https://crazya1ice.github.io/2021/05/02/Markdown-First/&pic=https://crazya1ice.github.io/images/favicon.png&searchPic=false&style=simple" target="_blank" class="mdui-ripple">分享到 Weibo</a>
+              <a href="http://service.weibo.com/share/share.php?appkey=&title=Java集合框架专题2-Map&url=https://crazya1ice.github.io/2021/05/04/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E4%B8%93%E9%A2%982-Map/&pic=https://crazya1ice.github.io/images/favicon.png&searchPic=false&style=simple" target="_blank" class="mdui-ripple">分享到 Weibo</a>
             </li>
             <li class="mdui-menu-item">
-              <a href="https://twitter.com/intent/tweet?text=Markdown First&url=https://crazya1ice.github.io/2021/05/02/Markdown-First/&via=木可成舟" target="_blank" class="mdui-ripple">分享到 Twitter</a>
+              <a href="https://twitter.com/intent/tweet?text=Java集合框架专题2-Map&url=https://crazya1ice.github.io/2021/05/04/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E4%B8%93%E9%A2%982-Map/&via=木可成舟" target="_blank" class="mdui-ripple">分享到 Twitter</a>
             </li>
             <li class="mdui-menu-item">
-              <a href="https://www.facebook.com/sharer/sharer.php?u=https://crazya1ice.github.io/2021/05/02/Markdown-First/" target="_blank" class="mdui-ripple">分享到 Facebook</a>
+              <a href="https://www.facebook.com/sharer/sharer.php?u=https://crazya1ice.github.io/2021/05/04/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E4%B8%93%E9%A2%982-Map/" target="_blank" class="mdui-ripple">分享到 Facebook</a>
             </li>
             <li class="mdui-menu-item">
-              <a href="https://plus.google.com/share?url=https://crazya1ice.github.io/2021/05/02/Markdown-First/" target="_blank" class="mdui-ripple">分享到 Google+</a>
+              <a href="https://plus.google.com/share?url=https://crazya1ice.github.io/2021/05/04/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E4%B8%93%E9%A2%982-Map/" target="_blank" class="mdui-ripple">分享到 Google+</a>
             </li>
             <li class="mdui-menu-item">
-              <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://crazya1ice.github.io/2021/05/02/Markdown-First/&title=Markdown First" target="_blank" class="mdui-ripple">分享到 LinkedIn</a>
+              <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://crazya1ice.github.io/2021/05/04/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E4%B8%93%E9%A2%982-Map/&title=Java集合框架专题2-Map" target="_blank" class="mdui-ripple">分享到 LinkedIn</a>
             </li>
             <li class="mdui-menu-item">
-              <a href="http://connect.qq.com/widget/shareqq/index.html?site=Java Together&title=Markdown First&pics=https://crazya1ice.github.io/images/favicon.png&url=https://crazya1ice.github.io/2021/05/02/Markdown-First/" target="_blank" class="mdui-ripple">分享到 QQ</a>
+              <a href="http://connect.qq.com/widget/shareqq/index.html?site=Java Together&title=Java集合框架专题2-Map&pics=https://crazya1ice.github.io/images/favicon.png&url=https://crazya1ice.github.io/2021/05/04/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E4%B8%93%E9%A2%982-Map/" target="_blank" class="mdui-ripple">分享到 QQ</a>
             </li>
             <li class="mdui-menu-item">
-              <a href="https://telegram.me/share/url?url=https://crazya1ice.github.io/2021/05/02/Markdown-First/&text=Markdown First" target="_blank" class="mdui-ripple">分享到 Telegram</a>
+              <a href="https://telegram.me/share/url?url=https://crazya1ice.github.io/2021/05/04/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E4%B8%93%E9%A2%982-Map/&text=Java集合框架专题2-Map" target="_blank" class="mdui-ripple">分享到 Telegram</a>
             </li>
           </ul>
         
       </div>
     </header>
     <div class="mdui-card-content mdui-typo">
-      <h3 id="1-6级标题"><a href="#1-6级标题" class="headerlink" title="1~6级标题"></a>1~6级标题</h3><h1 id="1级-Ctrl-1"><a href="#1级-Ctrl-1" class="headerlink" title="1级         Ctrl+1"></a>1级         Ctrl+1</h1><h2 id="2级-Ctrl-2"><a href="#2级-Ctrl-2" class="headerlink" title="2级              Ctrl+2"></a>2级              Ctrl+2</h2><h3 id="3级-Ctrl-3"><a href="#3级-Ctrl-3" class="headerlink" title="3级                  Ctrl+3"></a>3级                  Ctrl+3</h3><h4 id="4级-Ctrl-4"><a href="#4级-Ctrl-4" class="headerlink" title="4级                        Ctrl+4"></a>4级                        Ctrl+4</h4><h5 id="5级-Ctrl-5"><a href="#5级-Ctrl-5" class="headerlink" title="5级                                Ctrl+5"></a>5级                                Ctrl+5</h5><h6 id="6级-Ctrl-6"><a href="#6级-Ctrl-6" class="headerlink" title="6级                                Ctrl+6"></a>6级                                Ctrl+6</h6><p>增大标题级别            Ctrl+<strong>+</strong></p>
-<p>减小标题级别            Ctrl+<strong>-</strong></p>
-<p>将光标所在标题设置为正文        Ctrl+0</p>
-<h3 id="插入表格-Ctrl-T"><a href="#插入表格-Ctrl-T" class="headerlink" title="插入表格        Ctrl+T"></a>插入表格        Ctrl+T</h3><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>6</td>
-<td>1</td>
-<td>8</td>
-</tr>
-<tr>
-<td>7</td>
-<td>5</td>
-<td>3</td>
-</tr>
-<tr>
-<td>2</td>
-<td>9</td>
-<td>4</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>Alt+方向键        调整行位置</p>
-<p>Ctrl+Shift+Backspace            删除行</p>
-<p>Ctrl+Enter            下方插入行</p>
-<h3 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(<span class="string">&quot;Hello World!&quot;</span>);			</span><br></pre></td></tr></table></figure>
-<p>Ctrl+Shift+K</p>
-<h3 id="公式块"><a href="#公式块" class="headerlink" title="公式块"></a>公式块</h3><script type="math/tex; mode=display">S_{tri} = \sqrt{p(p-a)(p-b)(p-c)} \qquad while\ p = (a+b+c)/2</script><p>Ctrl+Shift+M</p>
-<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><blockquote>
-<p>多年以后，奥雷连诺上校站在行刑队面前，准会想起父亲带他去参观冰块的那个遥远的下午。</p>
-</blockquote>
-<p>Ctrl+Shift+Q</p>
-<h3 id="有序及无序列表"><a href="#有序及无序列表" class="headerlink" title="有序及无序列表"></a>有序及无序列表</h3><ol>
-<li><p>子</p>
-</li>
-<li><p>丑</p>
-</li>
-<li><p>寅</p>
-</li>
-<li><p>卯</p>
-<p>有序列表                Ctrl+Shift+[</p>
+      <h3 id="1-Map接口特点-amp-常用方法"><a href="#1-Map接口特点-amp-常用方法" class="headerlink" title="1. Map接口特点&amp;常用方法"></a>1. Map接口特点&amp;常用方法</h3><ol>
+<li>Map与Collection并列，用于存储有映射关系的元素k-v；</li>
+<li>Map中的key和value可以是任何引用类型的数据，会封装到HashMap$Node对象中；</li>
+<li>Map中的key不允许重复，put相同的key等价于替换；</li>
+<li>Map中value可以重复；</li>
+<li>Map中key和value都可以为null，但是key只有一个为null，value可以有多个；</li>
+<li>常用Stirng类作为key，实际上key为Object；</li>
+<li>key和value之间为单向一对一对应关系，总可以通过一个key找到对应的value；</li>
+<li>一对k-v存储在HashMap$Node对象中， Node实现了Entry接口，因此一对k-v即是一个Entry；<ul>
+<li>k-v为了方便遍历，会创建EntrySet集合，该集合存放的元素类型Entry；</li>
+<li>EntrySet中定义的类型是Map.Entry，但实际上存放的还是HashMap$Node，因为HashMap$Node实现了Map.Entry接口；</li>
+<li>当把HashMap$Node对象存放到EntrySet就方便我们的遍历，因为Map.Entry类提供了重要方法：K   getKey();  V getValue();</li>
+</ul>
 </li>
 </ol>
-<ul>
-<li><p>边a</p>
-</li>
-<li><p>边b</p>
-</li>
-<li><p>边c</p>
-<p>无序列表                Ctrl+Shift+]</p>
-</li>
+<p>常用方法：put(), remove(), get(), size(), isEmpty(), clear(), containsKey()</p>
+<p>遍历方法：</p>
+<ol>
+<li>用keySet()取出所有Key(数据类型为Set)，通过Key取出对应的Value</li>
+<li>用values()取出所有values(数据类型为Collection)；</li>
+<li>用EntrySet来获取k-v；</li>
+</ol>
+<p>HashMap和HashSet一样，不保证映射顺序，也没有实现同步，是线程不安全的。</p>
+<h3 id="2-HashMap"><a href="#2-HashMap" class="headerlink" title="2. HashMap"></a>2. HashMap</h3><p>table数组中放置一个个Node，包含一对(k,v)，Node实现了Map.Entry<k,v></p>
+<ol>
+<li>HashMap底层维护Node类型数组table，默认为null；</li>
+<li>创建对象时，加载因子初始化为0.75；</li>
+<li>添加key-val时，通过key的哈希值得到在table中的索引，然后判断索引处是否有元素，没有则直接添加，有元素则继续判断该元素的key和准备加入的key是否相等（对象相同或equals()为真），若相等，则直接替换val；如果不相等则根据树或链表结构的不同做出相应处理。若添加时容量不够则进行扩容；</li>
+<li>第一次添加扩容table为16，临界值treshhold为16*0.75 = 12;</li>
+<li>后续扩容将table扩充为原来的两倍，即32，临界值为24，以此类推；</li>
+<li>Java8中，链表元素个数超过树化临界值（默认8）且table大小大于等于最小树化容量（默认64）,链表将会树化（红黑树）。</li>
+</ol>
+<h3 id="3-HashTable"><a href="#3-HashTable" class="headerlink" title="3. HashTable"></a>3. HashTable</h3><ul>
+<li>HashTable存放键值对k-v，继承Dictionary；</li>
+<li>HashTable的键值都不能为null，否则抛出NullPointerException；</li>
+<li>HashTable使用方法基本上和HashMap一样；</li>
+<li>HashTable是线程安全的，HashMap不是；</li>
 </ul>
-<h3 id="格式变化"><a href="#格式变化" class="headerlink" title="格式变化"></a>格式变化</h3><div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">功能</th>
-<th style="text-align:center">快捷键</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">粗体</td>
-<td style="text-align:center"><strong>Ctrl+B</strong></td>
-</tr>
-<tr>
-<td style="text-align:center">斜体</td>
-<td style="text-align:center"><em>Ctrl+I</em></td>
-</tr>
-<tr>
-<td style="text-align:center">下划线</td>
-<td style="text-align:center"><u>Ctrl+U</u></td>
-</tr>
-<tr>
-<td style="text-align:center">行内代码</td>
-<td style="text-align:center">Ctrl+Shift+`</td>
-</tr>
-<tr>
-<td style="text-align:center">删除线</td>
-<td style="text-align:center">Alt+Shift+5（<del>content</del>）</td>
-</tr>
-<tr>
-<td style="text-align:center">超链接</td>
-<td style="text-align:center">Ctrl+K （<a href="www.baidu.com">REF</a>）</td>
-</tr>
-<tr>
-<td style="text-align:center">插入图片</td>
-<td style="text-align:center">Ctrl+Shift+I <img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F201807%2F31%2F20180731224044_YYwmw.thumb.700_0.gif&amp;refer=http%3A%2F%2Fc-ssl.duitang.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1622518014&amp;t=24bfc901cf3243b67c2bf6393ce86977" alt="content"></td>
-</tr>
-<tr>
-<td style="text-align:center">清除样式</td>
-<td style="text-align:center">Ctrl+\</td>
-</tr>
-<tr>
-<td style="text-align:center">源码模式</td>
-<td style="text-align:center">Ctrl+/</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h4 id="扩展语法"><a href="#扩展语法" class="headerlink" title="扩展语法"></a>扩展语法</h4><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>功能</th>
-<th>快捷键</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>上标</td>
-<td>x^2^     左右^闭合</td>
-</tr>
-<tr>
-<td>下标</td>
-<td>H~2~O    左右~闭合</td>
-</tr>
-<tr>
-<td>高亮</td>
-<td>==Highlight==    左右==闭合</td>
-</tr>
-<tr>
-<td>内联公式</td>
-<td>$a^2+b^2 = c^2$    左右$闭合</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h3 id="表情"><a href="#表情" class="headerlink" title="表情"></a>表情</h3><p>win+.    打开表情菜单（表情、颜文字和符号）</p>
-<p>:闭合直接引用表情        :smile:</p>
-<h3 id="有限的HTML元素"><a href="#有限的HTML元素" class="headerlink" title="有限的HTML元素"></a>有限的HTML元素</h3><ul>
-<li>下划线        <code>&lt;u&gt;underline&lt;/u&gt;</code></li>
-<li>评论   <code>&lt;!-- This is a comment.--&gt;</code></li>
-<li>超链接   <code>&lt;a herf =&quot;www.baidu.com&quot;&gt;h&lt;/a&gt;</code></li>
-<li>图片     <code>&lt;img src=&quot;https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F201807%2F31%2F20180731224044_YYwmw.thumb.700_0.gif&amp;refer=http%3A%2F%2Fc-ssl.duitang.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1622518014&amp;t=24bfc901cf3243b67c2bf6393ce86977&quot; /&gt;</code></li>
+<p>底层实现：</p>
+<ol>
+<li>HashTable底层为数组Hashtable$Entry[]，初始化大小为11，存储Entry对象；</li>
+<li>临界值为8 = 11*0.75；</li>
+<li>扩容：达到临界值后按容量*2+1进行扩容；</li>
+<li>执行方法addEntry()，添加k-v封装到Entry；</li>
+</ol>
+<h3 id="4-Properties"><a href="#4-Properties" class="headerlink" title="4. Properties"></a>4. Properties</h3><p>Properties类继承自HashTable类并实现了Map接口，也是通过键值对形式来保存数据，使用特点和HashTable类似。可以通过k-v存放数据，key和value不能为null；</p>
+<p>注：properties可用于从xxx.properties文件(通常为配置文件)中加载数据到Properties类对象并进行读取和修改</p>
+<h3 id="5-开发中如何选择集合实现类"><a href="#5-开发中如何选择集合实现类" class="headerlink" title="5. 开发中如何选择集合实现类"></a>5. 开发中如何选择集合实现类</h3><ol>
+<li>首先确定存储的类型（一组对象或一组键值对，即单列&amp;双列）；</li>
+<li>一组对象【单列】：Collection<ol>
+<li>允许重复：List<ol>
+<li>增删多：LinkedList【底层维护了一个双向链表】；</li>
+<li>改查多：ArrayList【底层维护Object类型的可变数组】；</li>
+</ol>
+</li>
+<li>不允许重复：Set<ol>
+<li>无序：HashSet【底层是HashMap，维护了一个Hash表【数组+链表+红黑树】】;</li>
+<li>排序TreeSet</li>
+<li>插入和取出顺序一致LinkedHashSet（底层LinkedHashMap的底层是HashMap），维护数组+双向链表</li>
+</ol>
+</li>
+<li>一组键值对：Map<ol>
+<li>键无序：HashMap【底层是：Hash表  jdk8：数组+链表+红黑树】；</li>
+<li>键排序：TreeMap；</li>
+<li>键插入和取出顺序一致：LinkedHashMap；</li>
+<li>读取文件：Properties</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="6-TreeSet"><a href="#6-TreeSet" class="headerlink" title="6. TreeSet"></a>6. TreeSet</h3><ol>
+<li><p>TreeSet底层是TreeMap；</p>
+</li>
+<li><p>若使用无参构造器初始化TreeSet，会无序；</p>
+</li>
+<li><p>若使用TreeSet提供的一个构造器，可以以lamda表达式的方式传入一个比较器（匿名内部类），并指定排序规则；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">TreeSet treeSet = <span class="keyword">new</span> TreeSet(<span class="keyword">new</span> Comparator() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Object o1, Object o2)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> ((String)o1).compareTo((String)o2);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="7-TreeMap"><a href="#7-TreeMap" class="headerlink" title="7. TreeMap"></a>7. TreeMap</h3><h3 id="8-Collection工具类"><a href="#8-Collection工具类" class="headerlink" title="8. Collection工具类"></a>8. Collection工具类</h3><p>Collection工具类是一个操作Set、List和Map等集合的工具类</p>
+<p>Collection中提供了一系列静态的方法对集合元素进行排序、查询和修改等操作</p>
+<p>排序操作：</p>
+<ul>
+<li>reverse(List): 翻转List中元素的顺序；</li>
+<li>shuffle(List):对List集合元素进行随机排序；</li>
+<li>sort(List):根据元素的自然顺序对指定List集合元素按升序排列；</li>
+<li>sort(List，Comparator):根据指定的Comparator产生的顺序对List集合进行排序；</li>
+</ul>
+<p>查找替换：</p>
+<ul>
+<li>Object max(Collection):根据数组的自然顺序，返回给定集合中的最大元素；</li>
+<li>Object max(Collection, Comparator): 根据Comparator指定的顺序，返回给定集合中的最大元素；</li>
+<li>Object min(Collection);</li>
+<li>Object min(Collection, Comparator);</li>
+<li>int frequency(Collection, Object): 返回指定集合中指定元素的出现次数；</li>
+<li>void copy(List dest, List src): 将src中的内容复制到dest中；</li>
+<li>boolean replaceAll(List list, Object oldVal, Object newVal): 使用新值替换List对象的所有旧值；</li>
 </ul>
 
       
       <blockquote>
         
-        <strong>本文链接：</strong><br><a href="https://crazya1ice.github.io/2021/05/02/Markdown-First/">https://crazya1ice.github.io/2021/05/02/Markdown-First/</a>
+        <strong>本文链接：</strong><br><a href="https://crazya1ice.github.io/2021/05/04/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E4%B8%93%E9%A2%982-Map/">https://crazya1ice.github.io/2021/05/04/Java集合框架专题2-Map/</a>
       </blockquote>
     </div>
     <footer class="mdui-card-actions">
       
       
-        <a class="mdui-ripple article_tags-link" href="/tags/Markdown/" rel="tag">Markdown</a><a class="mdui-ripple article_tags-link" href="/tags/misc/" rel="tag">misc</a>
+        <a class="mdui-ripple article_tags-link" href="/tags/Java/" rel="tag">Java</a><a class="mdui-ripple article_tags-link" href="/tags/Map/" rel="tag">Map</a><a class="mdui-ripple article_tags-link" href="/tags/%E6%A1%86%E6%9E%B6/" rel="tag">框架</a><a class="mdui-ripple article_tags-link" href="/tags/%E9%9B%86%E5%90%88/" rel="tag">集合</a>
       
     </footer>
     
@@ -400,15 +354,10 @@
 
   <nav id="paginator">
     
-      <a rel="prev" class="extend prev" href="/2021/05/02/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E4%B8%93%E9%A2%981-Collection/">
-        <button aria-label="prev" class="mdui-btn mdui-btn-raised mdui-btn-icon mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">arrow_back</i></button>
-        <span class="mdui-p-x-3" mdui-tooltip="{content: 'Java集合框架专题1-Collection'}">上一篇</span>
-      </a>
-    
     <div class="spacer"></div>
     
-      <a rel="next" class="extend next" href="/2021/04/28/hello-world/">
-        <span class="mdui-p-x-3" mdui-tooltip="{content: 'Hello World'}">下一篇</span>
+      <a rel="next" class="extend next" href="/2021/05/02/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E4%B8%93%E9%A2%981-Collection/">
+        <span class="mdui-p-x-3" mdui-tooltip="{content: 'Java集合框架专题1-Collection'}">下一篇</span>
         <button aria-label="next" class="mdui-btn mdui-btn-raised mdui-btn-icon mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">arrow_forward</i></button>
       </a>
     
