@@ -8,33 +8,29 @@
   <meta name="renderer" content="webkit">
 
   
-  <title>Java集合框架专题1-Collection | Java Together</title>
+  <title>Java基础细节 | Java Together</title>
 
   <link rel="shortcut icon" href="/images/favicon.png">
   <link rel="alternate" href="/atom.xml" title="Java Together" type="application/atom+xml">
-  <meta name="description" content="1. 集合主要分为：单列集合、双列集合2. Collection：（单列集合）—&gt;实现Iterable接口 List Vector ArrayList LinkedList   Set TreeSet HashSet    Map：（双列集合k-v） HashMap  LinkedHashMap   TreeMap  HashTable  Properties    3. Collectio">
+  <meta name="description" content="自动类型转换  byte -- short -- int -- long -- float -- double  char -- int -- long -- float -- double （byte，short）和char之间不能进行类型转换  多种类型数据混合运算时，系统先自动将所有数据转换成容量最大的那种数据类型，然后计算； 精度（容量）大的数据类型赋值给精度（容量）小的数">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java集合框架专题1-Collection">
-<meta property="og:url" content="https://crazya1ice.github.io/2021/05/02/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E4%B8%93%E9%A2%981-Collection/index.html">
+<meta property="og:title" content="Java基础细节">
+<meta property="og:url" content="https://crazya1ice.github.io/2021/05/06/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%82/index.html">
 <meta property="og:site_name" content="Java Together">
-<meta property="og:description" content="1. 集合主要分为：单列集合、双列集合2. Collection：（单列集合）—&gt;实现Iterable接口 List Vector ArrayList LinkedList   Set TreeSet HashSet    Map：（双列集合k-v） HashMap  LinkedHashMap   TreeMap  HashTable  Properties    3. Collectio">
+<meta property="og:description" content="自动类型转换  byte -- short -- int -- long -- float -- double  char -- int -- long -- float -- double （byte，short）和char之间不能进行类型转换  多种类型数据混合运算时，系统先自动将所有数据转换成容量最大的那种数据类型，然后计算； 精度（容量）大的数据类型赋值给精度（容量）小的数">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-05-02T08:47:07.000Z">
-<meta property="article:modified_time" content="2021-05-04T11:21:49.874Z">
+<meta property="article:published_time" content="2021-05-06T06:36:34.000Z">
+<meta property="article:modified_time" content="2021-05-06T13:03:44.627Z">
 <meta property="article:author" content="木可成舟">
-<meta property="article:tag" content="Java">
-<meta property="article:tag" content="集合">
-<meta property="article:tag" content="框架">
-<meta property="article:tag" content="Collection">
 <meta name="twitter:card" content="summary">
 
-  <meta name="keywords" content=",Java,集合,框架,Collection">
+  <meta name="keywords" content="">
   <meta name="format-detection" content="telephone=no,email=no">
   <meta name="theme-color" content="#9C27B0">
 
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="application-name" content="Java Together">
-  <meta name="msapplication-starturl" content="https://crazya1ice.github.io/2021/05/02/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E4%B8%93%E9%A2%981-Collection/">
+  <meta name="msapplication-starturl" content="https://crazya1ice.github.io/2021/05/06/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%82/">
   <meta name="msapplication-navbutton-color" content="#9C27B0">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Java Together">
@@ -42,7 +38,7 @@
   <link rel="apple-touch-icon" href="/images/favicon.png">
 
   
-    <link rel="canonical" href="https://crazya1ice.github.io/2021/05/02/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E4%B8%93%E9%A2%981-Collection/">
+    <link rel="canonical" href="https://crazya1ice.github.io/2021/05/06/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%82/">
   
 
   
@@ -181,11 +177,11 @@
   <style>#main article .mdui-card-content .center-block{display:block!important;margin-right:auto!important;margin-left:auto!important}</style>
   <article class="mdui-card mdui-m-b-5">
     <header class="mdui-card-media">
-      <img src="/images/random/material-5.png" style="max-height: 240px;">
+      <img src="/images/random/material-13.png" style="max-height: 240px;">
       <div class="mdui-card-media-covered">
         <div class="mdui-card-primary">
-          <div class="mdui-card-primary-title">Java集合框架专题1-Collection</div>
-          <div class="mdui-card-primary-subtitle"><i class="iconfont">&#xe697;</i> 2021-05-02 / <i class="iconfont">&#xe601;</i> 木可成舟</div>
+          <div class="mdui-card-primary-title">Java基础细节</div>
+          <div class="mdui-card-primary-subtitle"><i class="iconfont">&#xe697;</i> 2021-05-06 / <i class="iconfont">&#xe601;</i> 木可成舟</div>
         </div>
       </div>
       <div class="mdui-card-menu">
@@ -197,7 +193,7 @@
             
             <li class="mdui-menu-item" disabled>
               
-                <img src="http://qr.liantu.com/api.php?w=246&m=10&text=https://crazya1ice.github.io/2021/05/02/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E4%B8%93%E9%A2%981-Collection/">
+                <img src="http://qr.liantu.com/api.php?w=246&m=10&text=https://crazya1ice.github.io/2021/05/06/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%82/">
               
             </li>
           </ul>
@@ -206,165 +202,92 @@
           <button class="mdui-btn mdui-btn-icon mdui-text-color-white" mdui-menu="{target: '#share_menu', align: 'right'}"><i class="mdui-icon material-icons">share</i></button>
           <ul class="mdui-menu" id="share_menu">
             <li class="mdui-menu-item">
-              <a href="http://service.weibo.com/share/share.php?appkey=&title=Java集合框架专题1-Collection&url=https://crazya1ice.github.io/2021/05/02/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E4%B8%93%E9%A2%981-Collection/&pic=https://crazya1ice.github.io/images/favicon.png&searchPic=false&style=simple" target="_blank" class="mdui-ripple">分享到 Weibo</a>
+              <a href="http://service.weibo.com/share/share.php?appkey=&title=Java基础细节&url=https://crazya1ice.github.io/2021/05/06/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%82/&pic=https://crazya1ice.github.io/images/favicon.png&searchPic=false&style=simple" target="_blank" class="mdui-ripple">分享到 Weibo</a>
             </li>
             <li class="mdui-menu-item">
-              <a href="https://twitter.com/intent/tweet?text=Java集合框架专题1-Collection&url=https://crazya1ice.github.io/2021/05/02/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E4%B8%93%E9%A2%981-Collection/&via=木可成舟" target="_blank" class="mdui-ripple">分享到 Twitter</a>
+              <a href="https://twitter.com/intent/tweet?text=Java基础细节&url=https://crazya1ice.github.io/2021/05/06/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%82/&via=木可成舟" target="_blank" class="mdui-ripple">分享到 Twitter</a>
             </li>
             <li class="mdui-menu-item">
-              <a href="https://www.facebook.com/sharer/sharer.php?u=https://crazya1ice.github.io/2021/05/02/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E4%B8%93%E9%A2%981-Collection/" target="_blank" class="mdui-ripple">分享到 Facebook</a>
+              <a href="https://www.facebook.com/sharer/sharer.php?u=https://crazya1ice.github.io/2021/05/06/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%82/" target="_blank" class="mdui-ripple">分享到 Facebook</a>
             </li>
             <li class="mdui-menu-item">
-              <a href="https://plus.google.com/share?url=https://crazya1ice.github.io/2021/05/02/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E4%B8%93%E9%A2%981-Collection/" target="_blank" class="mdui-ripple">分享到 Google+</a>
+              <a href="https://plus.google.com/share?url=https://crazya1ice.github.io/2021/05/06/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%82/" target="_blank" class="mdui-ripple">分享到 Google+</a>
             </li>
             <li class="mdui-menu-item">
-              <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://crazya1ice.github.io/2021/05/02/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E4%B8%93%E9%A2%981-Collection/&title=Java集合框架专题1-Collection" target="_blank" class="mdui-ripple">分享到 LinkedIn</a>
+              <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://crazya1ice.github.io/2021/05/06/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%82/&title=Java基础细节" target="_blank" class="mdui-ripple">分享到 LinkedIn</a>
             </li>
             <li class="mdui-menu-item">
-              <a href="http://connect.qq.com/widget/shareqq/index.html?site=Java Together&title=Java集合框架专题1-Collection&pics=https://crazya1ice.github.io/images/favicon.png&url=https://crazya1ice.github.io/2021/05/02/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E4%B8%93%E9%A2%981-Collection/" target="_blank" class="mdui-ripple">分享到 QQ</a>
+              <a href="http://connect.qq.com/widget/shareqq/index.html?site=Java Together&title=Java基础细节&pics=https://crazya1ice.github.io/images/favicon.png&url=https://crazya1ice.github.io/2021/05/06/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%82/" target="_blank" class="mdui-ripple">分享到 QQ</a>
             </li>
             <li class="mdui-menu-item">
-              <a href="https://telegram.me/share/url?url=https://crazya1ice.github.io/2021/05/02/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E4%B8%93%E9%A2%981-Collection/&text=Java集合框架专题1-Collection" target="_blank" class="mdui-ripple">分享到 Telegram</a>
+              <a href="https://telegram.me/share/url?url=https://crazya1ice.github.io/2021/05/06/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%82/&text=Java基础细节" target="_blank" class="mdui-ripple">分享到 Telegram</a>
             </li>
           </ul>
         
       </div>
     </header>
     <div class="mdui-card-content mdui-typo">
-      <h3 id="1-集合主要分为：单列集合、双列集合"><a href="#1-集合主要分为：单列集合、双列集合" class="headerlink" title="1. 集合主要分为：单列集合、双列集合"></a>1. 集合主要分为：单列集合、双列集合</h3><h3 id="2-Collection：（单列集合）—-gt-实现Iterable接口"><a href="#2-Collection：（单列集合）—-gt-实现Iterable接口" class="headerlink" title="2. Collection：（单列集合）—&gt;实现Iterable接口"></a>2. Collection：（单列集合）—&gt;实现Iterable接口</h3><ul>
-<li>List<ul>
-<li>Vector</li>
-<li>ArrayList</li>
-<li>LinkedList</li>
-</ul>
-</li>
-<li>Set<ul>
-<li>TreeSet</li>
-<li>HashSet</li>
-</ul>
-</li>
-</ul>
-<h3 id="Map：（双列集合k-v）"><a href="#Map：（双列集合k-v）" class="headerlink" title="Map：（双列集合k-v）"></a>Map：（双列集合k-v）</h3><ul>
-<li><p>HashMap</p>
-<ul>
-<li>LinkedHashMap</li>
-</ul>
-</li>
-<li><p>TreeMap</p>
-</li>
-<li><p>HashTable</p>
-<ul>
-<li>Properties</li>
-</ul>
-</li>
-</ul>
-<h3 id="3-Collection-接口常用方法"><a href="#3-Collection-接口常用方法" class="headerlink" title="3. Collection 接口常用方法"></a>3. Collection 接口常用方法</h3><p>add(), remove(), contains(), size(), isEmpty(), clear(), addAll(), containsAll(), removeAll()</p>
-<p>Collection遍历元素方式:  </p>
-<ul>
-<li>Iterator()迭代器生成Iterator对象：有hasNext()和next()</li>
-<li>增强for循环：本质上仍然是迭代器实现</li>
-</ul>
-<h3 id="4-List接口-amp-常用方法"><a href="#4-List接口-amp-常用方法" class="headerlink" title="4. List接口&amp;常用方法"></a>4. List接口&amp;常用方法</h3><ul>
-<li>List集合勒种元素有序（添加和取出顺序一致）且可重复；</li>
-<li>List容器中每个元素都有索引，从0开始</li>
-</ul>
-<p>常用方法：</p>
-<p>add(), addAll(), get(), indexOf()第一次出现, lastIndexOf()末次出现, remove(), set()替换，subList()参数为两个下标，前闭后开截取出子串</p>
-<p>List遍历元素方式: Iterator，增强for， 普通for</p>
-<h3 id="5-ArrayList底层结构-amp-源码分析"><a href="#5-ArrayList底层结构-amp-源码分析" class="headerlink" title="5. ArrayList底层结构&amp;源码分析"></a>5. ArrayList底层结构&amp;源码分析</h3><ul>
-<li><p>ArrayList注意事项：</p>
-<ul>
-<li>可以将null作为元素添加</li>
-<li>由数组实现，基本等同Vector</li>
-<li>线程不安全，无synchronized，多线程不建议使用, 但是效率较高</li>
-</ul>
-</li>
-<li><p>底层机制</p>
-<ul>
-<li><p>ArrayList中维护了一个Object类型的数组elementData，transient Objet[] elementData,</p>
-<p>transient表示不被序列化</p>
-</li>
-<li><p>创建ArrayList对象时，</p>
-<ul>
-<li>若使用无参构造器，则elementData容量变化：0-&gt;10-&gt;1.5倍</li>
-<li>若使用指定大小的构造器，则elementDtaa容量变化：指定大小-&gt;1.5倍</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="6-Vector底层源码分析"><a href="#6-Vector底层源码分析" class="headerlink" title="6. Vector底层源码分析"></a>6. Vector底层源码分析</h3><p>Vector底层也是一个对象数组，不同于ArrayList的是，Vector是线程安全的，效率较低。</p>
-<p>底层机制</p>
-<ul>
-<li><p>Vector中维护了一个Object类型的数组elementData，transient Objet[] elementData,</p>
-<p>transient表示不被序列化</p>
-</li>
-<li><p>创建Vector对象时，</p>
-<ul>
-<li>若使用无参构造器，则elementData容量变化：0-&gt;10-&gt;2倍</li>
-<li>若使用指定大小的构造器，则elementDtaa容量变化：指定大小-&gt;2倍</li>
-</ul>
-</li>
-</ul>
-<h3 id="7-LinkedList底层结构分析"><a href="#7-LinkedList底层结构分析" class="headerlink" title="7. LinkedList底层结构分析"></a>7. LinkedList底层结构分析</h3><p>LinkedList底层实现了双向链表和双端队列的特点， 可以添加null在内的任意重复元素，线程不安全。</p>
-<p>操作机制：</p>
-<ul>
-<li>LinkedList底层维护了一个双向链表；</li>
-<li>LinkedList维护了两个属性：first和last分别指向首节点和尾节点；</li>
-<li>每个Node对象都维护了prev，next和item三个属性；</li>
-</ul>
-<h3 id="8-Set接口方法"><a href="#8-Set接口方法" class="headerlink" title="8. Set接口方法"></a>8. Set接口方法</h3><ul>
-<li>Set接口对象不能存放重复元素，可以存放一个null</li>
-<li>Set接口对象存放数据是无序的，即添加和取出元素的顺序不一致</li>
-<li>注意：Set取出元素的顺序是固定的，有特定算法</li>
-</ul>
-<p>遍历方式： 迭代器&amp;增强for循环（没有索引因此无法使用普通for循环）</p>
-<h3 id="9-HashSet底层结构-amp-源码"><a href="#9-HashSet底层结构-amp-源码" class="headerlink" title="9. HashSet底层结构&amp;源码"></a>9. HashSet底层结构&amp;源码</h3><ul>
-<li><p>HashSet底层是HashMap，HashMap底层是数组+链表+红黑树（数组元素为链表或红黑树）</p>
-<p>其底层也为k-v键值对，但其v为常量，只使用k值</p>
-</li>
-</ul>
-<p>底层机制（添加元素）：</p>
-<ol>
-<li>HashSet添加元素，先得到hash值，将其转化为索引值；</li>
-<li>找到存储数据表table，看到该索引位置是否已经存放有元素；</li>
-<li>若没有元素，直接加入；</li>
-<li>若有元素，调用equals()比较，如果相同，放弃添加，如果不相同，则添加到最后；</li>
+      <h3 id="自动类型转换">自动类型转换</h3>
+<ol type="1">
+<li>byte -- short -- int -- long -- float -- double</li>
 </ol>
-<p>HashSet的扩容和转成红黑树机制：</p>
-<ol>
-<li><p>HashSet底层为HashMap，第一次添加时，table数组扩容到16，临界值（Treshhold）为16*加载因子（loadFactor = 0.75），即12；</p>
-</li>
-<li><p>若table数组使用了到了临界值12（由源码决定，可以包括链表中元素），就会扩容到16<em>2=32，新的临界值为32\</em>0.75=24，以此类推；</p>
-</li>
-<li><p>Java8中，若数据表的链表元素个数超过TREEIFY_THRESHOLD(默认为8)，且table大小&gt;=MIN_TREEIFY_CAPACITY(默认64)，就会进行树化（红黑树）。（若链表元素到达8个，table大小小于64，则table进行2倍扩容。）</p>
-</li>
+<p>char -- int -- long -- float -- double</p>
+<p>（byte，short）和char之间不能进行类型转换</p>
+<ol start="2" type="1">
+<li><p>多种类型数据混合运算时，系统先自动将所有数据转换成容量最大的那种数据类型，然后计算；</p></li>
+<li><p>精度（容量）大的数据类型赋值给精度（容量）小的数据类型时，就会报错，反之会自动进行类型转换；</p></li>
+<li><p>当将一个具体数值赋给一种数据类型时，会先判断该数是否在该数据类型范围内，若不在会直接报错，例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">byte</span> b = <span class="number">128</span>;    <span class="comment">// 超出范围，报错</span></span><br></pre></td></tr></table></figure></li>
+<li><p>byte，short，char三者可以进行计算，含有其中任一类型进行计算时，结果首先转换为int类型；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">byte</span> b1 = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">byte</span> b2 = b1 + b2;	<span class="comment">//int值赋给byte类型，报错</span></span><br><span class="line">b1++;</span><br><span class="line">b1 += <span class="number">2</span>;		<span class="comment">//成立，因为复合运算符可视为包含强制类型转换</span></span><br></pre></td></tr></table></figure></li>
+<li><p>boolean类型不参与类型转换；</p></li>
 </ol>
-<h3 id="10-LinkedHashSet底层结构-amp-源码"><a href="#10-LinkedHashSet底层结构-amp-源码" class="headerlink" title="10. LinkedHashSet底层结构&amp;源码"></a>10. LinkedHashSet底层结构&amp;源码</h3><ol>
-<li><p>LinkedHashSet中维护了一个hash表和双向链表；(底层是LinkedHashMap)</p>
-</li>
-<li><p>每一个节点有pre和next属性，可以形成双向链表；</p>
-</li>
-<li><p>添加一个元素时，先求hash值，再求索引，确定元素在hashtable的位置，然后将添加的元素加入到双向链表（如已存在，不添加）；</p>
-<p>tail.next = newElement;</p>
-<p>newElement.pre = tail;</p>
-<p>tail = newElement;</p>
-</li>
-<li><p>这样，遍历LinkedHashSet也能确保插入顺序和遍历顺序一致；</p>
-</li>
+<h3 id="强制类型转换">强制类型转换</h3>
+<ol type="1">
+<li>当进行数据的大小从大--&gt;小，就需要使用强制转换；</li>
+<li>强制转换符号只对最近的操作数有效，往往使用小括号提升优先级；</li>
+<li>char类型可以保存int类型的常量值，但不能保存int类型的变量值，需要强转；</li>
+<li>byte，short和char类型在进行运算时，当做int类型处理；</li>
 </ol>
-<p><strong><u>LinkedHashSet将一整条双向链表用索引分成几段。</u></strong></p>
+<h3 id="基本数据类型和stirng类型">基本数据类型和Stirng类型</h3>
+<ol type="1">
+<li>基本数据类型转String： 基本数据类型+“ ”；</li>
+<li>String转基本数据类型：使用基本数据类型对应的包装类的相应的parse方法</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> num1 = Integer.parseInt(s1);</span><br><span class="line"><span class="keyword">double</span> num2 = Double.parseDouble(s2);</span><br></pre></td></tr></table></figure>
+<p>==注：String转char时通常指取出String中的第一个char==</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> a = s.charAt(<span class="number">0</span>)		<span class="comment">//得到字符串s的第一个字符</span></span><br></pre></td></tr></table></figure>
+<p>注意事项：转换须有意义，格式要正确，否则会抛出异常。</p>
+<h3 id="原码反码补码">原码、反码、补码</h3>
+<ol type="1">
+<li>二进制的最高位是符号位：0表示正数，1表示负数；</li>
+<li>正数三码合一：原码、反码和补码都一样；</li>
+<li>负数的反码 = 它的原码符号位不变，其他位取反；</li>
+<li>负数的补码 = 它的反码+1， 负数的反码 = 它的补码 -1；</li>
+<li>0的反码补码都是0；</li>
+<li>java没有无符号数，换言之，java中的数都是有符号的；</li>
+<li>计算机运算过程中都是以补码方式来运算的；</li>
+<li>我们看运算结果时要看它的原码。</li>
+</ol>
+<h3 id="数组">数组</h3>
+<ol type="1">
+<li>数组是多个相同类型数据的组合，实现对这些数据的统一管理；</li>
+<li>数组中的元素可以是任何数据类型，包括基本类型和引用类型，但是不能混用；</li>
+<li>数组创建后如果没有赋值，对于不同类型有默认值；</li>
+<li>使用数组的步骤：声明数组，开辟空间，给各元素赋值，使用数组；</li>
+<li>数组下标从0开始；</li>
+<li>数组属于引用类型，数组型数据是对象（Object）；</li>
+<li>基本数据类型赋值方式为值拷贝，数组默认情况下是引用传递，赋的值是地址，赋值方式为引用赋值；</li>
+</ol>
 
       
       <blockquote>
         
-        <strong>本文链接：</strong><br><a href="https://crazya1ice.github.io/2021/05/02/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E4%B8%93%E9%A2%981-Collection/">https://crazya1ice.github.io/2021/05/02/Java集合框架专题1-Collection/</a>
+        <strong>本文链接：</strong><br><a href="https://crazya1ice.github.io/2021/05/06/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%82/">https://crazya1ice.github.io/2021/05/06/Java基础细节/</a>
       </blockquote>
     </div>
     <footer class="mdui-card-actions">
       
-      
-        <a class="mdui-ripple article_tags-link" href="/tags/Collection/" rel="tag">Collection</a><a class="mdui-ripple article_tags-link" href="/tags/Java/" rel="tag">Java</a><a class="mdui-ripple article_tags-link" href="/tags/%E6%A1%86%E6%9E%B6/" rel="tag">框架</a><a class="mdui-ripple article_tags-link" href="/tags/%E9%9B%86%E5%90%88/" rel="tag">集合</a>
       
     </footer>
     
@@ -378,15 +301,10 @@
 
   <nav id="paginator">
     
-      <a rel="prev" class="extend prev" href="/2021/05/04/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E4%B8%93%E9%A2%982-Map/">
-        <button aria-label="prev" class="mdui-btn mdui-btn-raised mdui-btn-icon mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">arrow_back</i></button>
-        <span class="mdui-p-x-3" mdui-tooltip="{content: 'Java集合框架专题2-Map'}">上一篇</span>
-      </a>
-    
     <div class="spacer"></div>
     
-      <a rel="next" class="extend next" href="/2021/05/02/Markdown-First/">
-        <span class="mdui-p-x-3" mdui-tooltip="{content: 'Markdown First'}">下一篇</span>
+      <a rel="next" class="extend next" href="/2021/05/04/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E4%B8%93%E9%A2%982-Map/">
+        <span class="mdui-p-x-3" mdui-tooltip="{content: 'Java集合框架专题2-Map'}">下一篇</span>
         <button aria-label="next" class="mdui-btn mdui-btn-raised mdui-btn-icon mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">arrow_forward</i></button>
       </a>
     
