@@ -8,19 +8,19 @@
   <meta name="renderer" content="webkit">
 
   
-  <title>Hello World | Java Together</title>
+  <title>Java基础细节5-常用类 | Java Together</title>
 
   <link rel="shortcut icon" href="/images/favicon.png">
   <link rel="alternate" href="/atom.xml" title="Java Together" type="application/atom+xml">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quic">
+  <meta name="description" content="String  String是final类，代表不可变的字符序列（不可变性）  当对字符串重新赋值时，需要重写指定内存区域赋值，不能使用原有的value进行赋值 当对现有的字符串进行连续操作时，也需要重新指定内存区域赋值 调用String的replace()方法修改指定的字符或字符串时，也需要重新指定内存区域赋值  字符串是常量，其值在创建之后不能更改 String对象的字符内容">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://crazya1ice.github.io/2021/04/28/hello-world/index.html">
+<meta property="og:title" content="Java基础细节5-常用类">
+<meta property="og:url" content="https://crazya1ice.github.io/2021/05/13/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%825-%E5%B8%B8%E7%94%A8%E7%B1%BB/index.html">
 <meta property="og:site_name" content="Java Together">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quic">
+<meta property="og:description" content="String  String是final类，代表不可变的字符序列（不可变性）  当对字符串重新赋值时，需要重写指定内存区域赋值，不能使用原有的value进行赋值 当对现有的字符串进行连续操作时，也需要重新指定内存区域赋值 调用String的replace()方法修改指定的字符或字符串时，也需要重新指定内存区域赋值  字符串是常量，其值在创建之后不能更改 String对象的字符内容">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-04-28T14:06:14.396Z">
-<meta property="article:modified_time" content="2021-05-01T08:22:35.820Z">
+<meta property="article:published_time" content="2021-05-13T08:39:54.000Z">
+<meta property="article:modified_time" content="2021-05-13T14:38:15.968Z">
 <meta property="article:author" content="木可成舟">
 <meta name="twitter:card" content="summary">
 
@@ -30,7 +30,7 @@
 
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="application-name" content="Java Together">
-  <meta name="msapplication-starturl" content="https://crazya1ice.github.io/2021/04/28/hello-world/">
+  <meta name="msapplication-starturl" content="https://crazya1ice.github.io/2021/05/13/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%825-%E5%B8%B8%E7%94%A8%E7%B1%BB/">
   <meta name="msapplication-navbutton-color" content="#9C27B0">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Java Together">
@@ -38,7 +38,7 @@
   <link rel="apple-touch-icon" href="/images/favicon.png">
 
   
-    <link rel="canonical" href="https://crazya1ice.github.io/2021/04/28/hello-world/">
+    <link rel="canonical" href="https://crazya1ice.github.io/2021/05/13/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%825-%E5%B8%B8%E7%94%A8%E7%B1%BB/">
   
 
   
@@ -177,11 +177,11 @@
   <style>#main article .mdui-card-content .center-block{display:block!important;margin-right:auto!important;margin-left:auto!important}</style>
   <article class="mdui-card mdui-m-b-5">
     <header class="mdui-card-media">
-      <img src="/images/random/material-6.png" style="max-height: 240px;">
+      <img src="/images/random/material-14.png" style="max-height: 240px;">
       <div class="mdui-card-media-covered">
         <div class="mdui-card-primary">
-          <div class="mdui-card-primary-title">Hello World</div>
-          <div class="mdui-card-primary-subtitle"><i class="iconfont">&#xe697;</i> 2021-04-28 / <i class="iconfont">&#xe601;</i> 木可成舟</div>
+          <div class="mdui-card-primary-title">Java基础细节5-常用类</div>
+          <div class="mdui-card-primary-subtitle"><i class="iconfont">&#xe697;</i> 2021-05-13 / <i class="iconfont">&#xe601;</i> 木可成舟</div>
         </div>
       </div>
       <div class="mdui-card-menu">
@@ -193,7 +193,7 @@
             
             <li class="mdui-menu-item" disabled>
               
-                <img src="http://qr.liantu.com/api.php?w=246&m=10&text=https://crazya1ice.github.io/2021/04/28/hello-world/">
+                <img src="http://qr.liantu.com/api.php?w=246&m=10&text=https://crazya1ice.github.io/2021/05/13/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%825-%E5%B8%B8%E7%94%A8%E7%B1%BB/">
               
             </li>
           </ul>
@@ -202,50 +202,66 @@
           <button class="mdui-btn mdui-btn-icon mdui-text-color-white" mdui-menu="{target: '#share_menu', align: 'right'}"><i class="mdui-icon material-icons">share</i></button>
           <ul class="mdui-menu" id="share_menu">
             <li class="mdui-menu-item">
-              <a href="http://service.weibo.com/share/share.php?appkey=&title=Hello World&url=https://crazya1ice.github.io/2021/04/28/hello-world/&pic=https://crazya1ice.github.io/images/favicon.png&searchPic=false&style=simple" target="_blank" class="mdui-ripple">分享到 Weibo</a>
+              <a href="http://service.weibo.com/share/share.php?appkey=&title=Java基础细节5-常用类&url=https://crazya1ice.github.io/2021/05/13/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%825-%E5%B8%B8%E7%94%A8%E7%B1%BB/&pic=https://crazya1ice.github.io/images/favicon.png&searchPic=false&style=simple" target="_blank" class="mdui-ripple">分享到 Weibo</a>
             </li>
             <li class="mdui-menu-item">
-              <a href="https://twitter.com/intent/tweet?text=Hello World&url=https://crazya1ice.github.io/2021/04/28/hello-world/&via=木可成舟" target="_blank" class="mdui-ripple">分享到 Twitter</a>
+              <a href="https://twitter.com/intent/tweet?text=Java基础细节5-常用类&url=https://crazya1ice.github.io/2021/05/13/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%825-%E5%B8%B8%E7%94%A8%E7%B1%BB/&via=木可成舟" target="_blank" class="mdui-ripple">分享到 Twitter</a>
             </li>
             <li class="mdui-menu-item">
-              <a href="https://www.facebook.com/sharer/sharer.php?u=https://crazya1ice.github.io/2021/04/28/hello-world/" target="_blank" class="mdui-ripple">分享到 Facebook</a>
+              <a href="https://www.facebook.com/sharer/sharer.php?u=https://crazya1ice.github.io/2021/05/13/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%825-%E5%B8%B8%E7%94%A8%E7%B1%BB/" target="_blank" class="mdui-ripple">分享到 Facebook</a>
             </li>
             <li class="mdui-menu-item">
-              <a href="https://plus.google.com/share?url=https://crazya1ice.github.io/2021/04/28/hello-world/" target="_blank" class="mdui-ripple">分享到 Google+</a>
+              <a href="https://plus.google.com/share?url=https://crazya1ice.github.io/2021/05/13/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%825-%E5%B8%B8%E7%94%A8%E7%B1%BB/" target="_blank" class="mdui-ripple">分享到 Google+</a>
             </li>
             <li class="mdui-menu-item">
-              <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://crazya1ice.github.io/2021/04/28/hello-world/&title=Hello World" target="_blank" class="mdui-ripple">分享到 LinkedIn</a>
+              <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://crazya1ice.github.io/2021/05/13/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%825-%E5%B8%B8%E7%94%A8%E7%B1%BB/&title=Java基础细节5-常用类" target="_blank" class="mdui-ripple">分享到 LinkedIn</a>
             </li>
             <li class="mdui-menu-item">
-              <a href="http://connect.qq.com/widget/shareqq/index.html?site=Java Together&title=Hello World&pics=https://crazya1ice.github.io/images/favicon.png&url=https://crazya1ice.github.io/2021/04/28/hello-world/" target="_blank" class="mdui-ripple">分享到 QQ</a>
+              <a href="http://connect.qq.com/widget/shareqq/index.html?site=Java Together&title=Java基础细节5-常用类&pics=https://crazya1ice.github.io/images/favicon.png&url=https://crazya1ice.github.io/2021/05/13/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%825-%E5%B8%B8%E7%94%A8%E7%B1%BB/" target="_blank" class="mdui-ripple">分享到 QQ</a>
             </li>
             <li class="mdui-menu-item">
-              <a href="https://telegram.me/share/url?url=https://crazya1ice.github.io/2021/04/28/hello-world/&text=Hello World" target="_blank" class="mdui-ripple">分享到 Telegram</a>
+              <a href="https://telegram.me/share/url?url=https://crazya1ice.github.io/2021/05/13/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%825-%E5%B8%B8%E7%94%A8%E7%B1%BB/&text=Java基础细节5-常用类" target="_blank" class="mdui-ripple">分享到 Telegram</a>
             </li>
           </ul>
         
       </div>
     </header>
     <div class="mdui-card-content mdui-typo">
-      <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="quick-start">Quick Start</h2>
-<h3 id="create-a-new-post">Create a new post</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="run-server">Run server</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="generate-static-files">Generate static files</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="deploy-to-remote-sites">Deploy to remote sites</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+      <h3 id="string">String</h3>
+<ul>
+<li><p>String是final类，代表不可变的字符序列（不可变性）</p>
+<ul>
+<li>当对字符串重新赋值时，需要重写指定内存区域赋值，不能使用原有的value进行赋值</li>
+<li>当对现有的字符串进行连续操作时，也需要重新指定内存区域赋值</li>
+<li>调用String的replace()方法修改指定的字符或字符串时，也需要重新指定内存区域赋值</li>
+</ul></li>
+<li><p>字符串是常量，其值在创建之后不能更改</p></li>
+<li><p>String对象的字符内容是存储在一个字符数组value[]中的，final char[] value</p></li>
+<li><p>String实现了Serializable接口，表示字符串支持序列化</p>
+<p>​ 实现了Comparable接口，表示Stirng可以比较大小</p></li>
+<li><p>通过字面量的方式（区别于new）给一个字符串赋值，此时的字符串值声明在字符串常量池</p></li>
+<li><p>字符串常量池中是不会存储内容相同的字符串的</p></li>
+<li><p>String实例化方式：字面量定义/new+构造器</p>
+<ul>
+<li><p>字面量定义的方式，定义的字符串数据声明在方法区中的字符串常量池中</p></li>
+<li><p>new+构造器的方式：此时字符串变量保存的地址值，是数据在对空间中开辟空间后对应的地址值</p></li>
+<li><p>```java String string = new String(&quot;abc&quot;);//创建了两个对象，new的String和常量池中&quot;abc&quot; <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- String拼接特性：</span><br><span class="line">  - 常量与常量的拼接结果在常量池，并且常量池中不会存在相同内容的常量</span><br><span class="line">  - 拼接的字符串中只要有一个是变量，结果就在堆中</span><br><span class="line">  - 如果拼接的结果调用intern()方法，返回值就在常量池中</span><br><span class="line">  - final修饰的字符串变量也视作常量</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">###  String常用方法</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;java</span><br><span class="line">- int length()	</span><br><span class="line">- char charAt(int index)</span><br><span class="line">- boolean isEmpty()	</span><br><span class="line">- String toLowerCase()	返回副本</span><br><span class="line">- String toUpperCase()	返回副本</span><br><span class="line">- String trim()	返回字符串副本，忽略前导和尾部空白，保留中间空白</span><br><span class="line">- boolean equals(Object obj)</span><br><span class="line">- boolean equalsIgnoreCase(String anotherString)</span><br><span class="line">- String concat(String str)</span><br><span class="line">- int compareTo(String anotherString)	涉及排序</span><br><span class="line">- String substring(int beginIndex)</span><br><span class="line">- String substring(int beginIndex, int endIndex)  左闭右开</span><br><span class="line">- boolean endsWith(Stirng suffix)</span><br><span class="line">- boolean startsWith(String prefix)</span><br><span class="line">- boolean startsWith(Stirng prefix, int toffset)	指定位置开始的字符串前缀判断</span><br><span class="line">- boolean contains(CharSequence s)  包含指定的char值序列</span><br><span class="line">- int indexOf(String str)</span><br><span class="line">- int indexOf(String str, int fromIndex) </span><br><span class="line">- int lastIndexOf(String str)</span><br><span class="line">- int lastIndexOf(String str, int fromIndex)</span><br><span class="line">&#x2F;&#x2F;indexOf和lastIndexOf未找到都会返回-1</span><br><span class="line">&#x2F;&#x2F;替换</span><br><span class="line">- Stirng replace(char oldChar, char newChar)</span><br><span class="line">- String replace(CharSequence target, CharSequence replacement) 字面量替换</span><br><span class="line">- String replaceAll(Stirng regex, String replacement)</span><br><span class="line">- String replaceFirst(Stirng regex, String replacement) </span><br><span class="line">&#x2F;&#x2F;匹配</span><br><span class="line">- boolean matches(Stirng regex) 是否匹配给定的正则表达式</span><br><span class="line">&#x2F;&#x2F;切片</span><br><span class="line">- String[] split(Stirng regex)</span><br><span class="line">- String[] split(Stirng regex, int limit)</span><br></pre></td></tr></table></figure></p></li>
+</ul></li>
+</ul>
+<h3 id="string的转换">String的转换</h3>
+<ul>
+<li>String-&gt;基本数据类型、包装类：调用包装类的静态方法：parseXxx(str)</li>
+<li>基本数据类型、包装类-&gt;String：调用String重载的valueOf(xxx)</li>
+<li>String-&gt;char[]：调用String的toCharArray()</li>
+<li>char[]-&gt;String：调用String的构造器</li>
+<li>String-&gt;byte[]：调用String的getBytes(charsetName:)可选参数为编码字符集</li>
+<li>byte[]-&gt;String：调用String的构造器</li>
+</ul>
 
       
       <blockquote>
         
-        <strong>本文链接：</strong><br><a href="https://crazya1ice.github.io/2021/04/28/hello-world/">https://crazya1ice.github.io/2021/04/28/hello-world/</a>
+        <strong>本文链接：</strong><br><a href="https://crazya1ice.github.io/2021/05/13/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%825-%E5%B8%B8%E7%94%A8%E7%B1%BB/">https://crazya1ice.github.io/2021/05/13/Java基础细节5-常用类/</a>
       </blockquote>
     </div>
     <footer class="mdui-card-actions">
@@ -263,12 +279,12 @@
 
   <nav id="paginator">
     
-      <a rel="prev" class="extend prev" href="/2021/05/02/Markdown-First/">
-        <button aria-label="prev" class="mdui-btn mdui-btn-raised mdui-btn-icon mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">arrow_back</i></button>
-        <span class="mdui-p-x-3" mdui-tooltip="{content: 'Markdown First'}">上一篇</span>
-      </a>
-    
     <div class="spacer"></div>
+    
+      <a rel="next" class="extend next" href="/2021/05/10/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%824-%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
+        <span class="mdui-p-x-3" mdui-tooltip="{content: 'Java基础细节4-多线程'}">下一篇</span>
+        <button aria-label="next" class="mdui-btn mdui-btn-raised mdui-btn-icon mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">arrow_forward</i></button>
+      </a>
     
   </nav>
 

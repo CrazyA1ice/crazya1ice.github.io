@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="renderer" content="webkit">
+
+  
+  <title>Java基础细节4-多线程 | Java Together</title>
+
+  <link rel="shortcut icon" href="/images/favicon.png">
+  <link rel="alternate" href="/atom.xml" title="Java Together" type="application/atom+xml">
+  <meta name="description" content="基本概念：程序、进程、线程  程序program：完成特定任务、用某种语言编写的指令的集合，即指一段静态的代码 进程process：是程序的一次执行过程，或是正在运行的一个程序，是一个动态的过程：有它自身的产生、存在和消亡的过程。--生命周期 线程thread：进程可以进一步细化为线程，是一个程序内部的一条执行路径。  若一个进程同一时间并行执行多个线程，就是支持多线程的； 线程作为">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java基础细节4-多线程">
+<meta property="og:url" content="https://crazya1ice.github.io/2021/05/10/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%824-%E5%A4%9A%E7%BA%BF%E7%A8%8B/index.html">
+<meta property="og:site_name" content="Java Together">
+<meta property="og:description" content="基本概念：程序、进程、线程  程序program：完成特定任务、用某种语言编写的指令的集合，即指一段静态的代码 进程process：是程序的一次执行过程，或是正在运行的一个程序，是一个动态的过程：有它自身的产生、存在和消亡的过程。--生命周期 线程thread：进程可以进一步细化为线程，是一个程序内部的一条执行路径。  若一个进程同一时间并行执行多个线程，就是支持多线程的； 线程作为">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://static01.imgkr.com/temp/22a8b29943c249abb2231c075d503452.png">
+<meta property="article:published_time" content="2021-05-10T10:33:22.000Z">
+<meta property="article:modified_time" content="2021-05-13T08:00:52.567Z">
+<meta property="article:author" content="木可成舟">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://static01.imgkr.com/temp/22a8b29943c249abb2231c075d503452.png">
+
+  <meta name="keywords" content="">
+  <meta name="format-detection" content="telephone=no,email=no">
+  <meta name="theme-color" content="#9C27B0">
+
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="Java Together">
+  <meta name="msapplication-starturl" content="https://crazya1ice.github.io/2021/05/10/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%824-%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
+  <meta name="msapplication-navbutton-color" content="#9C27B0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Java Together">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="apple-touch-icon" href="/images/favicon.png">
+
+  
+    <link rel="canonical" href="https://crazya1ice.github.io/2021/05/10/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%824-%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
+  
+
+  
+  
+
+  
+  
+  
+
+  
+<link rel="stylesheet" href="/css/mdui.css">
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/custom.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body class="mdui-appbar-with-toolbar mdui-theme-primary-indigo mdui-theme-accent-pink">
+  <script>var a=localStorage.getItem("mdui-theme-layout-dark");if(a){document.getElementsByTagName("body")[0].className+=" mdui-theme-layout-dark"};</script>
+  <script>if(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches){document.getElementsByTagName("body")[0].className+=" mdui-theme-layout-dark"};</script>
+  <script>var a=localStorage.getItem("mdui-drawer-close");if(!a){document.getElementsByTagName("body")[0].className+=" mdui-drawer-body-left"};</script>
+  <header id="header" class="mdui-appbar mdui-appbar-fixed mdui-appbar-scroll-hide mdui-appbar-inset">
+  <div class="mdui-toolbar mdui-color-theme">
+    <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#sidebar', swipe: true}"><i class="mdui-icon material-icons">menu</i></a>
+    <a href="/" class="mdui-typo-headline">Java Together</a>
+    <div class="mdui-toolbar-spacer"></div>
+    <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#search'}" mdui-tooltip="{content: '搜索'}"><i class="mdui-icon material-icons">search</i></a>
+    <a href="/atom.xml" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: 'RSS'}"><i class="mdui-icon material-icons">rss_feed</i></a>
+  </div>
+</header>
+<div class="mdui-dialog" id="search">
+  
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="请输入关键字"><input type="hidden" name="sitesearch" value="https://crazya1ice.github.io"></form>
+    <div class="search-result"></div>
+  
+</div>
+  <aside id="sidebar" class="mdui-drawer mdui-drawer-full-height">
+  <script>var a=localStorage.getItem("mdui-drawer-close");if(a){document.getElementById("sidebar").className+=" mdui-drawer-close"};</script>
+  <div class="mdui-grid-tile">
+    <img src="/images/banner.png" style="height: 160px;">
+    <img src="/images/avatar.png" class="avatar-animation" style="position: absolute; top: 10%; left: 24px; width: 64px; height: 64px; border: 2px solid #fff; border-radius: 50%;">
+    <div class="mdui-grid-tile-actions">
+      <div class="mdui-grid-tile-text">
+        <div class="mdui-grid-tile-title">木可成舟</div>
+        <div class="mdui-grid-tile-subtitle"><i class="mdui-icon material-icons">art_track</i>半床花月半床书</div>
+      </div>
+      
+        <div class="mdui-grid-tile-buttons">
+          <a href="mailto:287360811@qq.com" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: '287360811@qq.com'}"><i class="mdui-icon material-icons">email</i></a>
+        </div>
+      
+    </div>
+  </div>
+
+  <div class="mdui-list" mdui-collapse="{accordion: true}">
+    <a href="/" class="mdui-list-item mdui-ripple">
+      <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-blue">home</i>
+      <div class="mdui-list-item-content">主页</div>
+    </a>
+    <div class="mdui-collapse-item">
+      <script>var a=localStorage.getItem("mdui-collapse-item-0");if(a){document.getElementsByClassName("mdui-collapse-item")[0].className+=" mdui-collapse-item-open"};</script>
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-deep-orange">archive</i>
+        <div class="mdui-list-item-content">归档</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        <a class="mdui-ripple sidebar_archives-link" href="/archives/2021/05/">五月 2021<span class="mdui-ripple sidebar_archives-count">8</span></a><a class="mdui-ripple sidebar_archives-link" href="/archives/2021/04/">四月 2021<span class="mdui-ripple sidebar_archives-count">1</span></a>
+        
+      </div>
+    </div>
+    <div class="mdui-collapse-item">
+      <script>var a=localStorage.getItem("mdui-collapse-item-1");if(a){document.getElementsByClassName("mdui-collapse-item")[1].className+=" mdui-collapse-item-open"};</script>
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-green">class</i>
+        <div class="mdui-list-item-content">分类</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        
+        
+          <a href="javascript:;" class="mdui-list-item mdui-p-l-2 mdui-text-color-theme mdui-ripple" style="justify-content: center;">分类为空</a>
+        
+      </div>
+    </div>
+    <div class="mdui-collapse-item">
+      <script>var a=localStorage.getItem("mdui-collapse-item-2");if(a){document.getElementsByClassName("mdui-collapse-item")[2].className+=" mdui-collapse-item-open"};</script>
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-brown">bookmark</i>
+        <div class="mdui-list-item-content">标签</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        <a class="mdui-ripple sidebar_archives-link" href="/tags/Collection/" rel="tag">Collection<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/Java/" rel="tag">Java<span class="mdui-ripple sidebar_archives-count">2</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/Java-SE/" rel="tag">Java SE<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/Map/" rel="tag">Map<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/Markdown/" rel="tag">Markdown<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/misc/" rel="tag">misc<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/%E6%A1%86%E6%9E%B6/" rel="tag">框架<span class="mdui-ripple sidebar_archives-count">2</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/%E9%9B%86%E5%90%88/" rel="tag">集合<span class="mdui-ripple sidebar_archives-count">2</span></a>
+        
+      </div>
+    </div>
+    <a href="/about" class="mdui-list-item mdui-ripple">
+      <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-purple">person</i>
+      <div class="mdui-list-item-content">关于</div>
+    </a>
+  </div>
+
+  <div class="mdui-divider"></div>
+
+  <div class="mdui-list" mdui-collapse="{accordion: true}">
+    
+      <a href="/timeline" class="mdui-list-item mdui-ripple">时间轴</a>
+    
+      <a href="/tagcloud" class="mdui-list-item mdui-ripple">标签云</a>
+    
+      <a href="/gallery" class="mdui-list-item mdui-ripple">相册</a>
+    
+    <div class="mdui-collapse-item">
+      <script>var a=localStorage.getItem("mdui-collapse-item-3");if(a){document.getElementsByClassName("mdui-collapse-item")[3].className+=" mdui-collapse-item-open"};</script>
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <div class="mdui-list-item-content">友情链接</div>
+        <i class="mdui-list-item-icon mdui-icon material-icons">link</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        
+          <a href="javascript:;" class="mdui-list-item mdui-p-l-2 mdui-text-color-theme mdui-ripple" style="justify-content: center;">链接为空</a>
+        
+      </div>
+    </div>
+  </div>
+</aside>
+  <main id="main" class="mdui-m-t-5 fadeIn animated">
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  <style>#main article .mdui-card-content .center-block{display:block!important;margin-right:auto!important;margin-left:auto!important}</style>
+  <article class="mdui-card mdui-m-b-5">
+    <header class="mdui-card-media">
+      <img src="/images/random/material-5.png" style="max-height: 240px;">
+      <div class="mdui-card-media-covered">
+        <div class="mdui-card-primary">
+          <div class="mdui-card-primary-title">Java基础细节4-多线程</div>
+          <div class="mdui-card-primary-subtitle"><i class="iconfont">&#xe697;</i> 2021-05-10 / <i class="iconfont">&#xe601;</i> 木可成舟</div>
+        </div>
+      </div>
+      <div class="mdui-card-menu">
+        
+          <button class="mdui-btn mdui-btn-icon mdui-text-color-white" mdui-menu="{target: '#qrcode', align: 'right'}"><i class="mdui-icon material-icons">devices</i></button>
+          <ul class="mdui-menu" id="qrcode">
+            
+              <li class="mdui-menu-item"><a class="mdui-text-center mdui-ripple">发送到手机</a></li>
+            
+            <li class="mdui-menu-item" disabled>
+              
+                <img src="http://qr.liantu.com/api.php?w=246&m=10&text=https://crazya1ice.github.io/2021/05/10/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%824-%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
+              
+            </li>
+          </ul>
+        
+        
+          <button class="mdui-btn mdui-btn-icon mdui-text-color-white" mdui-menu="{target: '#share_menu', align: 'right'}"><i class="mdui-icon material-icons">share</i></button>
+          <ul class="mdui-menu" id="share_menu">
+            <li class="mdui-menu-item">
+              <a href="http://service.weibo.com/share/share.php?appkey=&title=Java基础细节4-多线程&url=https://crazya1ice.github.io/2021/05/10/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%824-%E5%A4%9A%E7%BA%BF%E7%A8%8B/&pic=https://crazya1ice.github.io/images/favicon.png&searchPic=false&style=simple" target="_blank" class="mdui-ripple">分享到 Weibo</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://twitter.com/intent/tweet?text=Java基础细节4-多线程&url=https://crazya1ice.github.io/2021/05/10/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%824-%E5%A4%9A%E7%BA%BF%E7%A8%8B/&via=木可成舟" target="_blank" class="mdui-ripple">分享到 Twitter</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://www.facebook.com/sharer/sharer.php?u=https://crazya1ice.github.io/2021/05/10/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%824-%E5%A4%9A%E7%BA%BF%E7%A8%8B/" target="_blank" class="mdui-ripple">分享到 Facebook</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://plus.google.com/share?url=https://crazya1ice.github.io/2021/05/10/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%824-%E5%A4%9A%E7%BA%BF%E7%A8%8B/" target="_blank" class="mdui-ripple">分享到 Google+</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://crazya1ice.github.io/2021/05/10/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%824-%E5%A4%9A%E7%BA%BF%E7%A8%8B/&title=Java基础细节4-多线程" target="_blank" class="mdui-ripple">分享到 LinkedIn</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="http://connect.qq.com/widget/shareqq/index.html?site=Java Together&title=Java基础细节4-多线程&pics=https://crazya1ice.github.io/images/favicon.png&url=https://crazya1ice.github.io/2021/05/10/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%824-%E5%A4%9A%E7%BA%BF%E7%A8%8B/" target="_blank" class="mdui-ripple">分享到 QQ</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://telegram.me/share/url?url=https://crazya1ice.github.io/2021/05/10/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%824-%E5%A4%9A%E7%BA%BF%E7%A8%8B/&text=Java基础细节4-多线程" target="_blank" class="mdui-ripple">分享到 Telegram</a>
+            </li>
+          </ul>
+        
+      </div>
+    </header>
+    <div class="mdui-card-content mdui-typo">
+      <h3 id="基本概念程序进程线程">基本概念：程序、进程、线程</h3>
+<ul>
+<li>程序program：完成特定任务、用某种语言编写的指令的集合，即指一段静态的代码</li>
+<li>进程process：是程序的一次执行过程，或是正在运行的一个程序，是一个动态的过程：有它自身的产生、存在和消亡的过程。--生命周期</li>
+<li>线程thread：进程可以进一步细化为线程，是一个程序内部的一条执行路径。
+<ul>
+<li>若一个进程同一时间并行执行多个线程，就是支持多线程的；</li>
+<li>线程作为调度和执行的单位，每个线程都有独立的运行栈和程序计数器pc，线程切换的开销小；</li>
+<li>一个进程中的多个线程共享相同的内存单元/内存地址空间--&gt;它们从同一堆中分配对象，可以访问相同的变量和对象。这就使得线程间通信更简便、高效，但多个线程操作共享的系统资源可能会带来安全的隐患。（一个进程共享一个方法区和堆，有各自的栈和pc）</li>
+</ul></li>
+<li>一个Java应用程序java.exe，至少有三个线程，main()主线程，gc()垃圾回收线程，异常处理线程。如果发生异常会影响主线程。</li>
+<li>并行与并发
+<ul>
+<li>并行：多个CPU同时执行多个任务</li>
+<li>并发：一个CPU采用时间片同时执行多个任务</li>
+</ul></li>
+</ul>
+<h3 id="多线程的创建">多线程的创建</h3>
+<ul>
+<li><p>方式一：继承于Thread类</p>
+<ol type="1">
+<li>创建一个继承于Thread类的子类</li>
+<li>重写Thread类的run() -----&gt;将此线程执行的操作声明在run()方法中</li>
+<li>创建Thread类的子类对象</li>
+<li>通过此对象调用start()----&gt;启动当前线程，并调用当前线程的run()</li>
+</ol>
+<p>注意：</p>
+<ul>
+<li>不能通过直接调用run方法启动线程，这样不会新创建一个线程</li>
+<li>不能让已经start()过的线程再次执行start()，需要重新创建一个线程对象</li>
+<li>线程类也可以匿名调用</li>
+<li><p>常用方法：</p>
+<ul>
+<li>start()：</li>
+<li>run()：通常要重写Thread类中的此方法，将创建的线程要执行的操作声明在方法中</li>
+<li>currentThread()：静态方法，返回执行当前代码的线程</li>
+<li>getName()：获取当前线程的名字</li>
+<li>setName()：设置当前线程的名字</li>
+<li>yield()：释放当前CPU的执行权</li>
+<li>join()：在线程a中调用线程b的join()，线程a就进入阻塞状态，直到线程b完全执行完毕 后，a才会 结束阻塞状态</li>
+<li>stop()：强制结束当前线程（已过时，不推荐使用）</li>
+<li>sleep()：静态方法，让当前线程强制阻塞指定的毫秒数，在此时间内，当前线程是阻塞状态</li>
+<li>isAlive()：判断当前线程是否存活</li>
+</ul></li>
+</ul></li>
+<li><p>方式二：实现Runnable接口</p>
+<ol type="1">
+<li>创建一个实现了Runnable接口的类</li>
+<li>实现类去实现Runnable中的抽象方法：run()</li>
+<li>创建实现类的对象</li>
+<li>将此对象作为参数传递到Thread类的构造器中，创建Thread类的对象</li>
+<li>通过Thread类的对象调用start()</li>
+</ol></li>
+<li><p>比较两种创建线程的方式：</p>
+<ul>
+<li><p>开发中优先选择Runnable接口的方式</p>
+<p>原因：1. 实现的方式没有类的单继承的局限性；</p>
+<pre><code>        2. 实现的方式更适合来处理多个线程有共享数据的情况</code></pre></li>
+<li><p>Thread本身也实现了Runnable接口</p></li>
+<li><p>两种方式都要重写run方法</p></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//class Window implements Runnable</span></span><br><span class="line">		Window w = <span class="keyword">new</span> Window();<span class="comment">//共享一个对象的数据</span></span><br><span class="line">        Thread thread1 = <span class="keyword">new</span> Thread(w);</span><br><span class="line">        Thread thread2 = <span class="keyword">new</span> Thread(w);</span><br><span class="line">        Thread thread3 = <span class="keyword">new</span> Thread(w);</span><br><span class="line">        thread1.start();</span><br><span class="line">        thread2.start();</span><br><span class="line">        thread3.start();</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="线程优先级">线程优先级</h3>
+<ol type="1">
+<li><p>MAX_PRIORITY：10</p></li>
+<li><p>MIN_PRIORITY：1</p></li>
+<li><p>NORM_PRIORITY：5（默认优先级）</p></li>
+<li><p>如何获取和设置当前线程的优先级</p>
+<ul>
+<li>getPriority()：获取线程优先级</li>
+<li>setPriority(int p)：设置线程的优先级</li>
+</ul>
+<p>说明：高优先级的线程要抢占低优先级线程cpu的执行权，但是只是从概率上讲，高优先级的线程高概率的情况下被执行，并不意味着只有当高优先级线程执行完以后，低优先级的线程才执行。</p></li>
+</ol>
+<h3 id="线程的生命周期">线程的生命周期</h3>
+<p><img src="https://static01.imgkr.com/temp/22a8b29943c249abb2231c075d503452.png" /></p>
+<h3 id="线程安全问题">线程安全问题</h3>
+<ul>
+<li><p>Java中通常使用同步来解决线程安全问题</p></li>
+<li><p>方式一：同步代码块</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">synchronized</span>(同步监视器)&#123;</span><br><span class="line"><span class="comment">//需要被同步的代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>说明：1. 操作共享数据的代码，即为需要被同步的代码；--&gt;不能包含代码多了也不能包含少了</p>
+<ol start="2" type="1">
+<li><p>共享数据：多个线程共同操作的变量，比如买票系统中的不同窗口共同操作的票数</p></li>
+<li><p>同步监视器：俗称：“锁”，任何一个类的对象，都可以充当锁</p>
+<p>要求：多个线程必须要共用同一把锁</p>
+<p>补充：</p>
+<ul>
+<li>在实现Runnable接口创建多线程的方式中，我们可以考虑使用this充当同步监视器</li>
+<li>在继承Thread类创建多线程的方式中，慎用this充当同步监视器，考虑使用当前类充当同步监视器</li>
+</ul></li>
+</ol>
+<ul>
+<li><p>方式二：同步方法</p>
+<p>如果操作共享数据的代码完整地声明在一个方法中，我们不妨将此方法声明为同步的。</p></li>
+<li><p>同步的方式，解决了线程的安全问题--好处</p>
+<p>操作同步代码的同时，只能有一个线程参与，其他线程等待，相当于是一个单线程的过程，效率低--局限性</p></li>
+<li><p>同步方法的总结：</p>
+<ul>
+<li>同步放那个发仍然涉及到同步监视器，只是不需要我们显式声明</li>
+<li>非静态的同步方法，同步监视器是：this</li>
+<li>静态的同步方法，同步监视器是：当前类本身</li>
+</ul></li>
+</ul>
+<h3 id="死锁">死锁</h3>
+<p>概念：</p>
+<ul>
+<li>不同线程分别占用对方需要的同步资源不放弃，都在等待对方放弃自己需要的同步资源，就形成了线程的死锁；</li>
+<li>出现死锁后，不会出现异常和提示，只是所有的线程都处于阻塞状态，无法继续</li>
+</ul>
+<h3 id="lock锁">Lock锁</h3>
+<p>解决线程安全的方式三：Lock锁 ---JDK5.0新增</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> ReentrantLock lock = <span class="keyword">new</span> ReentrantLock();</span><br><span class="line">lock.lock();</span><br><span class="line"><span class="comment">//处理的代码</span></span><br><span class="line">lock.unlock();</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>问题：Lock和Synchronized的异同：</p>
+<ul>
+<li><p>相同：两者都可以解决线程安全问题</p></li>
+<li><p>不同：</p>
+<ul>
+<li>synchronized机制在执行完相应的同步代码后，自动释放同步监视器</li>
+</ul>
+<p>​ Lock需要手动启动同步（lock()），同时结束同步也需要手动实现（unlock()）</p>
+<ul>
+<li>Lock只有代码块锁，synchronized有代码块锁和方法锁</li>
+<li>使用Lock锁。JVM将花费较少时间来调度线程，性能更好。并且具有更好的扩展性（提供更多的子类）</li>
+</ul></li>
+<li><p>优先使用顺序：Lock-&gt;同步代码块（已经进入方法体，分配了相应资源）-&gt;同步方法（方法体之外）</p></li>
+</ul></li>
+</ul>
+<h3 id="线程通信案例">线程通信案例</h3>
+<p>双线程交替打印1~100</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> num = <span class="number">1</span>;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">while</span>(<span class="keyword">true</span>) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;</span><br><span class="line">                notify();</span><br><span class="line">                <span class="keyword">if</span> (num &lt; <span class="number">100</span>)</span><br><span class="line">                    System.out.println(Thread.currentThread().getName() + <span class="string">&quot;:&quot;</span> + num++);</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    wait();<span class="comment">//wait方法会释放锁</span></span><br><span class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>用到的三个方法：</p>
+<ul>
+<li>wait()：一旦执行此方法，当前线程进入阻塞状态，并释放同步监视器</li>
+<li>notify()：一旦执行此方法，就会唤醒被wait()的一个线程，如果有多个线程被wait，就唤醒优先级高的那个</li>
+<li>notifyAll()：一旦执行此方法，就会唤醒所有被wait的线程</li>
+</ul>
+<p>说明：</p>
+<ol type="1">
+<li>以上三个方法必须使用在同步代码块或同步方法中（lock中也不可以）</li>
+<li>以上三个方法的调用者必须是同步代码块或同步方法中的同步监视器，否则会出现IllegalMonitorStateException异常</li>
+<li>以上三个方法定义在Object类中</li>
+</ol>
+<p>问：sleep()和wait()的异同？</p>
+<ol type="1">
+<li>相同：一旦执行方法，都可以使当前线程进入阻塞态</li>
+<li>不同：
+<ol type="1">
+<li>两个方法声明的位置不同，Thread类中声明sleep()，Object类中声明wait()</li>
+<li>调用的要求不同：sleep()可以在任何需要的场景下调用，wait()必须使用在同步代码块或同步方法中</li>
+<li>关于是否释放同步监视器：如果两个方法都使用在同步代码块或同步方法中，sleep()不会释放锁，wait()会释放锁</li>
+</ol></li>
+</ol>
+<h3 id="jdk5.0新增线程创建方式">JDK5.0新增线程创建方式</h3>
+<ol type="1">
+<li><p>新增方式一：实现Callable接口</p>
+<p>与Runnable相比，Callable功能更加强大：</p>
+<ul>
+<li>相比run()，call()可以有返回值</li>
+<li>方法可以抛出异常</li>
+<li>支持泛型的返回值</li>
+<li>需要借助FutureTask类，比如获取返回结果</li>
+</ul>
+<p>注：Future接口</p>
+<ul>
+<li>可以对具体Runnable、Callable任务的执行结果进行取消、查询是否完成、获取结果等；</li>
+<li>FutureTask是Future接口的唯一实现类</li>
+<li>FutureTask同时实现了Runnable，Future接口。它既可以作为Runnable被线程执行，又可以作为Future得到Callable的返回值</li>
+</ul></li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*打印100以内偶数并求和*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CausualJav</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        MyThread myThread = <span class="keyword">new</span> MyThread();</span><br><span class="line">        FutureTask futureTask = <span class="keyword">new</span> FutureTask(myThread);</span><br><span class="line">        Thread thread = <span class="keyword">new</span> Thread(futureTask);</span><br><span class="line">        thread.start();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//get返回值为FutureTask构造器参数Callable实现类重写的call()的返回值</span></span><br><span class="line">            Object sum = futureTask.get();</span><br><span class="line">            System.out.println(sum);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ExecutionException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword">implements</span> <span class="title">Callable</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">call</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;=<span class="number">100</span>;++i)</span><br><span class="line">            <span class="keyword">if</span>(i%<span class="number">2</span>==<span class="number">0</span>) &#123;</span><br><span class="line">                System.out.println(i);</span><br><span class="line">                num+=i;</span><br><span class="line">            &#125;</span><br><span class="line">        <span class="keyword">return</span> num;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>步骤：</p>
+<ol type="1">
+<li>创建一个实现Callable的实现类</li>
+<li>实现call方法，将此线程需要执行的操作声明在call()中</li>
+<li>创建Callable接口实现类的对象</li>
+<li>将此Callable接口实现类的对象作为参数传递到FutureTask构造器中，创建FutureTask对象</li>
+<li>将FutureTask的对象作为参数传递到Thread类的构造器中，创建Thread对象并调用start()</li>
+<li>获取Callable中call方法的返回值</li>
+</ol>
+<p>2.新增方式二：使用线程池</p>
+<p>经常创建和销毁、使用量特别大的资源，比如并发情况下的线程，对性能影响很大</p>
+<p>因此提前创建好多个线程，放入线程池中，使用时直接获取，使用完放回池中，可以避免频繁创建销毁、实现重复利用。</p>
+<p>好处：</p>
+<ul>
+<li>提高响应速度，减少创建新线程的时间</li>
+<li>降低资源消耗：重复利用线程池中的线程，不需要每次都创建</li>
+<li>便于线程管理
+<ul>
+<li>corePoolSize：核心池的大小</li>
+<li>maximumPoolSize：最大线程数</li>
+<li>keepAliveTime：线程没有任务时最多保持多长时间后终止</li>
+<li>...</li>
+</ul></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//class NumThread implements Runnable</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//1.提供指定线程数量的线程池</span></span><br><span class="line">        ExecutorService service = Executors.newFixedThreadPool(<span class="number">10</span>);</span><br><span class="line">        <span class="comment">//2.执行指定的线程操作，需要提供Runnable/Callable接口实现类的对象</span></span><br><span class="line">        service.execute(<span class="keyword">new</span> NumThread());<span class="comment">//适合使用Runnable</span></span><br><span class="line">        <span class="comment">//service.submit();//适合使用Callable</span></span><br><span class="line">        service.shutdown();<span class="comment">//线程池关闭操作</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+      
+      <blockquote>
+        
+        <strong>本文链接：</strong><br><a href="https://crazya1ice.github.io/2021/05/10/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%824-%E5%A4%9A%E7%BA%BF%E7%A8%8B/">https://crazya1ice.github.io/2021/05/10/Java基础细节4-多线程/</a>
+      </blockquote>
+    </div>
+    <footer class="mdui-card-actions">
+      
+      
+    </footer>
+    
+  </article>
+  
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+  <script>$("#main article .mdui-card-content img.fancybox").on("click",function(e){$.fancybox.open({src:$(this).attr("src")});});</script>
+
+
+  <nav id="paginator">
+    
+      <a rel="prev" class="extend prev" href="/2021/05/13/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%825-%E5%B8%B8%E7%94%A8%E7%B1%BB/">
+        <button aria-label="prev" class="mdui-btn mdui-btn-raised mdui-btn-icon mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">arrow_back</i></button>
+        <span class="mdui-p-x-3" mdui-tooltip="{content: 'Java基础细节5-常用类'}">上一篇</span>
+      </a>
+    
+    <div class="spacer"></div>
+    
+      <a rel="next" class="extend next" href="/2021/05/10/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%823-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">
+        <span class="mdui-p-x-3" mdui-tooltip="{content: 'Java基础细节3-异常处理'}">下一篇</span>
+        <button aria-label="next" class="mdui-btn mdui-btn-raised mdui-btn-icon mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">arrow_forward</i></button>
+      </a>
+    
+  </nav>
+
+
+
+</main>
+  <footer id="footer" class="mdui-m-t-5 mdui-p-y-3 mdui-color-theme">
+  <div class="mdui-p-y-0 mdui-text-center">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </div>
+  <div class="mdui-p-y-1 mdui-text-center">
+    Copyright &copy; 2021 木可成舟<br>
+    Powered by <a href="https://hexo.io/" target="_blank" class="mdui-text-color-theme-accent">Hexo</a>
+    
+  </div>
+</footer>
+  <button id="gotop" class="mdui-fab mdui-fab-fixed mdui-fab-hide mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">arrow_upward</i></button>
+  
+  
+<script src="/js/mdui.js"></script>
+<script src="/js/script.js"></script>
+
+  
+<script src="/custom.js"></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>
