@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="renderer" content="webkit">
+
+  
+  <title>Java基础细节7-泛型和File | Java Together</title>
+
+  <link rel="shortcut icon" href="/images/favicon.png">
+  <link rel="alternate" href="/atom.xml" title="Java Together" type="application/atom+xml">
+  <meta name="description" content="泛型 概念：泛型就是，允许在定义类、接口时通过一个标识表示类中某个属性的类型或者是某个方法的返回值及参数类型。这个类型参数将在使用时（例如，继承或实现接口，用这个类型声明变量、创建对象时）确定（即传入实际的类型参数，也称为类型实参）。  JDK1.5以后，Java引入了“参数化类型”的概念，允许在创建集合时再指定集合元素的类型  JDK1.5改写了集合框架中全部的类和接口，为这些类和接口增加了泛型">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java基础细节7-泛型和File">
+<meta property="og:url" content="https://crazya1ice.github.io/2021/05/15/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%827-%E6%B3%9B%E5%9E%8B%E5%92%8CFile/index.html">
+<meta property="og:site_name" content="Java Together">
+<meta property="og:description" content="泛型 概念：泛型就是，允许在定义类、接口时通过一个标识表示类中某个属性的类型或者是某个方法的返回值及参数类型。这个类型参数将在使用时（例如，继承或实现接口，用这个类型声明变量、创建对象时）确定（即传入实际的类型参数，也称为类型实参）。  JDK1.5以后，Java引入了“参数化类型”的概念，允许在创建集合时再指定集合元素的类型  JDK1.5改写了集合框架中全部的类和接口，为这些类和接口增加了泛型">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-05-15T08:17:19.000Z">
+<meta property="article:modified_time" content="2021-05-15T15:06:08.161Z">
+<meta property="article:author" content="木可成舟">
+<meta name="twitter:card" content="summary">
+
+  <meta name="keywords" content="">
+  <meta name="format-detection" content="telephone=no,email=no">
+  <meta name="theme-color" content="#9C27B0">
+
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="Java Together">
+  <meta name="msapplication-starturl" content="https://crazya1ice.github.io/2021/05/15/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%827-%E6%B3%9B%E5%9E%8B%E5%92%8CFile/">
+  <meta name="msapplication-navbutton-color" content="#9C27B0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Java Together">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="apple-touch-icon" href="/images/favicon.png">
+
+  
+    <link rel="canonical" href="https://crazya1ice.github.io/2021/05/15/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%827-%E6%B3%9B%E5%9E%8B%E5%92%8CFile/">
+  
+
+  
+  
+
+  
+  
+  
+
+  
+<link rel="stylesheet" href="/css/mdui.css">
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/custom.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body class="mdui-appbar-with-toolbar mdui-theme-primary-indigo mdui-theme-accent-pink">
+  <script>var a=localStorage.getItem("mdui-theme-layout-dark");if(a){document.getElementsByTagName("body")[0].className+=" mdui-theme-layout-dark"};</script>
+  <script>if(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches){document.getElementsByTagName("body")[0].className+=" mdui-theme-layout-dark"};</script>
+  <script>var a=localStorage.getItem("mdui-drawer-close");if(!a){document.getElementsByTagName("body")[0].className+=" mdui-drawer-body-left"};</script>
+  <header id="header" class="mdui-appbar mdui-appbar-fixed mdui-appbar-scroll-hide mdui-appbar-inset">
+  <div class="mdui-toolbar mdui-color-theme">
+    <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#sidebar', swipe: true}"><i class="mdui-icon material-icons">menu</i></a>
+    <a href="/" class="mdui-typo-headline">Java Together</a>
+    <div class="mdui-toolbar-spacer"></div>
+    <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#search'}" mdui-tooltip="{content: '搜索'}"><i class="mdui-icon material-icons">search</i></a>
+    <a href="/atom.xml" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: 'RSS'}"><i class="mdui-icon material-icons">rss_feed</i></a>
+  </div>
+</header>
+<div class="mdui-dialog" id="search">
+  
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="请输入关键字"><input type="hidden" name="sitesearch" value="https://crazya1ice.github.io"></form>
+    <div class="search-result"></div>
+  
+</div>
+  <aside id="sidebar" class="mdui-drawer mdui-drawer-full-height">
+  <script>var a=localStorage.getItem("mdui-drawer-close");if(a){document.getElementById("sidebar").className+=" mdui-drawer-close"};</script>
+  <div class="mdui-grid-tile">
+    <img src="/images/banner.png" style="height: 160px;">
+    <img src="/images/avatar.png" class="avatar-animation" style="position: absolute; top: 10%; left: 24px; width: 64px; height: 64px; border: 2px solid #fff; border-radius: 50%;">
+    <div class="mdui-grid-tile-actions">
+      <div class="mdui-grid-tile-text">
+        <div class="mdui-grid-tile-title">木可成舟</div>
+        <div class="mdui-grid-tile-subtitle"><i class="mdui-icon material-icons">art_track</i>半床花月半床书</div>
+      </div>
+      
+        <div class="mdui-grid-tile-buttons">
+          <a href="mailto:287360811@qq.com" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: '287360811@qq.com'}"><i class="mdui-icon material-icons">email</i></a>
+        </div>
+      
+    </div>
+  </div>
+
+  <div class="mdui-list" mdui-collapse="{accordion: true}">
+    <a href="/" class="mdui-list-item mdui-ripple">
+      <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-blue">home</i>
+      <div class="mdui-list-item-content">主页</div>
+    </a>
+    <div class="mdui-collapse-item">
+      <script>var a=localStorage.getItem("mdui-collapse-item-0");if(a){document.getElementsByClassName("mdui-collapse-item")[0].className+=" mdui-collapse-item-open"};</script>
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-deep-orange">archive</i>
+        <div class="mdui-list-item-content">归档</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        <a class="mdui-ripple sidebar_archives-link" href="/archives/2021/05/">五月 2021<span class="mdui-ripple sidebar_archives-count">10</span></a><a class="mdui-ripple sidebar_archives-link" href="/archives/2021/04/">四月 2021<span class="mdui-ripple sidebar_archives-count">1</span></a>
+        
+      </div>
+    </div>
+    <div class="mdui-collapse-item">
+      <script>var a=localStorage.getItem("mdui-collapse-item-1");if(a){document.getElementsByClassName("mdui-collapse-item")[1].className+=" mdui-collapse-item-open"};</script>
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-green">class</i>
+        <div class="mdui-list-item-content">分类</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        
+        
+          <a href="javascript:;" class="mdui-list-item mdui-p-l-2 mdui-text-color-theme mdui-ripple" style="justify-content: center;">分类为空</a>
+        
+      </div>
+    </div>
+    <div class="mdui-collapse-item">
+      <script>var a=localStorage.getItem("mdui-collapse-item-2");if(a){document.getElementsByClassName("mdui-collapse-item")[2].className+=" mdui-collapse-item-open"};</script>
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-brown">bookmark</i>
+        <div class="mdui-list-item-content">标签</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        <a class="mdui-ripple sidebar_archives-link" href="/tags/Collection/" rel="tag">Collection<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/Java/" rel="tag">Java<span class="mdui-ripple sidebar_archives-count">2</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/Java-SE/" rel="tag">Java SE<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/Map/" rel="tag">Map<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/Markdown/" rel="tag">Markdown<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/misc/" rel="tag">misc<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/%E6%A1%86%E6%9E%B6/" rel="tag">框架<span class="mdui-ripple sidebar_archives-count">2</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/%E9%9B%86%E5%90%88/" rel="tag">集合<span class="mdui-ripple sidebar_archives-count">2</span></a>
+        
+      </div>
+    </div>
+    <a href="/about" class="mdui-list-item mdui-ripple">
+      <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-purple">person</i>
+      <div class="mdui-list-item-content">关于</div>
+    </a>
+  </div>
+
+  <div class="mdui-divider"></div>
+
+  <div class="mdui-list" mdui-collapse="{accordion: true}">
+    
+      <a href="/timeline" class="mdui-list-item mdui-ripple">时间轴</a>
+    
+      <a href="/tagcloud" class="mdui-list-item mdui-ripple">标签云</a>
+    
+      <a href="/gallery" class="mdui-list-item mdui-ripple">相册</a>
+    
+    <div class="mdui-collapse-item">
+      <script>var a=localStorage.getItem("mdui-collapse-item-3");if(a){document.getElementsByClassName("mdui-collapse-item")[3].className+=" mdui-collapse-item-open"};</script>
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <div class="mdui-list-item-content">友情链接</div>
+        <i class="mdui-list-item-icon mdui-icon material-icons">link</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        
+          <a href="javascript:;" class="mdui-list-item mdui-p-l-2 mdui-text-color-theme mdui-ripple" style="justify-content: center;">链接为空</a>
+        
+      </div>
+    </div>
+  </div>
+</aside>
+  <main id="main" class="mdui-m-t-5 fadeIn animated">
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  <style>#main article .mdui-card-content .center-block{display:block!important;margin-right:auto!important;margin-left:auto!important}</style>
+  <article class="mdui-card mdui-m-b-5">
+    <header class="mdui-card-media">
+      <img src="/images/random/material-5.png" style="max-height: 240px;">
+      <div class="mdui-card-media-covered">
+        <div class="mdui-card-primary">
+          <div class="mdui-card-primary-title">Java基础细节7-泛型和File</div>
+          <div class="mdui-card-primary-subtitle"><i class="iconfont">&#xe697;</i> 2021-05-15 / <i class="iconfont">&#xe601;</i> 木可成舟</div>
+        </div>
+      </div>
+      <div class="mdui-card-menu">
+        
+          <button class="mdui-btn mdui-btn-icon mdui-text-color-white" mdui-menu="{target: '#qrcode', align: 'right'}"><i class="mdui-icon material-icons">devices</i></button>
+          <ul class="mdui-menu" id="qrcode">
+            
+              <li class="mdui-menu-item"><a class="mdui-text-center mdui-ripple">发送到手机</a></li>
+            
+            <li class="mdui-menu-item" disabled>
+              
+                <img src="http://qr.liantu.com/api.php?w=246&m=10&text=https://crazya1ice.github.io/2021/05/15/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%827-%E6%B3%9B%E5%9E%8B%E5%92%8CFile/">
+              
+            </li>
+          </ul>
+        
+        
+          <button class="mdui-btn mdui-btn-icon mdui-text-color-white" mdui-menu="{target: '#share_menu', align: 'right'}"><i class="mdui-icon material-icons">share</i></button>
+          <ul class="mdui-menu" id="share_menu">
+            <li class="mdui-menu-item">
+              <a href="http://service.weibo.com/share/share.php?appkey=&title=Java基础细节7-泛型和File&url=https://crazya1ice.github.io/2021/05/15/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%827-%E6%B3%9B%E5%9E%8B%E5%92%8CFile/&pic=https://crazya1ice.github.io/images/favicon.png&searchPic=false&style=simple" target="_blank" class="mdui-ripple">分享到 Weibo</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://twitter.com/intent/tweet?text=Java基础细节7-泛型和File&url=https://crazya1ice.github.io/2021/05/15/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%827-%E6%B3%9B%E5%9E%8B%E5%92%8CFile/&via=木可成舟" target="_blank" class="mdui-ripple">分享到 Twitter</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://www.facebook.com/sharer/sharer.php?u=https://crazya1ice.github.io/2021/05/15/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%827-%E6%B3%9B%E5%9E%8B%E5%92%8CFile/" target="_blank" class="mdui-ripple">分享到 Facebook</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://plus.google.com/share?url=https://crazya1ice.github.io/2021/05/15/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%827-%E6%B3%9B%E5%9E%8B%E5%92%8CFile/" target="_blank" class="mdui-ripple">分享到 Google+</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://crazya1ice.github.io/2021/05/15/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%827-%E6%B3%9B%E5%9E%8B%E5%92%8CFile/&title=Java基础细节7-泛型和File" target="_blank" class="mdui-ripple">分享到 LinkedIn</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="http://connect.qq.com/widget/shareqq/index.html?site=Java Together&title=Java基础细节7-泛型和File&pics=https://crazya1ice.github.io/images/favicon.png&url=https://crazya1ice.github.io/2021/05/15/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%827-%E6%B3%9B%E5%9E%8B%E5%92%8CFile/" target="_blank" class="mdui-ripple">分享到 QQ</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://telegram.me/share/url?url=https://crazya1ice.github.io/2021/05/15/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%827-%E6%B3%9B%E5%9E%8B%E5%92%8CFile/&text=Java基础细节7-泛型和File" target="_blank" class="mdui-ripple">分享到 Telegram</a>
+            </li>
+          </ul>
+        
+      </div>
+    </header>
+    <div class="mdui-card-content mdui-typo">
+      <h3 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h3><ul>
+<li><p>概念：泛型就是，允许在定义类、接口时通过一个标识表示类中某个属性的类型或者是某个方法的返回值及参数类型。这个类型参数将在使用时（例如，继承或实现接口，用这个类型声明变量、创建对象时）确定（即传入实际的类型参数，也称为类型实参）。</p>
+</li>
+<li><p>JDK1.5以后，Java引入了“参数化类型”的概念，允许在创建集合时再指定集合元素的类型</p>
+</li>
+<li><p>JDK1.5改写了集合框架中全部的类和接口，为这些类和接口增加了泛型支持，从而可以在声明集合变量、创建集合对象时传入类型实参</p>
+</li>
+<li><p>总结</p>
+<ul>
+<li>集合接口或集合类在jdk5.0时都修改为带泛型的结构</li>
+<li>在实例化集合类时可以指明具体的类型</li>
+<li>指明完以后，在集合类或接口中凡是定义类或接口时，内部结构使用到类的泛型的位置，都指定为实例化的泛型类型</li>
+<li>注意：泛型的类型必须是类，不能是基本数据类型，需要用到基本数据类型的地方用包装类替代</li>
+<li>如果实例化时没有指明泛型类型，默认类型为Object类型</li>
+</ul>
+</li>
+<li><p>自定义泛型结构：泛型类，泛型接口，泛型方法</p>
+<ul>
+<li><p>如果定义了带泛型的类，建议在实例化时要指明类的泛型</p>
+</li>
+<li><p>由于子类在继承带泛型的父类时，指明了泛型类型，则子类实例化时不需再指明泛型</p>
+<ul>
+<li>若父类没指明泛型类型，子类实例化时需要指明</li>
+</ul>
+</li>
+<li><p>注意点：</p>
+<ul>
+<li>泛型类可能有多个参数，此时应将多个参数一起放在尖括号内。如\<E1,E2,E3\></li>
+<li>泛型类的构造器如下：public GenericClass(){}<ul>
+<li>这种是错误的：public GenericClass\<E\>(){}</li>
+</ul>
+</li>
+<li>实例化后，操作原来泛型位置的结构必须与指定的泛型类型一致</li>
+<li>泛型不同的引用不能互相赋值<ul>
+<li>如：尽管在编译时ArrayList\<String\>和Array\<Integer\>是两种类型，但是运行时只有一个ArrayList被加载到Jvm中</li>
+</ul>
+</li>
+<li>泛型如果不指定，将被擦除，泛型对应的类型均按照Object处理，但不等价与Object。<ul>
+<li>经验：泛型要使用，一路都用，要不是用，一路都不要用</li>
+</ul>
+</li>
+<li>如果泛型类是一个接口或抽象类，则不可以创建泛型类的对象</li>
+<li>jdk1.7，泛型的简化操作：ArrayList\<Fruit\> flist = new ArrayList&lt;&gt;();</li>
+<li>泛型的指定中不能使用基本的数据类型，可以使用包装类替换</li>
+<li>类/接口上声明的泛型，在本类或本接口中即代表某种类型，可以作为非静态属性的类型、非静态方法的参数类型、非静态方法的返回值类型。但在静态方法中不能使用类的泛型。</li>
+<li>异常类不能是泛型的</li>
+<li><p>不能使用new E[]。但是可以： E[] elements = (E[])new Object[capacity];</p>
+<ul>
+<li>参考：ArrayList源码中声明：Object[] elementData，而非泛型参数类型数组</li>
+</ul>
+</li>
+<li><p>父类有泛型，子类可以选择保留泛型，也可以选择指定泛型类型</p>
+<ul>
+<li>子类不保留父类的泛型：按需实现<ul>
+<li>没有类型 ：擦除</li>
+<li>具体类型</li>
+</ul>
+</li>
+<li>子类保留父类的泛型：泛型子类<ul>
+<li>全部保留</li>
+<li>部分保留</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>结论：子类除了指定或保留父类的泛型，还可以增加自己的泛型</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Father</span>&lt;<span class="title">T1</span>,<span class="title">T2</span>&gt;</span>&#123;&#125;</span><br><span class="line"><span class="comment">//子类不保留父类泛型</span></span><br><span class="line"><span class="comment">//1. 没有类型，擦除(下面两种等价）</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Son</span>&lt;<span class="title">A</span>,<span class="title">B</span>&gt; <span class="keyword">extends</span> <span class="title">Father</span></span>&#123;&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Son2</span>&lt;<span class="title">A</span>,<span class="title">B</span>&gt; <span class="keyword">extends</span> <span class="title">Father</span>&lt;<span class="title">Object</span>,<span class="title">Object</span>&gt;</span>&#123;&#125;</span><br><span class="line"><span class="comment">//2. 具体类型</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Son3</span>&lt;<span class="title">A</span>,<span class="title">B</span>&gt; <span class="keyword">extends</span> <span class="title">Father</span>&lt;<span class="title">String</span>,<span class="title">Integer</span>&gt;</span>&#123;&#125;</span><br><span class="line"><span class="comment">//子类保留父类的泛型</span></span><br><span class="line"><span class="comment">//1. 全部保留</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Son4</span>&lt;<span class="title">T1</span>,<span class="title">T2</span>,<span class="title">A</span>,<span class="title">B</span>&gt; <span class="keyword">extends</span> <span class="title">Father</span>&lt;<span class="title">T1</span>,<span class="title">T2</span>&gt;</span>&#123;&#125;</span><br><span class="line"><span class="comment">//2.部分保留</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Son5</span>&lt;<span class="title">T1</span>,<span class="title">A</span>,<span class="title">B</span>&gt; <span class="keyword">extends</span> <span class="title">Father</span>&lt;<span class="title">T1</span>,<span class="title">Integer</span>&gt;</span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>泛型方法：方法中出现了泛型的结构，泛型参数与类的泛型参数没有任何关系<ul>
+<li>换言之，泛型方法所属的类是不是泛型类都没有关系</li>
+<li>泛型方法可以声明为静态，因为泛型参数是在调用方法时确定的，并非在实例化类时确定</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Generic</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> &lt;E&gt; <span class="function">List&lt;E&gt; <span class="title">copyFromList</span><span class="params">(E[] arr)</span></span>&#123;</span><br><span class="line">        ArrayList&lt;E&gt; arrayList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(E e:arr)</span><br><span class="line">            arrayList.add(e);</span><br><span class="line">        <span class="keyword">return</span> arrayList;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="泛型在继承方面的体现"><a href="#泛型在继承方面的体现" class="headerlink" title="泛型在继承方面的体现"></a>泛型在继承方面的体现</h4><ul>
+<li>若类A是类B的父类，G\<A\>和G\<B\>两者不具备子父类关系，两者是并列关系，不能利用多态性<ul>
+<li>若类A是类B的父类，A\<G\>和B\<G\>依然具备父子类关系</li>
+</ul>
+</li>
+</ul>
+<h4 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h4><p>通配符的使用可以解决上述问题</p>
+<p>类A是类B的父类，G\<A\>和G\<B\>两者不具备子父类关系，但两者共同的父类是G\&lt;?></p>
+<p>注：对于LIst\&lt;?>，除了null不能向内部添加数据，否则会破坏其数据一致性</p>
+<h4 id="有限制条件的通配符"><a href="#有限制条件的通配符" class="headerlink" title="有限制条件的通配符"></a>有限制条件的通配符</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">List&lt;? extends Person&gt; list1 = <span class="keyword">null</span>;	<span class="comment">//Person及其子类即可</span></span><br><span class="line">List&lt;? <span class="keyword">super</span> Person&gt; list2 = <span class="keyword">null</span>;		<span class="comment">//Person及其父类即可</span></span><br><span class="line">List&lt;Student&gt; list3 = <span class="keyword">null</span>;</span><br><span class="line">List&lt;Person&gt; list4 = <span class="keyword">null</span>;</span><br><span class="line">List&lt;Object&gt; list5 = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">list1 = list3;</span><br><span class="line">list1 = list4;</span><br><span class="line">list1 = list5;	<span class="comment">//报错</span></span><br><span class="line">list2 = list3;	<span class="comment">//报错</span></span><br><span class="line">list2 = list4;</span><br><span class="line">list2 = list5;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>G\&lt;? extends A>        A及其子类</li>
+<li>G\&lt;? super A>            A及其父类</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//多态的cases</span></span><br><span class="line">Person p1 = list1.get(<span class="number">0</span>);</span><br><span class="line">Student s1 = list1.get(<span class="number">0</span>);  <span class="comment">//编译不通过</span></span><br><span class="line">Person p2 = list2.get(<span class="number">0</span>);   <span class="comment">//编译不通过</span></span><br><span class="line">Object o1 = list2.get(<span class="number">0</span>);</span><br><span class="line">list1.add(<span class="keyword">new</span> Student());   <span class="comment">//编译不通过</span></span><br><span class="line">list2.add(<span class="keyword">new</span> Person());</span><br><span class="line">list2.add(<span class="keyword">new</span> Student());</span><br></pre></td></tr></table></figure>
+<h3 id="File"><a href="#File" class="headerlink" title="File"></a>File</h3><ul>
+<li>File类的一个对象，代表一个文件或一个文件目录（即文件夹）</li>
+<li>File类声明在java.io包下</li>
+<li>路径分隔符：<ul>
+<li>Windows下：\\\</li>
+<li>Unix:/</li>
+</ul>
+</li>
+<li>创建File类实例(仅为内存层面的对象，暂不考虑硬盘上是否由此文件或目录)<ul>
+<li>File(String filePath)</li>
+<li>File(String parent,String child)</li>
+<li>File(File parentFiles,String childPath)</li>
+</ul>
+</li>
+<li>常用方法：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getAbsolutePath</span><span class="params">()</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getPath</span><span class="params">()</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getParent</span><span class="params">()</span>	<span class="comment">//获取上层文件目录，若无，返回null</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">length</span><span class="params">()</span>		<span class="comment">//获取文件长度，不能对目录使用</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">lastModified</span><span class="params">()</span>	<span class="comment">//最后修改时间，毫秒值</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String[] <span class="title">list</span><span class="params">()</span>		<span class="comment">//获取指定目录下所有文件或目录的名称数组</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> File[] <span class="title">listFiles</span><span class="params">()</span>	<span class="comment">//获取指定目录下所有文件或目录的File数组</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">renameTo</span><span class="params">(File dest)</span>	<span class="comment">//把文件重命名为指定的文件路径</span></span></span><br><span class="line"><span class="function"><span class="comment">//e.g. file1.renameTo(file2);</span></span></span><br><span class="line"><span class="function"><span class="comment">//renameTo方法要想保证返回true，需要file1在硬盘中存在且file2在硬盘中不存在</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isDirectory</span><span class="params">()</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isFile</span><span class="params">()</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">exists</span><span class="params">()</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">canRead</span><span class="params">()</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">canWrite</span><span class="params">()</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isHidden</span><span class="params">()</span>  </span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">createNewFile</span><span class="params">()</span>  <span class="comment">//创建文件，若存在则不创建返回falese</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">mkdir</span><span class="params">()</span>		<span class="comment">//创建目录，若存在则不创建，上层目录不存在则不创建</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">mkdirs</span><span class="params">()</span>		<span class="comment">//创建目录，若上层目录不存在，一并创建</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">delete</span><span class="params">()</span>	<span class="comment">//Java中删除不走回收站！</span></span></span><br><span class="line"><span class="function"><span class="comment">//delete用于删除目录时，该目录下不能有文件或子目录</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>File类中涉及到关于文件或文件目录的创建、删除、重命名、修改时间、文件大小等方法，并未涉及写入或读取文件内容的操作，如果需要读取或写入文件内容，需要使用IO流来完成，</li>
+<li>File类对象常作为参数传递到流的构造器中，指明读取或写入的”终点”</li>
+</ul>
+
+      
+      <blockquote>
+        
+        <strong>本文链接：</strong><br><a href="https://crazya1ice.github.io/2021/05/15/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%827-%E6%B3%9B%E5%9E%8B%E5%92%8CFile/">https://crazya1ice.github.io/2021/05/15/Java基础细节7-泛型和File/</a>
+      </blockquote>
+    </div>
+    <footer class="mdui-card-actions">
+      
+      
+    </footer>
+    
+  </article>
+  
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+  <script>$("#main article .mdui-card-content img.fancybox").on("click",function(e){$.fancybox.open({src:$(this).attr("src")});});</script>
+
+
+  <nav id="paginator">
+    
+    <div class="spacer"></div>
+    
+      <a rel="next" class="extend next" href="/2021/05/15/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%826-%E6%9E%9A%E4%B8%BE%E5%92%8C%E6%B3%A8%E8%A7%A3/">
+        <span class="mdui-p-x-3" mdui-tooltip="{content: 'Java基础细节6-枚举和注解'}">下一篇</span>
+        <button aria-label="next" class="mdui-btn mdui-btn-raised mdui-btn-icon mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">arrow_forward</i></button>
+      </a>
+    
+  </nav>
+
+
+
+</main>
+  <footer id="footer" class="mdui-m-t-5 mdui-p-y-3 mdui-color-theme">
+  <div class="mdui-p-y-0 mdui-text-center">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </div>
+  <div class="mdui-p-y-1 mdui-text-center">
+    Copyright &copy; 2021 木可成舟<br>
+    Powered by <a href="https://hexo.io/" target="_blank" class="mdui-text-color-theme-accent">Hexo</a>
+    
+  </div>
+</footer>
+  <button id="gotop" class="mdui-fab mdui-fab-fixed mdui-fab-hide mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">arrow_upward</i></button>
+  
+  
+<script src="/js/mdui.js"></script>
+<script src="/js/script.js"></script>
+
+  
+<script src="/custom.js"></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>
