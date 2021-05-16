@@ -12,12 +12,12 @@
 
   <link rel="shortcut icon" href="/images/favicon.png">
   <link rel="alternate" href="/atom.xml" title="Java Together" type="application/atom+xml">
-  <meta name="description" content="枚举类 类的对象只有有限个，确定的 当需要定义一组常量时，强烈建议使用枚举类 如果枚举类中只有一个对象，则可以作为单例模式的实现方式 枚举类定义： jdk5.0前，自定义枚举类 jdk5.0，可以使用enum关键字定义枚举类   使用enum关键字定义枚举类，定义的枚举类默认继承与java.lang.Enum类  12345678910enum Season&amp;#123;    &#x2F;&#x2F;提供当前类的枚举">
+  <meta name="description" content="枚举类  类的对象只有有限个，确定的 当需要定义一组常量时，强烈建议使用枚举类 如果枚举类中只有一个对象，则可以作为单例模式的实现方式 枚举类定义：  jdk5.0前，自定义枚举类 jdk5.0，可以使用enum关键字定义枚举类  使用enum关键字定义枚举类，定义的枚举类默认继承与java.lang.Enum类  12345678910enum Season&amp;#123;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java基础细节6-枚举和注解">
 <meta property="og:url" content="https://crazya1ice.github.io/2021/05/15/Java%E5%9F%BA%E7%A1%80%E7%BB%86%E8%8A%826-%E6%9E%9A%E4%B8%BE%E5%92%8C%E6%B3%A8%E8%A7%A3/index.html">
 <meta property="og:site_name" content="Java Together">
-<meta property="og:description" content="枚举类 类的对象只有有限个，确定的 当需要定义一组常量时，强烈建议使用枚举类 如果枚举类中只有一个对象，则可以作为单例模式的实现方式 枚举类定义： jdk5.0前，自定义枚举类 jdk5.0，可以使用enum关键字定义枚举类   使用enum关键字定义枚举类，定义的枚举类默认继承与java.lang.Enum类  12345678910enum Season&amp;#123;    &#x2F;&#x2F;提供当前类的枚举">
+<meta property="og:description" content="枚举类  类的对象只有有限个，确定的 当需要定义一组常量时，强烈建议使用枚举类 如果枚举类中只有一个对象，则可以作为单例模式的实现方式 枚举类定义：  jdk5.0前，自定义枚举类 jdk5.0，可以使用enum关键字定义枚举类  使用enum关键字定义枚举类，定义的枚举类默认继承与java.lang.Enum类  12345678910enum Season&amp;#123;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-05-15T02:48:12.000Z">
 <meta property="article:modified_time" content="2021-05-15T08:15:13.636Z">
@@ -177,7 +177,7 @@
   <style>#main article .mdui-card-content .center-block{display:block!important;margin-right:auto!important;margin-left:auto!important}</style>
   <article class="mdui-card mdui-m-b-5">
     <header class="mdui-card-media">
-      <img src="/images/random/material-9.png" style="max-height: 240px;">
+      <img src="/images/random/material-17.png" style="max-height: 240px;">
       <div class="mdui-card-media-covered">
         <div class="mdui-card-primary">
           <div class="mdui-card-primary-title">Java基础细节6-枚举和注解</div>
@@ -227,39 +227,42 @@
       </div>
     </header>
     <div class="mdui-card-content mdui-typo">
-      <h3 id="枚举类"><a href="#枚举类" class="headerlink" title="枚举类"></a>枚举类</h3><ul>
+      <h3 id="枚举类">枚举类</h3>
+<ul>
 <li>类的对象只有有限个，确定的</li>
 <li>当需要定义一组常量时，强烈建议使用枚举类</li>
 <li>如果枚举类中只有一个对象，则可以作为单例模式的实现方式</li>
-<li>枚举类定义：<ul>
+<li>枚举类定义：
+<ul>
 <li>jdk5.0前，自定义枚举类</li>
 <li>jdk5.0，可以使用enum关键字定义枚举类</li>
-</ul>
-</li>
+</ul></li>
 <li>使用enum关键字定义枚举类，定义的枚举类默认继承与java.lang.Enum类</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Season</span></span>&#123;</span><br><span class="line">    <span class="comment">//提供当前类的枚举对象，之间用，隔开，末尾用；</span></span><br><span class="line">    SPRING(<span class="string">&quot;春天&quot;</span>),SUMMER(<span class="string">&quot;夏天&quot;</span>),AUTUMN(<span class="string">&quot;秋天&quot;</span>), WINTER(<span class="string">&quot;冬天&quot;</span>);</span><br><span class="line">    <span class="comment">//声明Season对象的属性，用private final修饰</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String name;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Season</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//如有需求可以重写toString更改输出内容或添加get，set方法获取枚举对象属性</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
-<li>Enum类的主要方法：<ul>
+<li>Enum类的主要方法：
+<ul>
 <li>values()：返回枚举类型的对象数组，该方法可以很方便地遍历所有的枚举值</li>
 <li>valueOf(String str)：可以把一个字符串转为对应的枚举类对象，要求字符串必须是枚举类对象的名称，如果没有名为str的枚举类对象，则抛异常：IllegalArgumentException</li>
 <li>toString()：返回当前枚举类对象常量的名称</li>
-</ul>
-</li>
-<li>使用enum关键字定义的枚举类实现接口的情况：<ul>
+</ul></li>
+<li>使用enum关键字定义的枚举类实现接口的情况：
+<ul>
 <li>实现接口，在enum类中实现抽象方法（对每个枚举对象而言方法相同）</li>
 <li>让枚举类的对象分别实现接口中的抽象方法（对每个枚举对象而言方法不相同）</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h3 id="注解（Annotation）"><a href="#注解（Annotation）" class="headerlink" title="注解（Annotation）"></a>注解（Annotation）</h3><ul>
+<h3 id="注解annotation">注解（Annotation）</h3>
+<ul>
 <li>JDK5.0开始，Java增加了对元数据（MetaData）的支持，也就是Annotation（注解）</li>
 <li>Annotation是代码里的特殊标记，这些标记可以在编译、类加载、运行时被读取，并执行相应的处理。通过使用Annotation，程序员可以在不改变原有逻辑的情况下，在源文件中嵌入一些补充信息。代码分析工具、开发工具和部署工具可以通过这些信息进行验证或部署</li>
-<li>Annotation可以像修饰符一样被使用，可以修饰<font color = "red">包、类、构造器、方法、成员变量、参数、局部变量的声明</font>&gt;，这些信息被保存在Annotation的”name=value”对中</li>
+<li>Annotation可以像修饰符一样被使用，可以修饰<font color = "red">包、类、构造器、方法、成员变量、参数、局部变量的声明</font>&gt;，这些信息被保存在Annotation的&quot;name=value&quot;对中</li>
 <li>JavaSE中注解的使用目的比较简单，例如标记过时的功能，忽略警告等。在JavaEE/Android中注解占据了更重要的角色，例如用来配置应用程序的任何切面，代替JavaEE旧版中遗留的繁冗代码和XML配置等。</li>
-<li>未来的开发模式都是基于注解的，JPA是基于注解的，Spring2.5以上都是基于注解的，Hibernate3.x以后也是基于注解的，现在的Structs2有一部分也是基于注解的了。一定程度上可以说：<font color = "blue">框架 = 注解 + 反射 + 设计模式</font>。 </li>
+<li>未来的开发模式都是基于注解的，JPA是基于注解的，Spring2.5以上都是基于注解的，Hibernate3.x以后也是基于注解的，现在的Structs2有一部分也是基于注解的了。一定程度上可以说：<font color = "blue">框架 = 注解 + 反射 + 设计模式</font>。</li>
 </ul>
-<h3 id="常见注解"><a href="#常见注解" class="headerlink" title="常见注解"></a>常见注解</h3><ul>
+<h3 id="常见注解">常见注解</h3>
+<ul>
 <li>生成文档相关的注解</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@author</span></span><br><span class="line"><span class="meta">@version</span></span><br><span class="line"><span class="meta">@see</span>	参考转向，也就是相关主题</span><br><span class="line"><span class="meta">@since</span></span><br><span class="line"><span class="comment">//下面三个标记只用于方法</span></span><br><span class="line"><span class="meta">@param</span>	对方法中参数的说明，没有参数就不能写</span><br><span class="line"><span class="meta">@return</span>	对方法中返回值的说明，返回值类型是<span class="keyword">void</span>就不能写</span><br><span class="line"><span class="meta">@exception</span>	对方法中可能抛出异常的说明，方法没有用<span class="keyword">throws</span>显示抛出异常就不能写</span><br><span class="line"><span class="comment">//格式说明</span></span><br><span class="line"><span class="meta">@param</span> 形参名 形参类型 形参说明</span><br><span class="line"><span class="meta">@return</span> 返回值类型 返回值说明</span><br><span class="line"><span class="meta">@exception</span> 异常类型 异常说明</span><br><span class="line"><span class="meta">@param</span>和<span class="meta">@exception</span>可以并列多个</span><br></pre></td></tr></table></figure>
@@ -269,10 +272,10 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span>	限定重写父类方法，该注解只能用于方法	</span><br><span class="line"><span class="meta">@Deprecated</span>	用于表示修饰的元素（类、方法等）已过时，通常因为所修饰结构危险或存在更好的选择</span><br><span class="line"><span class="meta">@SuppressWarnings</span>	抑制编译器警告</span><br></pre></td></tr></table></figure>
 <ul>
 <li><p>跟踪代码依赖性，实现替代配置文件功能</p>
-<p>Servlet3.0提供了注解，使得不再需要在web.xml文件中进行Servlet的部署</p>
-</li>
+<p>Servlet3.0提供了注解，使得不再需要在web.xml文件中进行Servlet的部署</p></li>
 </ul>
-<h3 id="自定义注解"><a href="#自定义注解" class="headerlink" title="自定义注解"></a>自定义注解</h3><ol>
+<h3 id="自定义注解">自定义注解</h3>
+<ol type="1">
 <li>定义新的Annotation类型使用@interface关键字</li>
 <li>自定义注解自动继承了java.lang.annotation.Annotation接口</li>
 <li>Annotation的成员变量在Annotation定义中以无参数方法的形式来声明。其方法名和返回值定义了该成员的名字和类型，我们称为配置参数。类型只能是八种基本数据类型、String、Class、enum、Annotation以上所有类型的数组</li>
@@ -282,7 +285,7 @@
 <li>没有成员定义的Annotation称为标记，包含成员变量的Annotation成为元数据Annotation</li>
 </ol>
 <p>注意：自定义注释必须配上注解的信息处理流程才有意义</p>
-<ol>
+<ol type="1">
 <li>注解声明为@interface</li>
 <li>内部定义成员，通常使用value</li>
 <li>可以指定成员的默认值，使用default</li>
@@ -292,24 +295,22 @@
 <li>自定义注解通常会指明两个元注解：Retention，Target</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@interface</span> MyAnnotation&#123;</span><br><span class="line">    <span class="function">String <span class="title">value</span><span class="params">()</span> <span class="keyword">default</span> &quot;hello&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@MyAnnotation(value = &quot;hi&quot;)</span> <span class="comment">//使用</span></span><br></pre></td></tr></table></figure>
-<h3 id="JDK中的元注解"><a href="#JDK中的元注解" class="headerlink" title="JDK中的元注解"></a>JDK中的元注解</h3><ul>
-<li><p>JDK的元Annotation用于修饰其他Annotation定义</p>
-</li>
+<h3 id="jdk中的元注解">JDK中的元注解</h3>
+<ul>
+<li><p>JDK的元Annotation用于修饰其他Annotation定义</p></li>
 <li><p>JDK5.0提供了4个标注的meta-annotation类型，分别是：</p>
 <ul>
 <li><p>Retention：指定其修饰的注解的生命周期（SOURCE,CLASS,RUNTIME）</p>
-<p>​                    只有声明为RUNTIME的注解，运行时才能通过反射获取</p>
-</li>
-<li><p>Target：用于指定被修饰的Annotation能用于修饰哪些程序元素</p>
-</li>
-<li><p>Documented：表示所修饰的注解在被javadoc解析时保留下来</p>
-</li>
-<li><p>Inherited：被它修饰的Annotation具有继承性，父类有子类就也有</p>
-</li>
+<p>​ 只有声明为RUNTIME的注解，运行时才能通过反射获取</p></li>
+<li><p>Target：用于指定被修饰的Annotation能用于修饰哪些程序元素</p></li>
+<li><p>Documented：表示所修饰的注解在被javadoc解析时保留下来</p></li>
+<li><p>Inherited：被它修饰的Annotation具有继承性，父类有子类就也有</p></li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h3 id="通过反射获取注解信息"><a href="#通过反射获取注解信息" class="headerlink" title="通过反射获取注解信息"></a>通过反射获取注解信息</h3><h3 id="JDK8中注解的新特性"><a href="#JDK8中注解的新特性" class="headerlink" title="JDK8中注解的新特性"></a>JDK8中注解的新特性</h3><h4 id="可重复注解"><a href="#可重复注解" class="headerlink" title="可重复注解"></a>可重复注解</h4><p>jdk8.0之前的写法：</p>
+<h3 id="通过反射获取注解信息">通过反射获取注解信息</h3>
+<h3 id="jdk8中注解的新特性">JDK8中注解的新特性</h3>
+<h4 id="可重复注解">可重复注解</h4>
+<p>jdk8.0之前的写法：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@interface</span> MyAnnotation&#123;</span><br><span class="line">    <span class="function">String <span class="title">value</span><span class="params">()</span> <span class="keyword">default</span> &quot;hello&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@interface</span> MyAnnotations&#123;</span><br><span class="line">    MyAnnotation[] value();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//@MyAnnotation(value = &quot;hi1&quot;)</span></span><br><span class="line"><span class="comment">//@MyAnnotation(value = &quot;hi2&quot;)</span></span><br><span class="line"><span class="meta">@MyAnnotations(&#123;@MyAnnotation(value = &quot;hi1&quot;),@MyAnnotation(value = &quot;hi2&quot;)&#125;)</span></span><br></pre></td></tr></table></figure>
 <p>jdk8新特性：</p>
 <ul>
@@ -317,7 +318,8 @@
 <li>MyAnnotation的Target，Retention，Inherited等注解和MyAnnotaions相同</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Repeatable(MyAnnotations.class)</span></span><br><span class="line"><span class="meta">@interface</span> MyAnnotation&#123;</span><br><span class="line">    <span class="function">String <span class="title">value</span><span class="params">()</span> <span class="keyword">default</span> &quot;hello&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@MyAnnotation(value = &quot;hi1&quot;)</span></span><br><span class="line"><span class="meta">@MyAnnotation(value = &quot;hi2&quot;)</span></span><br></pre></td></tr></table></figure>
-<h4 id="类型注解"><a href="#类型注解" class="headerlink" title="类型注解"></a>类型注解</h4><ul>
+<h4 id="类型注解">类型注解</h4>
+<ul>
 <li>ElementType.TYPE_PARAMETER：表示该注解能写在类型变量的声明语句中（如泛型声明）</li>
 <li>ElementType.TYPE_USE：表示该注解能卸载使用类型的任何语句中</li>
 </ul>
