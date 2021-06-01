@@ -12,15 +12,19 @@
 
   <link rel="shortcut icon" href="/images/favicon.png">
   <link rel="alternate" href="/atom.xml" title="Java Together" type="application/atom+xml">
-  <meta property="og:type" content="article">
+  <meta name="description" content="JavaWeb JavaWeb 是指， 所有通过 Java 语言编写可以通过浏览器访问的程序的总称， 叫 JavaWeb。 JavaWeb 是基于请求和响应来开发的。 常用Web服务器  Tomcat： 由 Apache 组织提供的一种 Web 服务器， 提供对 jsp 和 Servlet 的支持。 它是一种轻量级的 javaWeb 容器（服务器） ， 也是当前应用最广的 JavaWeb">
+<meta property="og:type" content="article">
 <meta property="og:title" content="JavaWeb学习-Tomcat">
 <meta property="og:url" content="https://crazya1ice.github.io/2021/05/25/JavaWeb%E5%AD%A6%E4%B9%A0-Tomcat/index.html">
 <meta property="og:site_name" content="Java Together">
+<meta property="og:description" content="JavaWeb JavaWeb 是指， 所有通过 Java 语言编写可以通过浏览器访问的程序的总称， 叫 JavaWeb。 JavaWeb 是基于请求和响应来开发的。 常用Web服务器  Tomcat： 由 Apache 组织提供的一种 Web 服务器， 提供对 jsp 和 Servlet 的支持。 它是一种轻量级的 javaWeb 容器（服务器） ， 也是当前应用最广的 JavaWeb">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://static01.imgkr.com/temp/49a0516edc544447a0d88d226937aaee.png">
 <meta property="article:published_time" content="2021-05-25T03:53:26.000Z">
-<meta property="article:modified_time" content="2021-05-25T03:53:26.339Z">
+<meta property="article:modified_time" content="2021-05-25T13:41:30.146Z">
 <meta property="article:author" content="木可成舟">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://static01.imgkr.com/temp/49a0516edc544447a0d88d226937aaee.png">
 
   <meta name="keywords" content="">
   <meta name="format-detection" content="telephone=no,email=no">
@@ -105,7 +109,7 @@
       </div>
       <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
         
-        <a class="mdui-ripple sidebar_archives-link" href="/archives/2021/05/">五月 2021<span class="mdui-ripple sidebar_archives-count">15</span></a><a class="mdui-ripple sidebar_archives-link" href="/archives/2021/04/">四月 2021<span class="mdui-ripple sidebar_archives-count">1</span></a>
+        <a class="mdui-ripple sidebar_archives-link" href="/archives/2021/05/">五月 2021<span class="mdui-ripple sidebar_archives-count">16</span></a><a class="mdui-ripple sidebar_archives-link" href="/archives/2021/04/">四月 2021<span class="mdui-ripple sidebar_archives-count">1</span></a>
         
       </div>
     </div>
@@ -175,7 +179,7 @@
   <style>#main article .mdui-card-content .center-block{display:block!important;margin-right:auto!important;margin-left:auto!important}</style>
   <article class="mdui-card mdui-m-b-5">
     <header class="mdui-card-media">
-      <img src="/images/random/material-9.png" style="max-height: 240px;">
+      <img src="/images/random/material-16.png" style="max-height: 240px;">
       <div class="mdui-card-media-covered">
         <div class="mdui-card-primary">
           <div class="mdui-card-primary-title">JavaWeb学习-Tomcat</div>
@@ -225,7 +229,72 @@
       </div>
     </header>
     <div class="mdui-card-content mdui-typo">
-      
+      <h3 id="javaweb">JavaWeb</h3>
+<p>JavaWeb 是指， 所有通过 Java 语言编写可以通过浏览器访问的程序的总称， 叫 JavaWeb。 JavaWeb 是基于请求和响应来开发的。</p>
+<h3 id="常用web服务器">常用Web服务器</h3>
+<ul>
+<li>Tomcat： 由 Apache 组织提供的一种 Web 服务器， 提供对 jsp 和 Servlet 的支持。 它是一种轻量级的 javaWeb 容器（服务器） ， 也是当前应用最广的 JavaWeb 服务器（免费） 。</li>
+<li>Jboss： 是一个遵从 JavaEE 规范的、 开放源代码的、 纯 Java 的 EJB 服务器， 它支持所有的 JavaEE 规范（免费） 。</li>
+<li>GlassFish： 由 Oracle 公司开发的一款 JavaWeb 服务器， 是一款强健的商业服务器， 达到产品级质量（应用很少） 。</li>
+<li>Resin： 是 CAUCHO 公司的产品， 是一个非常流行的服务器， 对 servlet 和 JSP 提供了良好的支持，性能也比较优良， resin 自身采用 JAVA 语言开发（收费， 应用比较多） 。</li>
+<li>WebLogic： 是 Oracle 公司的产品， 是目前应用最广泛的 Web 服务器， 支持 JavaEE 规范， 而且不断的完善以适应新的开发要求， 适合大型项目（收费， 用的不多， 适合大公司） 。<br />
+</li>
+<li></li>
+</ul>
+<h3 id="tomcat-服务器和-servlet-版本的对应关系">Tomcat 服务器和 Servlet 版本的对应关系</h3>
+<p>Tomcat: 当前企业常用的版本 7.*、 8.*</p>
+<p>Servlet 程序从 2.5 版本是现在世面使用最多的版本（xml 配置） 到了 Servlet3.0 之后。 就是注解版本的 Servlet 使用。 以 2.5 版本为主线讲解 Servlet 程序。</p>
+<p><img src="https://static01.imgkr.com/temp/49a0516edc544447a0d88d226937aaee.png" /></p>
+<h3 id="tomcat的使用">Tomcat的使用</h3>
+<p>目录介绍</p>
+<ul>
+<li>bin 专门用来存放 Tomcat 服务器的可执行程序</li>
+<li>conf 专门用来存放 Tocmat 服务器的配置文件</li>
+<li>lib 专门用来存放 Tomcat 服务器的 jar 包</li>
+<li>logs 专门用来存放 Tomcat 服务器运行时输出的日记信息</li>
+<li>temp 专门用来存放 Tomcdat 运行时产生的临时数据</li>
+<li>webapps 专门用来存放部署的 Web 工程。</li>
+<li>work 是 Tomcat 工作时的目录， 用来存放 Tomcat 运行时 jsp 翻译为 Servlet 的源码， 和 Session 钝化的目录。</li>
+</ul>
+<h3 id="tomcat部署">Tomcat部署</h3>
+<p>第一种部署方法： 只需要把 web 工程的目录拷贝到 Tomcat 的 webapps 目录下即可。</p>
+<p>第二种部署方法： 找到 Tomcat 下的 conf 目录 下,创建如下的配置文件 ：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Context 表示一个工程上下文</span></span><br><span class="line"><span class="comment">     path 表示工程的访问路径:/abc</span></span><br><span class="line"><span class="comment">     docBase 表示你的工程目录在哪里</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Context</span> <span class="attr">path</span>=<span class="string">&quot;/abc&quot;</span> <span class="attr">docBase</span>=<span class="string">&quot;E:\book&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<p>访问这个工程的路径如下:http://ip:port/abc/ 就表示访问 E:目录</p>
+<p>直接访问html页面和从浏览器地址栏输入地址访问，原理完全不同：</p>
+<ul>
+<li>前者使用file://协议</li>
+<li>后者使用http协议与服务器交互展示数据</li>
+</ul>
+<p>ROOT 的工程的访问， 以及 默认 index.html 页面的访问：</p>
+<ul>
+<li>当我们在浏览器地址栏中输入访问地址如下： http://ip:port/ 没有工程名的时候， 默认访问的是 ROOT 工程。</li>
+<li>当我们在浏览器地址栏中输入的访问地址如下： http://ip:port/工程名/ 没有资源名， 默认访问 index.html 页面。</li>
+</ul>
+<h3 id="tomcatidea">Tomcat+IDEA</h3>
+<p>File | Settings | Build, Execution, Deployment | Application Servers 添加本地tomcat文件</p>
+<ul>
+<li>IDEA 中如何创建动态 web 工程 ：
+<ul>
+<li>创建一个新模块：</li>
+<li>选择你要创建什么类型的模块：<br />
+</li>
+<li>输入你的模块名， 点击【Finish】 完成创建<br />
+</li>
+</ul></li>
+<li>工程目录介绍：
+<ul>
+<li>src：存放编写的java源代码</li>
+<li>web：存放web工程的资源文件，如html，css，js等
+<ul>
+<li>WEB-INF：受服务器保护的目录，浏览器无法直接访问此目录内容
+<ul>
+<li>lib：存放第三方jar包</li>
+<li>web.xml：整个动态web工程的配置部署描述文件，可以在这配置很多web工程的组件，比如Servlet程序，Filter过滤器，Listener监视器，Session超时等</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
 
       
       <blockquote>
@@ -247,6 +316,11 @@
 
 
   <nav id="paginator">
+    
+      <a rel="prev" class="extend prev" href="/2021/05/31/JavaWeb%E5%AD%A6%E4%B9%A0-Servlet/">
+        <button aria-label="prev" class="mdui-btn mdui-btn-raised mdui-btn-icon mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">arrow_back</i></button>
+        <span class="mdui-p-x-3" mdui-tooltip="{content: 'JavaWeb学习-Servlet'}">上一篇</span>
+      </a>
     
     <div class="spacer"></div>
     

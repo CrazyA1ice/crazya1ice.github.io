@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="renderer" content="webkit">
+
+  
+  <title>JavaWeb学习-Servlet | Java Together</title>
+
+  <link rel="shortcut icon" href="/images/favicon.png">
+  <link rel="alternate" href="/atom.xml" title="Java Together" type="application/atom+xml">
+  <meta name="description" content="1.Servlet  Servlet 是 JavaEE 规范之一。规范就是接口 Servlet 就 JavaWeb 三大组件之一。三大组件分别是：Servlet 程序、Filter 过滤器、Listener 监听器。 Servlet 是运行在服务器上的一个 java 小程序，它可以接收客户端发送过来的请求，并响应数据给客户端。  手动实现Servlet程序  编写一个类去实现 Se">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaWeb学习-Servlet">
+<meta property="og:url" content="https://crazya1ice.github.io/2021/05/31/JavaWeb%E5%AD%A6%E4%B9%A0-Servlet/index.html">
+<meta property="og:site_name" content="Java Together">
+<meta property="og:description" content="1.Servlet  Servlet 是 JavaEE 规范之一。规范就是接口 Servlet 就 JavaWeb 三大组件之一。三大组件分别是：Servlet 程序、Filter 过滤器、Listener 监听器。 Servlet 是运行在服务器上的一个 java 小程序，它可以接收客户端发送过来的请求，并响应数据给客户端。  手动实现Servlet程序  编写一个类去实现 Se">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://static01.imgkr.com/temp/7884330c9521477fb4229e7b09d58394.png">
+<meta property="article:published_time" content="2021-05-31T03:17:56.000Z">
+<meta property="article:modified_time" content="2021-06-01T11:57:06.343Z">
+<meta property="article:author" content="木可成舟">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://static01.imgkr.com/temp/7884330c9521477fb4229e7b09d58394.png">
+
+  <meta name="keywords" content="">
+  <meta name="format-detection" content="telephone=no,email=no">
+  <meta name="theme-color" content="#9C27B0">
+
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="Java Together">
+  <meta name="msapplication-starturl" content="https://crazya1ice.github.io/2021/05/31/JavaWeb%E5%AD%A6%E4%B9%A0-Servlet/">
+  <meta name="msapplication-navbutton-color" content="#9C27B0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Java Together">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="apple-touch-icon" href="/images/favicon.png">
+
+  
+    <link rel="canonical" href="https://crazya1ice.github.io/2021/05/31/JavaWeb%E5%AD%A6%E4%B9%A0-Servlet/">
+  
+
+  
+  
+
+  
+  
+  
+
+  
+<link rel="stylesheet" href="/css/mdui.css">
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/custom.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body class="mdui-appbar-with-toolbar mdui-theme-primary-indigo mdui-theme-accent-pink">
+  <script>var a=localStorage.getItem("mdui-theme-layout-dark");if(a){document.getElementsByTagName("body")[0].className+=" mdui-theme-layout-dark"};</script>
+  <script>if(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches){document.getElementsByTagName("body")[0].className+=" mdui-theme-layout-dark"};</script>
+  <script>var a=localStorage.getItem("mdui-drawer-close");if(!a){document.getElementsByTagName("body")[0].className+=" mdui-drawer-body-left"};</script>
+  <header id="header" class="mdui-appbar mdui-appbar-fixed mdui-appbar-scroll-hide mdui-appbar-inset">
+  <div class="mdui-toolbar mdui-color-theme">
+    <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#sidebar', swipe: true}"><i class="mdui-icon material-icons">menu</i></a>
+    <a href="/" class="mdui-typo-headline">Java Together</a>
+    <div class="mdui-toolbar-spacer"></div>
+    <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#search'}" mdui-tooltip="{content: '搜索'}"><i class="mdui-icon material-icons">search</i></a>
+    <a href="/atom.xml" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: 'RSS'}"><i class="mdui-icon material-icons">rss_feed</i></a>
+  </div>
+</header>
+<div class="mdui-dialog" id="search">
+  
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="请输入关键字"><input type="hidden" name="sitesearch" value="https://crazya1ice.github.io"></form>
+    <div class="search-result"></div>
+  
+</div>
+  <aside id="sidebar" class="mdui-drawer mdui-drawer-full-height">
+  <script>var a=localStorage.getItem("mdui-drawer-close");if(a){document.getElementById("sidebar").className+=" mdui-drawer-close"};</script>
+  <div class="mdui-grid-tile">
+    <img src="/images/banner.png" style="height: 160px;">
+    <img src="/images/avatar.png" class="avatar-animation" style="position: absolute; top: 10%; left: 24px; width: 64px; height: 64px; border: 2px solid #fff; border-radius: 50%;">
+    <div class="mdui-grid-tile-actions">
+      <div class="mdui-grid-tile-text">
+        <div class="mdui-grid-tile-title">木可成舟</div>
+        <div class="mdui-grid-tile-subtitle"><i class="mdui-icon material-icons">art_track</i>半床花月半床书</div>
+      </div>
+      
+        <div class="mdui-grid-tile-buttons">
+          <a href="mailto:287360811@qq.com" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: '287360811@qq.com'}"><i class="mdui-icon material-icons">email</i></a>
+        </div>
+      
+    </div>
+  </div>
+
+  <div class="mdui-list" mdui-collapse="{accordion: true}">
+    <a href="/" class="mdui-list-item mdui-ripple">
+      <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-blue">home</i>
+      <div class="mdui-list-item-content">主页</div>
+    </a>
+    <div class="mdui-collapse-item">
+      <script>var a=localStorage.getItem("mdui-collapse-item-0");if(a){document.getElementsByClassName("mdui-collapse-item")[0].className+=" mdui-collapse-item-open"};</script>
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-deep-orange">archive</i>
+        <div class="mdui-list-item-content">归档</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        <a class="mdui-ripple sidebar_archives-link" href="/archives/2021/05/">五月 2021<span class="mdui-ripple sidebar_archives-count">16</span></a><a class="mdui-ripple sidebar_archives-link" href="/archives/2021/04/">四月 2021<span class="mdui-ripple sidebar_archives-count">1</span></a>
+        
+      </div>
+    </div>
+    <div class="mdui-collapse-item">
+      <script>var a=localStorage.getItem("mdui-collapse-item-1");if(a){document.getElementsByClassName("mdui-collapse-item")[1].className+=" mdui-collapse-item-open"};</script>
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-green">class</i>
+        <div class="mdui-list-item-content">分类</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        
+        
+          <a href="javascript:;" class="mdui-list-item mdui-p-l-2 mdui-text-color-theme mdui-ripple" style="justify-content: center;">分类为空</a>
+        
+      </div>
+    </div>
+    <div class="mdui-collapse-item">
+      <script>var a=localStorage.getItem("mdui-collapse-item-2");if(a){document.getElementsByClassName("mdui-collapse-item")[2].className+=" mdui-collapse-item-open"};</script>
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-brown">bookmark</i>
+        <div class="mdui-list-item-content">标签</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        <a class="mdui-ripple sidebar_archives-link" href="/tags/Collection/" rel="tag">Collection<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/Java/" rel="tag">Java<span class="mdui-ripple sidebar_archives-count">2</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/Java-SE/" rel="tag">Java SE<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/Map/" rel="tag">Map<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/Markdown/" rel="tag">Markdown<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/misc/" rel="tag">misc<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/%E6%A1%86%E6%9E%B6/" rel="tag">框架<span class="mdui-ripple sidebar_archives-count">2</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/%E9%9B%86%E5%90%88/" rel="tag">集合<span class="mdui-ripple sidebar_archives-count">2</span></a>
+        
+      </div>
+    </div>
+    <a href="/about" class="mdui-list-item mdui-ripple">
+      <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-purple">person</i>
+      <div class="mdui-list-item-content">关于</div>
+    </a>
+  </div>
+
+  <div class="mdui-divider"></div>
+
+  <div class="mdui-list" mdui-collapse="{accordion: true}">
+    
+      <a href="/timeline" class="mdui-list-item mdui-ripple">时间轴</a>
+    
+      <a href="/tagcloud" class="mdui-list-item mdui-ripple">标签云</a>
+    
+      <a href="/gallery" class="mdui-list-item mdui-ripple">相册</a>
+    
+    <div class="mdui-collapse-item">
+      <script>var a=localStorage.getItem("mdui-collapse-item-3");if(a){document.getElementsByClassName("mdui-collapse-item")[3].className+=" mdui-collapse-item-open"};</script>
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <div class="mdui-list-item-content">友情链接</div>
+        <i class="mdui-list-item-icon mdui-icon material-icons">link</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        
+          <a href="javascript:;" class="mdui-list-item mdui-p-l-2 mdui-text-color-theme mdui-ripple" style="justify-content: center;">链接为空</a>
+        
+      </div>
+    </div>
+  </div>
+</aside>
+  <main id="main" class="mdui-m-t-5 fadeIn animated">
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  <style>#main article .mdui-card-content .center-block{display:block!important;margin-right:auto!important;margin-left:auto!important}</style>
+  <article class="mdui-card mdui-m-b-5">
+    <header class="mdui-card-media">
+      <img src="/images/random/material-6.png" style="max-height: 240px;">
+      <div class="mdui-card-media-covered">
+        <div class="mdui-card-primary">
+          <div class="mdui-card-primary-title">JavaWeb学习-Servlet</div>
+          <div class="mdui-card-primary-subtitle"><i class="iconfont">&#xe697;</i> 2021-05-31 / <i class="iconfont">&#xe601;</i> 木可成舟</div>
+        </div>
+      </div>
+      <div class="mdui-card-menu">
+        
+          <button class="mdui-btn mdui-btn-icon mdui-text-color-white" mdui-menu="{target: '#qrcode', align: 'right'}"><i class="mdui-icon material-icons">devices</i></button>
+          <ul class="mdui-menu" id="qrcode">
+            
+              <li class="mdui-menu-item"><a class="mdui-text-center mdui-ripple">发送到手机</a></li>
+            
+            <li class="mdui-menu-item" disabled>
+              
+                <img src="http://qr.liantu.com/api.php?w=246&m=10&text=https://crazya1ice.github.io/2021/05/31/JavaWeb%E5%AD%A6%E4%B9%A0-Servlet/">
+              
+            </li>
+          </ul>
+        
+        
+          <button class="mdui-btn mdui-btn-icon mdui-text-color-white" mdui-menu="{target: '#share_menu', align: 'right'}"><i class="mdui-icon material-icons">share</i></button>
+          <ul class="mdui-menu" id="share_menu">
+            <li class="mdui-menu-item">
+              <a href="http://service.weibo.com/share/share.php?appkey=&title=JavaWeb学习-Servlet&url=https://crazya1ice.github.io/2021/05/31/JavaWeb%E5%AD%A6%E4%B9%A0-Servlet/&pic=https://crazya1ice.github.io/images/favicon.png&searchPic=false&style=simple" target="_blank" class="mdui-ripple">分享到 Weibo</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://twitter.com/intent/tweet?text=JavaWeb学习-Servlet&url=https://crazya1ice.github.io/2021/05/31/JavaWeb%E5%AD%A6%E4%B9%A0-Servlet/&via=木可成舟" target="_blank" class="mdui-ripple">分享到 Twitter</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://www.facebook.com/sharer/sharer.php?u=https://crazya1ice.github.io/2021/05/31/JavaWeb%E5%AD%A6%E4%B9%A0-Servlet/" target="_blank" class="mdui-ripple">分享到 Facebook</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://plus.google.com/share?url=https://crazya1ice.github.io/2021/05/31/JavaWeb%E5%AD%A6%E4%B9%A0-Servlet/" target="_blank" class="mdui-ripple">分享到 Google+</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://crazya1ice.github.io/2021/05/31/JavaWeb%E5%AD%A6%E4%B9%A0-Servlet/&title=JavaWeb学习-Servlet" target="_blank" class="mdui-ripple">分享到 LinkedIn</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="http://connect.qq.com/widget/shareqq/index.html?site=Java Together&title=JavaWeb学习-Servlet&pics=https://crazya1ice.github.io/images/favicon.png&url=https://crazya1ice.github.io/2021/05/31/JavaWeb%E5%AD%A6%E4%B9%A0-Servlet/" target="_blank" class="mdui-ripple">分享到 QQ</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://telegram.me/share/url?url=https://crazya1ice.github.io/2021/05/31/JavaWeb%E5%AD%A6%E4%B9%A0-Servlet/&text=JavaWeb学习-Servlet" target="_blank" class="mdui-ripple">分享到 Telegram</a>
+            </li>
+          </ul>
+        
+      </div>
+    </header>
+    <div class="mdui-card-content mdui-typo">
+      <h3 id="servlet">1.Servlet</h3>
+<ol type="1">
+<li>Servlet 是 JavaEE 规范之一。规范就是接口</li>
+<li>Servlet 就 JavaWeb 三大组件之一。三大组件分别是：Servlet 程序、Filter 过滤器、Listener 监听器。</li>
+<li>Servlet 是运行在服务器上的一个 java 小程序，它可以接收客户端发送过来的请求，并响应数据给客户端。</li>
+</ol>
+<h4 id="手动实现servlet程序">手动实现Servlet程序</h4>
+<ol type="1">
+<li>编写一个类去实现 Servlet 接口</li>
+<li>实现 service 方法，处理请求，并响应数据</li>
+<li>到 web.xml 中去配置 servlet 程序的访问地址</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- servlet 标签给 Tomcat 配置 Servlet 程序 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--servlet-name 标签 Servlet 程序起一个别名（一般是类名） --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>HelloServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--servlet-class 是 Servlet 程序的全类名--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>com.example.JavaWebTomcat.HelloServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--servlet-mapping 标签给 servlet 程序配置访问地址--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--servlet-name 标签的作用是告诉服务器，我当前配置的地址给哪个 Servlet 程序使用--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>HelloServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--        url-pattern 标签配置访问地址 &lt;br/&gt;--&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--        / 斜杠在服务器解析的时候，表示地址为：http://ip:port/工程路径--&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--        /hello 表示地址为：http://ip:port/工程路径/hello--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/hello<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="servlet生命周期">Servlet生命周期</h4>
+<ol type="1">
+<li>执行 Servlet 构造器方法</li>
+<li>执行 init 初始化方法 第一、二步，是在第一次访问，的时候创建 Servlet 程序会调用。</li>
+<li>执行 service 方法 第三步，每次访问都会调用。</li>
+<li>执行 destroy 销毁方法 第四步，在 web 工程停止的时候调用。</li>
+</ol>
+<h4 id="通过继承-httpservlet-实现-servlet-程序">通过继承 HttpServlet 实现 Servlet 程序</h4>
+<p>一般在实际项目开发中，都是使用继承 HttpServlet 类的方式去实现 Servlet 程序。</p>
+<ol type="1">
+<li>编写一个类去继承 HttpServlet 类</li>
+<li>根据业务需要重写 doGet 或 doPost 方法</li>
+<li>到 web.xml 中的配置 Servlet 程序的访问地址</li>
+</ol>
+<h4 id="servlet类的继承体系">Servlet类的继承体系</h4>
+<p><img src="https://static01.imgkr.com/temp/7884330c9521477fb4229e7b09d58394.png" /></p>
+<h3 id="servletconfig类">2. ServletConfig类</h3>
+<ul>
+<li>ServletConfig 类从类名上来看，就知道是 Servlet 程序的配置信息类。</li>
+<li>Servlet 程序和 ServletConfig 对象都是由 Tomcat 负责创建，我们负责使用。</li>
+<li>Servlet 程序默认是第一次访问的时候创建，ServletConfig 是每个 Servlet 程序创建时，就创建一个对应的 ServletConfig 对象。</li>
+</ul>
+<h4 id="servletconfig-类的三大作用">ServletConfig 类的三大作用：</h4>
+<ul>
+<li>可以获取 Servlet 程序的别名 servlet-name 的值</li>
+<li>获取初始化参数 init-param</li>
+<li>获取 ServletContext 对象</li>
+</ul>
+<p>web.xml 中的配置：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- servlet 标签给 Tomcat 配置 Servlet 程序 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--servlet-name 标签 Servlet 程序起一个别名（一般是类名） --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>HelloServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--servlet-class 是 Servlet 程序的全类名--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>com.example.JavaWebTomcat.HelloServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--init-param 是初始化参数--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!--是参数名--&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>username<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!--是参数值--&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>root<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--init-param 是初始化参数--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!--是参数名--&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>url<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!--是参数值--&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>jdbc:mysql://localhost:3306/test<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--servlet-mapping 标签给 servlet 程序配置访问地址--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--servlet-name 标签的作用是告诉服务器，我当前配置的地址给哪个 Servlet 程序使用--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>HelloServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">        url-pattern 标签配置访问地址</span></span><br><span class="line"><span class="comment">        &lt;br/&gt;</span></span><br><span class="line"><span class="comment">        / 斜杠在服务器解析的时候，表示地址为：http://ip:port/工程路径</span></span><br><span class="line"><span class="comment">        &lt;br/&gt;</span></span><br><span class="line"><span class="comment">        /hello 表示地址为：http://ip:port/工程路径/hello</span></span><br><span class="line"><span class="comment">        &lt;br/&gt;</span></span><br><span class="line"><span class="comment">        --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/hello<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Servlet中的代码</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(ServletConfig servletConfig)</span> <span class="keyword">throws</span> ServletException </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.init(config);<span class="comment">//重写init时需调用父类此方法</span></span><br><span class="line">    System.out.println(<span class="string">&quot;2 init 初始化方法&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//1、可以获取 Servlet 程序的别名 servlet-name 的值</span></span><br><span class="line">    System.out.println(<span class="string">&quot;HelloServlet 程序的别名是:&quot;</span> + servletConfig.getServletName());</span><br><span class="line"></span><br><span class="line">    <span class="comment">//2、获取初始化参数 init-param</span></span><br><span class="line">    System.out.println(<span class="string">&quot;初始化参数 username 的值是;&quot;</span> + 				           	servletConfig.getInitParameter(<span class="string">&quot;username&quot;</span>));</span><br><span class="line">    System.out.println(<span class="string">&quot;初始化参数 url 的值是;&quot;</span> + servletConfig.getInitParameter(<span class="string">&quot;url&quot;</span>));</span><br><span class="line"></span><br><span class="line">    <span class="comment">//3、获取 ServletContext 对象</span></span><br><span class="line">    System.out.println(servletConfig.getServletContext());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="servletcontext对象">ServletContext对象</h3>
+<ul>
+<li><p>ServletContext 是一个接口，它表示 Servlet 上下文对象</p></li>
+<li><p>一个 web 工程，只有一个 ServletContext 对象实例。</p></li>
+<li><p>ServletContext 对象是一个域对象。</p></li>
+<li><p>ServletContext 是在 web 工程部署启动的时候创建。在 web 工程停止的时候销毁。</p>
+<p>域对象，是可以像 Map 一样存取数据的对象，叫域对象。 这里的域指的是存取数据的操作范围，整个 web 工程。</p>
+<p>存数据 取数据 删除数据</p>
+<p>put() get() remove() Map</p>
+<p>setAttribute() getAttribute() removeAttribute() 域对象</p></li>
+</ul>
+<h4 id="作用">作用</h4>
+<ol type="1">
+<li>获取 web.xml 中配置的上下文参数 context-param</li>
+<li>获取当前的工程路径，格式: /工程路径</li>
+<li>获取工程部署后在服务器硬盘上的绝对路径</li>
+<li>像 Map 一样存取数据</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--context-param 是上下文参数(它属于整个 web 工程)--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">context-param</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>username<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>context<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--context-param 是上下文参数(它属于整个 web 工程)--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">context-param</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>password<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>root<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">    <span class="comment">//1、获取 web.xml 中配置的上下文参数 context-param</span></span><br><span class="line">    ServletContext context = getServletConfig().getServletContext();</span><br><span class="line">    String username = context.getInitParameter(<span class="string">&quot;username&quot;</span>);</span><br><span class="line">    System.out.println(<span class="string">&quot;context-param 参数 username 的值是:&quot;</span> + username);</span><br><span class="line">    System.out.println(<span class="string">&quot;context-param 参数 password 的值是:&quot;</span> +</span><br><span class="line">            context.getInitParameter(<span class="string">&quot;password&quot;</span>));</span><br><span class="line">    <span class="comment">//2、获取当前的工程路径，格式: /工程路径</span></span><br><span class="line">    System.out.println( <span class="string">&quot;当前工程路径:&quot;</span> + context.getContextPath() );</span><br><span class="line">    <span class="comment">//3、获取工程部署后在服务器硬盘上的绝对路径</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 斜杠被服务器解析地址为:http://ip:port/工程名/</span></span><br><span class="line"><span class="comment">    映射到 IDEA 代码的 webapp 目录&lt;br/&gt;</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    System.out.println(<span class="string">&quot;工程部署的路径是:&quot;</span> + context.getRealPath(<span class="string">&quot;/&quot;</span>));</span><br><span class="line">    System.out.println(<span class="string">&quot;工程下 css 目录的绝对路径是:&quot;</span> + context.getRealPath(<span class="string">&quot;/css&quot;</span>));</span><br><span class="line">    System.out.println(<span class="string">&quot;工程下 imgs 目录 1.jpg 的绝对路径是:&quot;</span> + context.getRealPath(<span class="string">&quot;/imgs/1.jpg&quot;</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+      <blockquote>
+        
+        <strong>本文链接：</strong><br><a href="https://crazya1ice.github.io/2021/05/31/JavaWeb%E5%AD%A6%E4%B9%A0-Servlet/">https://crazya1ice.github.io/2021/05/31/JavaWeb学习-Servlet/</a>
+      </blockquote>
+    </div>
+    <footer class="mdui-card-actions">
+      
+      
+    </footer>
+    
+  </article>
+  
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+  <script>$("#main article .mdui-card-content img.fancybox").on("click",function(e){$.fancybox.open({src:$(this).attr("src")});});</script>
+
+
+  <nav id="paginator">
+    
+    <div class="spacer"></div>
+    
+      <a rel="next" class="extend next" href="/2021/05/25/JavaWeb%E5%AD%A6%E4%B9%A0-Tomcat/">
+        <span class="mdui-p-x-3" mdui-tooltip="{content: 'JavaWeb学习-Tomcat'}">下一篇</span>
+        <button aria-label="next" class="mdui-btn mdui-btn-raised mdui-btn-icon mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">arrow_forward</i></button>
+      </a>
+    
+  </nav>
+
+
+
+</main>
+  <footer id="footer" class="mdui-m-t-5 mdui-p-y-3 mdui-color-theme">
+  <div class="mdui-p-y-0 mdui-text-center">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </div>
+  <div class="mdui-p-y-1 mdui-text-center">
+    Copyright &copy; 2021 木可成舟<br>
+    Powered by <a href="https://hexo.io/" target="_blank" class="mdui-text-color-theme-accent">Hexo</a>
+    
+  </div>
+</footer>
+  <button id="gotop" class="mdui-fab mdui-fab-fixed mdui-fab-hide mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">arrow_upward</i></button>
+  
+  
+<script src="/js/mdui.js"></script>
+<script src="/js/script.js"></script>
+
+  
+<script src="/custom.js"></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>
