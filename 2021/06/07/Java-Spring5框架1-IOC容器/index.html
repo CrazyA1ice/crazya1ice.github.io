@@ -8,27 +8,28 @@
   <meta name="renderer" content="webkit">
 
   
-  <title>归档: 2021/4 | Java Together</title>
+  <title>Java Spring5框架1-IOC容器 | Java Together</title>
 
   <link rel="shortcut icon" href="/images/favicon.png">
   <link rel="alternate" href="/atom.xml" title="Java Together" type="application/atom+xml">
-  <meta name="description" content="半床花月半床书">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Java Together">
-<meta property="og:url" content="https://crazya1ice.github.io/archives/2021/04/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="Java Spring5框架1-IOC容器">
+<meta property="og:url" content="https://crazya1ice.github.io/2021/06/07/Java-Spring5%E6%A1%86%E6%9E%B61-IOC%E5%AE%B9%E5%99%A8/index.html">
 <meta property="og:site_name" content="Java Together">
-<meta property="og:description" content="半床花月半床书">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-06-07T02:48:35.000Z">
+<meta property="article:modified_time" content="2021-06-07T02:51:23.784Z">
 <meta property="article:author" content="木可成舟">
+<meta property="article:tag" content="Java Spring 5">
 <meta name="twitter:card" content="summary">
 
-  <meta name="keywords" content="">
+  <meta name="keywords" content=",Java Spring 5">
   <meta name="format-detection" content="telephone=no,email=no">
   <meta name="theme-color" content="#9C27B0">
 
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="application-name" content="Java Together">
-  <meta name="msapplication-starturl" content="https://crazya1ice.github.io/archives/2021/04/">
+  <meta name="msapplication-starturl" content="https://crazya1ice.github.io/2021/06/07/Java-Spring5%E6%A1%86%E6%9E%B61-IOC%E5%AE%B9%E5%99%A8/">
   <meta name="msapplication-navbutton-color" content="#9C27B0">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Java Together">
@@ -36,7 +37,7 @@
   <link rel="apple-touch-icon" href="/images/favicon.png">
 
   
-    <link rel="canonical" href="https://crazya1ice.github.io/archives/2021/04/index.html">
+    <link rel="canonical" href="https://crazya1ice.github.io/2021/06/07/Java-Spring5%E6%A1%86%E6%9E%B61-IOC%E5%AE%B9%E5%99%A8/">
   
 
   
@@ -169,41 +170,97 @@
   </div>
 </aside>
   <main id="main" class="mdui-m-t-5 fadeIn animated">
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css">
 
-  <div class="mdui-chip mdui-m-b-3">
-    <span class="mdui-chip-icon mdui-color-theme-accent"><i class="mdui-icon material-icons">place</i></span>
-    <span class="mdui-chip-title">归档：2021/4</span>
-  </div>
-
-
-
-
-  <article class="mdui-card mdui-m-b-5 mdui-hoverable">
-    <a href="/2021/04/28/hello-world/">
-      <header class="mdui-card-media mdui-ripple">
-        <img src="/images/random/material-3.png" style="max-height: 240px;">
-        <div class="mdui-card-media-covered">
-          <div class="mdui-card-primary">
-            <div class="mdui-card-primary-title">Hello World</div>
-            <div class="mdui-card-primary-subtitle"><i class="iconfont">&#xe697;</i> 2021-04-28 / <i class="iconfont">&#xe601;</i> 木可成舟</div>
-          </div>
+  <style>#main article .mdui-card-content .center-block{display:block!important;margin-right:auto!important;margin-left:auto!important}</style>
+  <article class="mdui-card mdui-m-b-5">
+    <header class="mdui-card-media">
+      <img src="/images/random/material-2.png" style="max-height: 240px;">
+      <div class="mdui-card-media-covered">
+        <div class="mdui-card-primary">
+          <div class="mdui-card-primary-title">Java Spring5框架1-IOC容器</div>
+          <div class="mdui-card-primary-subtitle"><i class="iconfont">&#xe697;</i> 2021-06-07 / <i class="iconfont">&#xe601;</i> 木可成舟</div>
         </div>
+      </div>
+      <div class="mdui-card-menu">
         
-      </header>
-    </a>
+          <button class="mdui-btn mdui-btn-icon mdui-text-color-white" mdui-menu="{target: '#qrcode', align: 'right'}"><i class="mdui-icon material-icons">devices</i></button>
+          <ul class="mdui-menu" id="qrcode">
+            
+              <li class="mdui-menu-item"><a class="mdui-text-center mdui-ripple">发送到手机</a></li>
+            
+            <li class="mdui-menu-item" disabled>
+              
+                <img src="http://qr.liantu.com/api.php?w=246&m=10&text=https://crazya1ice.github.io/2021/06/07/Java-Spring5%E6%A1%86%E6%9E%B61-IOC%E5%AE%B9%E5%99%A8/">
+              
+            </li>
+          </ul>
+        
+        
+          <button class="mdui-btn mdui-btn-icon mdui-text-color-white" mdui-menu="{target: '#share_menu', align: 'right'}"><i class="mdui-icon material-icons">share</i></button>
+          <ul class="mdui-menu" id="share_menu">
+            <li class="mdui-menu-item">
+              <a href="http://service.weibo.com/share/share.php?appkey=&title=Java Spring5框架1-IOC容器&url=https://crazya1ice.github.io/2021/06/07/Java-Spring5%E6%A1%86%E6%9E%B61-IOC%E5%AE%B9%E5%99%A8/&pic=https://crazya1ice.github.io/images/favicon.png&searchPic=false&style=simple" target="_blank" class="mdui-ripple">分享到 Weibo</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://twitter.com/intent/tweet?text=Java Spring5框架1-IOC容器&url=https://crazya1ice.github.io/2021/06/07/Java-Spring5%E6%A1%86%E6%9E%B61-IOC%E5%AE%B9%E5%99%A8/&via=木可成舟" target="_blank" class="mdui-ripple">分享到 Twitter</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://www.facebook.com/sharer/sharer.php?u=https://crazya1ice.github.io/2021/06/07/Java-Spring5%E6%A1%86%E6%9E%B61-IOC%E5%AE%B9%E5%99%A8/" target="_blank" class="mdui-ripple">分享到 Facebook</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://plus.google.com/share?url=https://crazya1ice.github.io/2021/06/07/Java-Spring5%E6%A1%86%E6%9E%B61-IOC%E5%AE%B9%E5%99%A8/" target="_blank" class="mdui-ripple">分享到 Google+</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://crazya1ice.github.io/2021/06/07/Java-Spring5%E6%A1%86%E6%9E%B61-IOC%E5%AE%B9%E5%99%A8/&title=Java Spring5框架1-IOC容器" target="_blank" class="mdui-ripple">分享到 LinkedIn</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="http://connect.qq.com/widget/shareqq/index.html?site=Java Together&title=Java Spring5框架1-IOC容器&pics=https://crazya1ice.github.io/images/favicon.png&url=https://crazya1ice.github.io/2021/06/07/Java-Spring5%E6%A1%86%E6%9E%B61-IOC%E5%AE%B9%E5%99%A8/" target="_blank" class="mdui-ripple">分享到 QQ</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://telegram.me/share/url?url=https://crazya1ice.github.io/2021/06/07/Java-Spring5%E6%A1%86%E6%9E%B61-IOC%E5%AE%B9%E5%99%A8/&text=Java Spring5框架1-IOC容器" target="_blank" class="mdui-ripple">分享到 Telegram</a>
+            </li>
+          </ul>
+        
+      </div>
+    </header>
     <div class="mdui-card-content mdui-typo">
       
-        Welcome to Hexo! This is your very first po...……
+
       
-    </div>
-    <div class="mdui-text-center">
-      <a href="/2021/04/28/hello-world/" class="mdui-btn mdui-btn-raised mdui-btn-dense mdui-color-theme-accent mdui-ripple">阅读全文</a>
+      <blockquote>
+        
+        <strong>本文链接：</strong><br><a href="https://crazya1ice.github.io/2021/06/07/Java-Spring5%E6%A1%86%E6%9E%B61-IOC%E5%AE%B9%E5%99%A8/">https://crazya1ice.github.io/2021/06/07/Java-Spring5框架1-IOC容器/</a>
+      </blockquote>
     </div>
     <footer class="mdui-card-actions">
       
       
+        <a class="mdui-ripple article_tags-link" href="/tags/Java-Spring-5/" rel="tag">Java Spring 5</a>
+      
     </footer>
+    
   </article>
+  
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+  <script>$("#main article .mdui-card-content img.fancybox").on("click",function(e){$.fancybox.open({src:$(this).attr("src")});});</script>
+
+
+  <nav id="paginator">
+    
+    <div class="spacer"></div>
+    
+      <a rel="next" class="extend next" href="/2021/06/03/JavaWeb%E5%AD%A6%E4%B9%A0-%E7%AE%80%E5%8D%95%E9%A1%B9%E7%9B%AE/">
+        <span class="mdui-p-x-3" mdui-tooltip="{content: 'JavaWeb学习-简单项目'}">下一篇</span>
+        <button aria-label="next" class="mdui-btn mdui-btn-raised mdui-btn-icon mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">arrow_forward</i></button>
+      </a>
+    
+  </nav>
+
+
 
 </main>
   <footer id="footer" class="mdui-m-t-5 mdui-p-y-3 mdui-color-theme">
