@@ -1,526 +1,765 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta http-equiv="Cache-Control" content="no-siteapp">
-  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-  <meta name="renderer" content="webkit">
-
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="半床花月半床书">
+  <meta name="author" content="木可成舟">
+  <meta name="keywords" content="">
   
   <title>Java Together</title>
 
-  <link rel="shortcut icon" href="/images/favicon.png">
-  <link rel="alternate" href="/atom.xml" title="Java Together" type="application/atom+xml">
-  <meta name="description" content="半床花月半床书">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Java Together">
-<meta property="og:url" content="https://crazya1ice.github.io/index.html">
-<meta property="og:site_name" content="Java Together">
-<meta property="og:description" content="半床花月半床书">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:author" content="木可成舟">
-<meta name="twitter:card" content="summary">
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
-  <meta name="keywords" content="">
-  <meta name="format-detection" content="telephone=no,email=no">
-  <meta name="theme-color" content="#9C27B0">
 
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="application-name" content="Java Together">
-  <meta name="msapplication-starturl" content="https://crazya1ice.github.io/">
-  <meta name="msapplication-navbutton-color" content="#9C27B0">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-title" content="Java Together">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <link rel="apple-touch-icon" href="/images/favicon.png">
 
-  
-    <link rel="canonical" href="https://crazya1ice.github.io">
-  
+<!-- 主题依赖的图标库，不要自行修改 -->
 
-  
-  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
 
-  
-  
-  
 
-  
-<link rel="stylesheet" href="/css/mdui.css">
-<link rel="stylesheet" href="/css/style.css">
 
-  
-<link rel="stylesheet" href="/custom.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
 
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"crazya1ice.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 5.4.0"></head>
-<body class="mdui-appbar-with-toolbar mdui-theme-primary-indigo mdui-theme-accent-pink">
-  <script>var a=localStorage.getItem("mdui-theme-layout-dark");if(a){document.getElementsByTagName("body")[0].className+=" mdui-theme-layout-dark"};</script>
-  <script>if(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches){document.getElementsByTagName("body")[0].className+=" mdui-theme-layout-dark"};</script>
-  <script>var a=localStorage.getItem("mdui-drawer-close");if(!a){document.getElementsByTagName("body")[0].className+=" mdui-drawer-body-left"};</script>
-  <header id="header" class="mdui-appbar mdui-appbar-fixed mdui-appbar-scroll-hide mdui-appbar-inset">
-  <div class="mdui-toolbar mdui-color-theme">
-    <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#sidebar', swipe: true}"><i class="mdui-icon material-icons">menu</i></a>
-    <a href="/" class="mdui-typo-headline">Java Together</a>
-    <div class="mdui-toolbar-spacer"></div>
-    <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#search'}" mdui-tooltip="{content: '搜索'}"><i class="mdui-icon material-icons">search</i></a>
-    <a href="/atom.xml" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: 'RSS'}"><i class="mdui-icon material-icons">rss_feed</i></a>
-  </div>
-</header>
-<div class="mdui-dialog" id="search">
-  
-    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="请输入关键字"><input type="hidden" name="sitesearch" value="https://crazya1ice.github.io"></form>
-    <div class="search-result"></div>
-  
-</div>
-  <aside id="sidebar" class="mdui-drawer mdui-drawer-full-height">
-  <script>var a=localStorage.getItem("mdui-drawer-close");if(a){document.getElementById("sidebar").className+=" mdui-drawer-close"};</script>
-  <div class="mdui-grid-tile">
-    <img src="/images/banner.png" style="height: 160px;">
-    <img src="/images/avatar.png" class="avatar-animation" style="position: absolute; top: 10%; left: 24px; width: 64px; height: 64px; border: 2px solid #fff; border-radius: 50%;">
-    <div class="mdui-grid-tile-actions">
-      <div class="mdui-grid-tile-text">
-        <div class="mdui-grid-tile-title">木可成舟</div>
-        <div class="mdui-grid-tile-subtitle"><i class="mdui-icon material-icons">art_track</i>半床花月半床书</div>
-      </div>
-      
-        <div class="mdui-grid-tile-buttons">
-          <a href="mailto:287360811@qq.com" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: '287360811@qq.com'}"><i class="mdui-icon material-icons">email</i></a>
-        </div>
-      
-    </div>
-  </div>
 
-  <div class="mdui-list" mdui-collapse="{accordion: true}">
-    <a href="/" class="mdui-list-item mdui-ripple">
-      <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-blue">home</i>
-      <div class="mdui-list-item-content">主页</div>
-    </a>
-    <div class="mdui-collapse-item">
-      <script>var a=localStorage.getItem("mdui-collapse-item-0");if(a){document.getElementsByClassName("mdui-collapse-item")[0].className+=" mdui-collapse-item-open"};</script>
-      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
-        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-deep-orange">archive</i>
-        <div class="mdui-list-item-content">归档</div>
-        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
-      </div>
-      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
-        
-        <a class="mdui-ripple sidebar_archives-link" href="/archives/2021/08/">八月 2021<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/archives/2021/06/">六月 2021<span class="mdui-ripple sidebar_archives-count">7</span></a><a class="mdui-ripple sidebar_archives-link" href="/archives/2021/05/">五月 2021<span class="mdui-ripple sidebar_archives-count">16</span></a><a class="mdui-ripple sidebar_archives-link" href="/archives/2021/04/">四月 2021<span class="mdui-ripple sidebar_archives-count">1</span></a>
-        
-      </div>
-    </div>
-    <div class="mdui-collapse-item">
-      <script>var a=localStorage.getItem("mdui-collapse-item-1");if(a){document.getElementsByClassName("mdui-collapse-item")[1].className+=" mdui-collapse-item-open"};</script>
-      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
-        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-green">class</i>
-        <div class="mdui-list-item-content">分类</div>
-        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
-      </div>
-      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
-        
-        
-        
-          <a href="javascript:;" class="mdui-list-item mdui-p-l-2 mdui-text-color-theme mdui-ripple" style="justify-content: center;">分类为空</a>
-        
-      </div>
-    </div>
-    <div class="mdui-collapse-item">
-      <script>var a=localStorage.getItem("mdui-collapse-item-2");if(a){document.getElementsByClassName("mdui-collapse-item")[2].className+=" mdui-collapse-item-open"};</script>
-      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
-        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-brown">bookmark</i>
-        <div class="mdui-list-item-content">标签</div>
-        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
-      </div>
-      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
-        
-        <a class="mdui-ripple sidebar_archives-link" href="/tags/Collection/" rel="tag">Collection<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/Java/" rel="tag">Java<span class="mdui-ripple sidebar_archives-count">2</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/Java-SE/" rel="tag">Java SE<span class="mdui-ripple sidebar_archives-count">10</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/Java-Spring-5/" rel="tag">Java Spring 5<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/Java-Web/" rel="tag">Java Web<span class="mdui-ripple sidebar_archives-count">4</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/Map/" rel="tag">Map<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/Markdown/" rel="tag">Markdown<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/misc/" rel="tag">misc<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/%E6%A1%86%E6%9E%B6/" rel="tag">框架<span class="mdui-ripple sidebar_archives-count">2</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/%E9%9B%86%E5%90%88/" rel="tag">集合<span class="mdui-ripple sidebar_archives-count">2</span></a>
-        
-      </div>
-    </div>
-    <a href="/about" class="mdui-list-item mdui-ripple">
-      <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-purple">person</i>
-      <div class="mdui-list-item-content">关于</div>
-    </a>
-  </div>
 
-  <div class="mdui-divider"></div>
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
 
-  <div class="mdui-list" mdui-collapse="{accordion: true}">
-    
-      <a href="/timeline" class="mdui-list-item mdui-ripple">时间轴</a>
-    
-      <a href="/tagcloud" class="mdui-list-item mdui-ripple">标签云</a>
-    
-      <a href="/gallery" class="mdui-list-item mdui-ripple">相册</a>
-    
-    <div class="mdui-collapse-item">
-      <script>var a=localStorage.getItem("mdui-collapse-item-3");if(a){document.getElementsByClassName("mdui-collapse-item")[3].className+=" mdui-collapse-item-open"};</script>
-      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
-        <div class="mdui-list-item-content">友情链接</div>
-        <i class="mdui-list-item-icon mdui-icon material-icons">link</i>
-      </div>
-      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
         
         
-          <a href="javascript:;" class="mdui-list-item mdui-p-l-2 mdui-text-color-theme mdui-ripple" style="justify-content: center;">链接为空</a>
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
         
-      </div>
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
     </div>
   </div>
-</aside>
-  <main id="main" class="mdui-m-t-5 fadeIn animated">
+</nav>
 
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="An elegant Material-Design theme for Hexo">
+              
+            </span>
 
-
-
-  <article class="mdui-card mdui-m-b-5 mdui-hoverable">
-    <a href="/2021/08/01/Java%E8%99%9A%E6%8B%9F%E6%9C%BA1/">
-      <header class="mdui-card-media mdui-ripple">
-        <img src="/images/random/material-16.png" style="max-height: 240px;">
-        <div class="mdui-card-media-covered">
-          <div class="mdui-card-primary">
-            <div class="mdui-card-primary-title">Java虚拟机1</div>
-            <div class="mdui-card-primary-subtitle"><i class="iconfont">&#xe697;</i> 2021-08-01 / <i class="iconfont">&#xe601;</i> 木可成舟</div>
+            
           </div>
-        </div>
-        
-      </header>
-    </a>
-    <div class="mdui-card-content mdui-typo">
-      
-        
-……
-      
-    </div>
-    <div class="mdui-text-center">
-      <a href="/2021/08/01/Java%E8%99%9A%E6%8B%9F%E6%9C%BA1/" class="mdui-btn mdui-btn-raised mdui-btn-dense mdui-color-theme-accent mdui-ripple">阅读全文</a>
-    </div>
-    <footer class="mdui-card-actions">
-      
-      
-    </footer>
-  </article>
 
-  <article class="mdui-card mdui-m-b-5 mdui-hoverable">
-    <a href="/2021/06/23/%E5%B7%A5%E5%85%B72-Git/">
-      <header class="mdui-card-media mdui-ripple">
-        <img src="/images/random/material-16.png" style="max-height: 240px;">
-        <div class="mdui-card-media-covered">
-          <div class="mdui-card-primary">
-            <div class="mdui-card-primary-title">工具2-Git</div>
-            <div class="mdui-card-primary-subtitle"><i class="iconfont">&#xe697;</i> 2021-06-23 / <i class="iconfont">&#xe601;</i> 木可成舟</div>
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div class="py-5" id="board"
+          style=margin-top:0>
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/08/01/Java%E8%99%9A%E6%8B%9F%E6%9C%BA1/" target="_self">
+          Java虚拟机1
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/08/01/Java%E8%99%9A%E6%8B%9F%E6%9C%BA1/" target="_self">
+          
+          
+            
+          
+          
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-08-01 17:18" pubdate>
+              2021-08-01
+            </time>
           </div>
-        </div>
         
-      </header>
-    </a>
-    <div class="mdui-card-content mdui-typo">
-      
         
-……
-      
-    </div>
-    <div class="mdui-text-center">
-      <a href="/2021/06/23/%E5%B7%A5%E5%85%B72-Git/" class="mdui-btn mdui-btn-raised mdui-btn-dense mdui-color-theme-accent mdui-ripple">阅读全文</a>
-    </div>
-    <footer class="mdui-card-actions">
-      
-      
-    </footer>
-  </article>
+        
+      </div>
+    </article>
+  </div>
 
-  <article class="mdui-card mdui-m-b-5 mdui-hoverable">
-    <a href="/2021/06/22/%E5%B7%A5%E5%85%B71-maven/">
-      <header class="mdui-card-media mdui-ripple">
-        <img src="/images/random/material-12.png" style="max-height: 240px;">
-        <div class="mdui-card-media-covered">
-          <div class="mdui-card-primary">
-            <div class="mdui-card-primary-title">工具1-maven</div>
-            <div class="mdui-card-primary-subtitle"><i class="iconfont">&#xe697;</i> 2021-06-22 / <i class="iconfont">&#xe601;</i> 木可成舟</div>
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/06/23/%E5%B7%A5%E5%85%B72-Git/" target="_self">
+          工具2-Git
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/06/23/%E5%B7%A5%E5%85%B72-Git/" target="_self">
+          
+          
+            
+          
+          
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-06-23 17:07" pubdate>
+              2021-06-23
+            </time>
           </div>
-        </div>
         
-      </header>
-    </a>
-    <div class="mdui-card-content mdui-typo">
-      
-        没有使用maven管理的项目
+        
+        
+      </div>
+    </article>
+  </div>
 
-很多模块，模块之间有...……
-      
-    </div>
-    <div class="mdui-text-center">
-      <a href="/2021/06/22/%E5%B7%A5%E5%85%B71-maven/" class="mdui-btn mdui-btn-raised mdui-btn-dense mdui-color-theme-accent mdui-ripple">阅读全文</a>
-    </div>
-    <footer class="mdui-card-actions">
-      
-      
-    </footer>
-  </article>
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/06/22/%E5%B7%A5%E5%85%B71-maven/" target="_self">
+          工具1-maven
+        </a>
+      </h1>
 
-  <article class="mdui-card mdui-m-b-5 mdui-hoverable">
-    <a href="/2021/06/22/Java-SpringMVC/">
-      <header class="mdui-card-media mdui-ripple">
-        <img src="/images/random/material-13.png" style="max-height: 240px;">
-        <div class="mdui-card-media-covered">
-          <div class="mdui-card-primary">
-            <div class="mdui-card-primary-title">Java-SpringMVC</div>
-            <div class="mdui-card-primary-subtitle"><i class="iconfont">&#xe697;</i> 2021-06-22 / <i class="iconfont">&#xe601;</i> 木可成舟</div>
+      <p class="index-excerpt">
+        <a href="/2021/06/22/%E5%B7%A5%E5%85%B71-maven/" target="_self">
+          
+          
+            
+          
+          没有使用maven管理的项目
+
+很多模块，模块之间有关系， 手工管理关系，比较繁琐。
+需要很多第三方功能， 需要很多jar文件，需要手工从网络中获取各个jar
+需要管理jar的版本， 你需要的是mysql.5.1.5.jar 拿你不能给给一个mysql.4.0.jar
+管理jar文件之间的依赖， 你的项目要使用a.jar 需要使用b.jar里面的类。 必须首先获取到b.jar才可以， 然
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-06-22 11:16" pubdate>
+              2021-06-22
+            </time>
           </div>
-        </div>
         
-      </header>
-    </a>
-    <div class="mdui-card-content mdui-typo">
-      
         
-……
-      
-    </div>
-    <div class="mdui-text-center">
-      <a href="/2021/06/22/Java-SpringMVC/" class="mdui-btn mdui-btn-raised mdui-btn-dense mdui-color-theme-accent mdui-ripple">阅读全文</a>
-    </div>
-    <footer class="mdui-card-actions">
-      
-      
-    </footer>
-  </article>
+        
+      </div>
+    </article>
+  </div>
 
-  <article class="mdui-card mdui-m-b-5 mdui-hoverable">
-    <a href="/2021/06/19/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E5%B0%8F%E7%BB%931/">
-      <header class="mdui-card-media mdui-ripple">
-        <img src="/images/random/material-15.png" style="max-height: 240px;">
-        <div class="mdui-card-media-covered">
-          <div class="mdui-card-primary">
-            <div class="mdui-card-primary-title">算法刷题小结1</div>
-            <div class="mdui-card-primary-subtitle"><i class="iconfont">&#xe697;</i> 2021-06-19 / <i class="iconfont">&#xe601;</i> 木可成舟</div>
-          </div>
-        </div>
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
         
-      </header>
-    </a>
-    <div class="mdui-card-content mdui-typo">
-      
-        边界测试用例
+        <a href="/2021/06/22/Java-SpringMVC/" target="_self">
+          Java-SpringMVC
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/06/22/Java-SpringMVC/" target="_self">
+          
+          
+            
+          
+          
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-06-22 10:54" pubdate>
+              2021-06-22
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/06/19/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E5%B0%8F%E7%BB%931/" target="_self">
+          算法刷题小结1
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/06/19/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E5%B0%8F%E7%BB%931/" target="_self">
+          
+          
+            
+          
+          边界测试用例
 被各种边界测试用例干碎了，写个小节记录一下
 
-……
-      
-    </div>
-    <div class="mdui-text-center">
-      <a href="/2021/06/19/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E5%B0%8F%E7%BB%931/" class="mdui-btn mdui-btn-raised mdui-btn-dense mdui-color-theme-accent mdui-ripple">阅读全文</a>
-    </div>
-    <footer class="mdui-card-actions">
-      
-      
-    </footer>
-  </article>
+整形的Long，Integer，Short，Byte都可以用各自类的MAX_VALUE和MIN_VALUE使用各自类型所允许的最大和最小值；
+浮点型的Double和Float与整形不同，如下所示：
+123456public static final double MAX_VALUE = 0x1.fffffffffffffP+10
+        </a>
+      </p>
 
-  <article class="mdui-card mdui-m-b-5 mdui-hoverable">
-    <a href="/2021/06/15/Java-Spring5%E6%A1%86%E6%9E%B62-AOP/">
-      <header class="mdui-card-media mdui-ripple">
-        <img src="/images/random/material-16.png" style="max-height: 240px;">
-        <div class="mdui-card-media-covered">
-          <div class="mdui-card-primary">
-            <div class="mdui-card-primary-title">Java-Spring5框架2-AOP</div>
-            <div class="mdui-card-primary-subtitle"><i class="iconfont">&#xe697;</i> 2021-06-15 / <i class="iconfont">&#xe601;</i> 木可成舟</div>
-          </div>
-        </div>
+      <div class="index-btm post-metas">
         
-      </header>
-    </a>
-    <div class="mdui-card-content mdui-typo">
-      
-        AOP
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-06-19 14:48" pubdate>
+              2021-06-19
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/06/15/Java-Spring5%E6%A1%86%E6%9E%B62-AOP/" target="_self">
+          Java-Spring5框架2-AOP
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/06/15/Java-Spring5%E6%A1%86%E6%9E%B62-AOP/" target="_self">
+          
+          
+            
+          
+          AOP
 
 什么是 AOP
 
-面向切面编程（...……
-      
-    </div>
-    <div class="mdui-text-center">
-      <a href="/2021/06/15/Java-Spring5%E6%A1%86%E6%9E%B62-AOP/" class="mdui-btn mdui-btn-raised mdui-btn-dense mdui-color-theme-accent mdui-ripple">阅读全文</a>
-    </div>
-    <footer class="mdui-card-actions">
-      
-      
-    </footer>
-  </article>
+面向切面编程（方面），利用 AOP 可以对业务逻辑的各个部分进行隔离，从而使得 业务逻辑各部分之间的耦合度降低，提高程序的可重用性，同时提高了开发的效率。
+通俗描述：不通过修改源代码方式，在主干功能里面添加新功能
 
-  <article class="mdui-card mdui-m-b-5 mdui-hoverable">
-    <a href="/2021/06/07/Java-Spring5%E6%A1%86%E6%9E%B61-IOC%E5%AE%B9%E5%99%A8/">
-      <header class="mdui-card-media mdui-ripple">
-        <img src="/images/random/material-8.png" style="max-height: 240px;">
-        <div class="mdui-card-media-covered">
-          <div class="mdui-card-primary">
-            <div class="mdui-card-primary-title">Java Spring5框架1-IOC容器</div>
-            <div class="mdui-card-primary-subtitle"><i class="iconfont">&#xe697;</i> 2021-06-07 / <i class="iconfont">&#xe601;</i> 木可成舟</div>
-          </div>
-        </div>
+AOP底层原理
+
+AOP底层使用动态代理（分两种情况）
+有接口情况下使用JDK动态代理，创建接口实现类代理对象，增强类的方法
+没有接口
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
         
-      </header>
-    </a>
-    <div class="mdui-card-content mdui-typo">
-      
-        Spring框架概述
-
-Spring框架是轻量级的开源JavaEE框架。...……
-      
-    </div>
-    <div class="mdui-text-center">
-      <a href="/2021/06/07/Java-Spring5%E6%A1%86%E6%9E%B61-IOC%E5%AE%B9%E5%99%A8/" class="mdui-btn mdui-btn-raised mdui-btn-dense mdui-color-theme-accent mdui-ripple">阅读全文</a>
-    </div>
-    <footer class="mdui-card-actions">
-      
-      
-        <a class="mdui-ripple article_tags-link" href="/tags/Java-Spring-5/" rel="tag">Java Spring 5</a>
-      
-    </footer>
-  </article>
-
-  <article class="mdui-card mdui-m-b-5 mdui-hoverable">
-    <a href="/2021/06/03/JavaWeb%E5%AD%A6%E4%B9%A0-%E7%AE%80%E5%8D%95%E9%A1%B9%E7%9B%AE/">
-      <header class="mdui-card-media mdui-ripple">
-        <img src="/images/random/material-18.png" style="max-height: 240px;">
-        <div class="mdui-card-media-covered">
-          <div class="mdui-card-primary">
-            <div class="mdui-card-primary-title">JavaWeb学习-简单项目</div>
-            <div class="mdui-card-primary-subtitle"><i class="iconfont">&#xe697;</i> 2021-06-03 / <i class="iconfont">&#xe601;</i> 木可成舟</div>
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-06-15 16:12" pubdate>
+              2021-06-15
+            </time>
           </div>
-        </div>
         
-      </header>
-    </a>
-    <div class="mdui-card-content mdui-typo">
-      
-        JavaEE项目的三层架构
-……
-      
-    </div>
-    <div class="mdui-text-center">
-      <a href="/2021/06/03/JavaWeb%E5%AD%A6%E4%B9%A0-%E7%AE%80%E5%8D%95%E9%A1%B9%E7%9B%AE/" class="mdui-btn mdui-btn-raised mdui-btn-dense mdui-color-theme-accent mdui-ripple">阅读全文</a>
-    </div>
-    <footer class="mdui-card-actions">
-      
-      
-        <a class="mdui-ripple article_tags-link" href="/tags/Java-Web/" rel="tag">Java Web</a>
-      
-    </footer>
-  </article>
+        
+        
+      </div>
+    </article>
+  </div>
 
-  <article class="mdui-card mdui-m-b-5 mdui-hoverable">
-    <a href="/2021/05/31/JavaWeb%E5%AD%A6%E4%B9%A0-Servlet/">
-      <header class="mdui-card-media mdui-ripple">
-        <img src="/images/random/material-5.png" style="max-height: 240px;">
-        <div class="mdui-card-media-covered">
-          <div class="mdui-card-primary">
-            <div class="mdui-card-primary-title">JavaWeb学习-Servlet</div>
-            <div class="mdui-card-primary-subtitle"><i class="iconfont">&#xe697;</i> 2021-05-31 / <i class="iconfont">&#xe601;</i> 木可成舟</div>
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/06/07/Java-Spring5%E6%A1%86%E6%9E%B61-IOC%E5%AE%B9%E5%99%A8/" target="_self">
+          Java Spring5框架1-IOC容器
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/06/07/Java-Spring5%E6%A1%86%E6%9E%B61-IOC%E5%AE%B9%E5%99%A8/" target="_self">
+          
+          
+            
+          
+          Spring框架概述
+
+Spring框架是轻量级的开源JavaEE框架。
+Spring框架可以解决企业应用开发的复杂性。
+Spring中有两个核心部分：IOC和Aop。
+
+IOC：控制反转，把创建对象过程交给Spring进行管理
+Aop：面向切面，不修改源代码进行功能增强
+
+特点：
+
+方便解耦，简化开发；（IOC）
+Aop编程支持；
+方便程序的测试；
+方便集成各种优秀框
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-06-07 10:48" pubdate>
+              2021-06-07
+            </time>
           </div>
-        </div>
         
-      </header>
-    </a>
-    <div class="mdui-card-content mdui-typo">
-      
-        1.Servlet
-
-Servlet 是 JavaEE 规范之一。规范就...……
-      
-    </div>
-    <div class="mdui-text-center">
-      <a href="/2021/05/31/JavaWeb%E5%AD%A6%E4%B9%A0-Servlet/" class="mdui-btn mdui-btn-raised mdui-btn-dense mdui-color-theme-accent mdui-ripple">阅读全文</a>
-    </div>
-    <footer class="mdui-card-actions">
-      
-      
-        <a class="mdui-ripple article_tags-link" href="/tags/Java-Web/" rel="tag">Java Web</a>
-      
-    </footer>
-  </article>
-
-  <article class="mdui-card mdui-m-b-5 mdui-hoverable">
-    <a href="/2021/05/25/JavaWeb%E5%AD%A6%E4%B9%A0-Tomcat/">
-      <header class="mdui-card-media mdui-ripple">
-        <img src="/images/random/material-17.png" style="max-height: 240px;">
-        <div class="mdui-card-media-covered">
-          <div class="mdui-card-primary">
-            <div class="mdui-card-primary-title">JavaWeb学习-Tomcat</div>
-            <div class="mdui-card-primary-subtitle"><i class="iconfont">&#xe697;</i> 2021-05-25 / <i class="iconfont">&#xe601;</i> 木可成舟</div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Java-Spring-5/">Java Spring 5</a>
+            
           </div>
-        </div>
         
-      </header>
-    </a>
-    <div class="mdui-card-content mdui-typo">
-      
-        JavaWeb
-JavaWeb 是指， 所有通过 Java 语言编写可以通过浏览器访问的程序的总称， ...……
-      
-    </div>
-    <div class="mdui-text-center">
-      <a href="/2021/05/25/JavaWeb%E5%AD%A6%E4%B9%A0-Tomcat/" class="mdui-btn mdui-btn-raised mdui-btn-dense mdui-color-theme-accent mdui-ripple">阅读全文</a>
-    </div>
-    <footer class="mdui-card-actions">
-      
-      
-        <a class="mdui-ripple article_tags-link" href="/tags/Java-Web/" rel="tag">Java Web</a>
-      
-    </footer>
-  </article>
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/06/03/JavaWeb%E5%AD%A6%E4%B9%A0-%E7%AE%80%E5%8D%95%E9%A1%B9%E7%9B%AE/" target="_self">
+          JavaWeb学习-简单项目
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/06/03/JavaWeb%E5%AD%A6%E4%B9%A0-%E7%AE%80%E5%8D%95%E9%A1%B9%E7%9B%AE/" target="_self">
+          
+          
+            
+          
+          JavaEE项目的三层架构
+
+分层的目的是为了解耦。解耦就是为了降低代码的耦合度。方便项目后期的维护和升级。
+
+web层 com.crazya1ice.web/servlet/controller
+service层 com.crazya1ice.service Service接口包
+​ com.crazya1ice.service.impl Service接口实现类
+dao持久层 c
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-06-03 13:29" pubdate>
+              2021-06-03
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Java-Web/">Java Web</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/05/31/JavaWeb%E5%AD%A6%E4%B9%A0-Servlet/" target="_self">
+          JavaWeb学习-Servlet
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/05/31/JavaWeb%E5%AD%A6%E4%B9%A0-Servlet/" target="_self">
+          
+          
+            
+          
+          1.Servlet
+
+Servlet 是 JavaEE 规范之一。规范就是接口
+Servlet 就 JavaWeb 三大组件之一。三大组件分别是：Servlet 程序、Filter 过滤器、Listener 监听器。
+Servlet 是运行在服务器上的一个 java 小程序，它可以接收客户端发送过来的请求，并响应数据给客户端。
+
+手动实现Servlet程序
+
+编写一个类去实现 Se
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-05-31 11:17" pubdate>
+              2021-05-31
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Java-Web/">Java Web</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/05/25/JavaWeb%E5%AD%A6%E4%B9%A0-Tomcat/" target="_self">
+          JavaWeb学习-Tomcat
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/05/25/JavaWeb%E5%AD%A6%E4%B9%A0-Tomcat/" target="_self">
+          
+          
+            
+          
+          JavaWeb
+JavaWeb 是指， 所有通过 Java 语言编写可以通过浏览器访问的程序的总称， 叫 JavaWeb。 JavaWeb 是基于请求和响应来开发的。
+常用Web服务器
+
+Tomcat： 由 Apache 组织提供的一种 Web 服务器， 提供对 jsp 和 Servlet 的支持。 它是一种轻量级的 javaWeb 容器（服务器） ， 也是当前应用最广的 JavaWeb 
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-05-25 11:53" pubdate>
+              2021-05-25
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Java-Web/">Java Web</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
 
 
-  <nav id="paginator">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><button aria-label="next" class="mdui-btn mdui-btn-raised mdui-btn-icon mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">arrow_forward</i></button></a>
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
   </nav>
-</main>
-  <footer id="footer" class="mdui-m-t-5 mdui-p-y-3 mdui-color-theme">
-  <div class="mdui-p-y-0 mdui-text-center">
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     
+
     
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
     
+
     
-    
-    
-    
-    
-    
-    
-    
-    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
   </div>
-  <div class="mdui-p-y-1 mdui-text-center">
-    Copyright &copy; 2021 木可成舟<br>
-    Powered by <a href="https://hexo.io/" target="_blank" class="mdui-text-color-theme-accent">Hexo</a>
+</div>
     
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
   </div>
+  
+
+  
+
+  
 </footer>
-  <button id="gotop" class="mdui-fab mdui-fab-fixed mdui-fab-hide mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">arrow_upward</i></button>
+
+
+  <!-- SCRIPTS -->
   
-  
-<script src="/js/mdui.js"></script>
-<script src="/js/script.js"></script>
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
 
   
-<script src="/custom.js"></script>
+    <script  src="/js/img-lazyload.js" ></script>
+  
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+  
+
+
+
+
+
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
 
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/rfb_1601.model.json"},"display":{"superSample":2,"width":250,"height":500,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false});</script></body>
 </html>
