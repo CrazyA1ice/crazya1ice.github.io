@@ -20,7 +20,7 @@
 <meta property="og:description" content="边界测试用例 被各种边界测试用例干碎了，写个小节记录一下  整形的Long，Integer，Short，Byte都可以用各自类的MAX_VALUE和MIN_VALUE使用各自类型所允许的最大和最小值； 浮点型的Double和Float与整形不同，如下所示： 123456public static final double MAX_VALUE &#x3D; 0x1.fffffffffffffP+10">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-06-19T06:48:32.000Z">
-<meta property="article:modified_time" content="2021-06-19T07:07:30.392Z">
+<meta property="article:modified_time" content="2021-06-25T08:54:37.826Z">
 <meta property="article:author" content="木可成舟">
 <meta name="twitter:card" content="summary">
 
@@ -107,7 +107,7 @@
       </div>
       <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
         
-        <a class="mdui-ripple sidebar_archives-link" href="/archives/2021/06/">六月 2021<span class="mdui-ripple sidebar_archives-count">7</span></a><a class="mdui-ripple sidebar_archives-link" href="/archives/2021/05/">五月 2021<span class="mdui-ripple sidebar_archives-count">16</span></a><a class="mdui-ripple sidebar_archives-link" href="/archives/2021/04/">四月 2021<span class="mdui-ripple sidebar_archives-count">1</span></a>
+        <a class="mdui-ripple sidebar_archives-link" href="/archives/2021/08/">八月 2021<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/archives/2021/06/">六月 2021<span class="mdui-ripple sidebar_archives-count">7</span></a><a class="mdui-ripple sidebar_archives-link" href="/archives/2021/05/">五月 2021<span class="mdui-ripple sidebar_archives-count">16</span></a><a class="mdui-ripple sidebar_archives-link" href="/archives/2021/04/">四月 2021<span class="mdui-ripple sidebar_archives-count">1</span></a>
         
       </div>
     </div>
@@ -177,7 +177,7 @@
   <style>#main article .mdui-card-content .center-block{display:block!important;margin-right:auto!important;margin-left:auto!important}</style>
   <article class="mdui-card mdui-m-b-5">
     <header class="mdui-card-media">
-      <img src="/images/random/material-16.png" style="max-height: 240px;">
+      <img src="/images/random/material-11.png" style="max-height: 240px;">
       <div class="mdui-card-media-covered">
         <div class="mdui-card-primary">
           <div class="mdui-card-primary-title">算法刷题小结1</div>
@@ -236,6 +236,12 @@
 <p>其MAX_VALUE为最大正数，MIN_VALUE为最小正数，Double表示范围的左边界可由</p>
 <p>-MAX_VALUE表示。</p>
 <p>（一般尽量不要强行用Double强转来补Int类型的边界用例问题，很浪费）</p></li>
+</ol>
+<h3 id="char类型和int类型转换">Char类型和Int类型转换</h3>
+<ol type="1">
+<li><p>注意char类型的0~9数字强转int并不等于真实数字</p>
+<p>’0‘对应char的十进制为48，'A'为65，'a'为97</p></li>
+<li><p>真不行用Integer.decode(String str)直接将string转码成int，可接受八、十、十六进制</p></li>
 </ol>
 
       
