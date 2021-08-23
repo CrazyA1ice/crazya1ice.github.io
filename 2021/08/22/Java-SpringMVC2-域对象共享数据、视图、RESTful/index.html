@@ -18,7 +18,7 @@
   <meta name="author" content="木可成舟">
   <meta name="keywords" content="">
   
-  <title>Java-SpringMVC - Java Together</title>
+  <title>Java-SpringMVC2-域对象共享数据、视图、RESTful - Java Together</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Java-SpringMVC">
+            <span class="h2" id="subtitle" title="Java-SpringMVC2-域对象共享数据、视图、RESTful">
               
             </span>
 
@@ -225,7 +225,7 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Java-SpringMVC</h1>
+            <h1 style="display: none">Java-SpringMVC2-域对象共享数据、视图、RESTful</h1>
             
             <div class="markdown-body">
               <h1 id="五、域对象共享数据"><a href="#五、域对象共享数据" class="headerlink" title="五、域对象共享数据"></a>五、域对象共享数据</h1><h3 id="1、使用ServletAPI向request域对象共享数据"><a href="#1、使用ServletAPI向request域对象共享数据" class="headerlink" title="1、使用ServletAPI向request域对象共享数据"></a>1、使用ServletAPI向request域对象共享数据</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@RequestMapping(&quot;/testServletAPI&quot;)</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">testServletAPI</span><span class="hljs-params">(HttpServletRequest request)</span></span>&#123;<br>    request.setAttribute(<span class="hljs-string">&quot;testScope&quot;</span>, <span class="hljs-string">&quot;hello,servletAPI&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;success&quot;</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
@@ -427,7 +427,7 @@
                     
                       <a href="/2021/08/23/Java-SpringMVC3-%E6%8A%A5%E6%96%87%E8%BD%AC%E6%8D%A2%E3%80%81%E6%96%87%E4%BB%B6%E3%80%81%E6%8B%A6%E6%88%AA%E5%99%A8%E3%80%81%E6%B3%A8%E8%A7%A3%E9%85%8D%E7%BD%AE/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Java-SpringMVC3-</span>
+                        <span class="hidden-mobile">Java-SpringMVC3-报文转换、文件、拦截器、注解配置</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
